@@ -1,5 +1,7 @@
 # PRD: Setup Multi-Agentes
 
+> ⚠️ **Nota (19/02/2026):** Refs a `shared/TEAM.md` refletem a v2 original. Na estrutura real, equipe está em `shared/people.md` e agentes nos workspace files.
+
 > Para quando um agente não é suficiente. Jogue no agente principal.
 
 ## Contexto
@@ -65,6 +67,76 @@ shared/
 - Agentes secundários não têm binding Telegram
 - Hub model > Mesh model (aprendizado cruzado entre domínios distintos não funciona)
 - Sub-agents (sessions_spawn) para tasks paralelas
+- **Após spawnar sub-agents: use `sessions_yield`** para encerrar o turno limpo e receber os resultados na próxima mensagem (v2026.3.12+)
+
+## Novidades 3.13
+
+### sessions_yield — Novo Tool de Orquestração
+
+A versão 2026.3.13 adicionou o tool `sessions_yield`, que permite ao agente principal **encerrar o turno atual imediatamente** após spawnar sub-agentes, recebendo os resultados como próxima mensagem.
+
+```json
+// Fluxo antes (3.12 e anterior):
+// 1. Agent spawna sub-agent
+// 2. Agent continua "rodando" (esperando, processando)
+// 3. Sub-agent termina e anuncia
+
+// Fluxo com sessions_yield (3.13+):
+// 1. Agent spawna sub-agent
+// 2. Agent chama sessions_yield → turno encerra
+// 3. Sub-agent termina → próximo turno começa com resultado
+```
+
+**Por que importa:** O orquestrador agora pode encerrar a sessão limpa, sem ficar "preso" enquanto sub-agents trabalham. Reduz consumo de tokens e melhora a coordenação.
+
+**Exemplo prático:**
+```
+Após spawnar 3 sub-agents para tarefas paralelas, o hub chama
+sessions_yield para sair do turno. Os resultados chegam como
+a próxima mensagem — tudo organizado.
+```
+
+> ✅ **Não requer config extra.** O tool `sessions_yield` já está disponível após atualizar para v2026.3.13.
+
+## Novidades 3.2
+
+### ACP Dispatch — Enabled by Default
+A partir da versão 3.2, o ACP (Agent Communication Protocol) dispatch está **habilitado por padrão**. Não é mais necessário habilitar manualmente no config.
+
+```json
+// ANTES (3.1 e anterior):
+{
+  "acp": {
+    "dispatch": true
+  }
+}
+
+// AGORA (3.2+): não precisa mais desta config
+// ACP dispatch já está ativo automaticamente
+```
+
+> ✅ Se você tem essa config antiga, pode remover — não causa problema, mas é redundante.
+
+### sessions_spawn com Attachments
+`sessions_spawn` agora suporta envio de **attachments** (arquivos, imagens, buffers) diretamente ao spawnar um sub-agente:
+
+```json
+{
+  "sessionTarget": "isolated",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Analise este relatório e me dê um resumo executivo.",
+    "attachments": [
+      {
+        "type": "file",
+        "path": "/workspace/relatorio-mensal.pdf"
+      }
+    ]
+  }
+}
+```
+
+Casos de uso: passar PDFs pra análise, imagens pra processamento, arquivos de dados pra transformação — tudo numa única chamada sem etapas extras.
 
 ## Tarefas
 

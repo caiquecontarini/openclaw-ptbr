@@ -10,6 +10,21 @@
 | Crons / automação | Claude Sonnet | 90% mais barato, suficiente pra tasks |
 | Heartbeats | Claude Haiku | Mínimo custo, só checa e reporta |
 | Imagens | Gemini Flash | Bom e barato |
+| Análise avançada / multimodal | Gemini 2.5 Pro | Contexto enorme (1M tokens), multimodal nativo |
+| Alternativa Google | Gemini 3.1 Pro (`google/gemini-3.1-pro-preview`) | Reasoning avançado, boa opção de fallback |
+| Volume alto / custo mínimo | MiniMax (`minimax/minimax-01`) | Contexto de 1M tokens a custo extremamente baixo |
+
+### IDs dos Modelos (para openclaw.json)
+
+```json
+"anthropic/claude-opus-4-5"       // Claude Opus — interação principal
+"anthropic/claude-sonnet-4-5"     // Claude Sonnet — crons e automação
+"anthropic/claude-haiku-4-5"      // Claude Haiku — heartbeats
+"google/gemini-2.5-pro-preview"   // Gemini 2.5 Pro — análise avançada
+"google/gemini-3.1-pro-preview"   // Gemini 3.1 Pro — reasoning / fallback
+"google/gemini-flash-2.0"         // Gemini Flash — imagens e volume
+"minimax/minimax-01"              // MiniMax — custo mínimo, contexto longo
+```
 
 ## Config de Compaction (IMPORTANTE)
 

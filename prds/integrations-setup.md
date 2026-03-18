@@ -10,7 +10,7 @@ Um agente sem integrações é só um chatbot. Estas são as integrações mais 
 
 ### Google Calendar
 ```bash
-# Instalar GOG CLI
+# Instalar GOG CLI (recomendado — alternativa ao OAuth manual)
 npm install -g gog
 
 # Autenticar
@@ -18,6 +18,9 @@ gog auth login --client=calendar-client --account=SEU_EMAIL
 ```
 - Permite: ver compromissos, criar eventos, lembretes
 - Cron sugerido: checar agenda a cada heartbeat
+- **Novidade 3.2:** Use o `gog` CLI como alternativa recomendada ao fluxo OAuth manual. Mais simples, menos configuração, mesmo acesso ao Google Workspace (Calendar, Drive, Gmail).
+
+> 💡 **gog CLI** é o caminho recomendado para Google Workspace: um único comando configura autenticação OAuth para Calendar, Drive, Gmail e Docs. Sem precisar criar projeto no Google Cloud Console manualmente.
 
 ### Telegram (já configurado no setup)
 - Criar grupo com tópicos para organizar conversas
@@ -68,6 +71,24 @@ op item get "Nome do Item" --field credential --reveal
 ### Brave Search
 - API para pesquisa web
 - Já vem configurado no OpenClaw (verificar)
+
+## Nível 3.5 — PDF Nativo (Novo na 3.2)
+
+### PDF Tool Nativo
+A partir da versão 3.2, agentes podem analisar documentos PDF **nativamente** — sem precisar instalar nada.
+
+```
+# O agente simplesmente faz:
+Analise este PDF: /caminho/para/documento.pdf
+```
+
+- **Suportado por:** Anthropic Claude e Google Gemini (análise nativa)
+- **Outros modelos:** fallback automático via extração de texto/imagens
+- **Uso prático:** contratos, relatórios, notas fiscais, planilhas PDF
+- **Limite:** até 10 PDFs por chamada
+- Nenhuma configuração extra — já disponível no agente
+
+> 💡 Casos de uso reais: o agente analisa boletos, extrai dados de NFs para o Notion, resume relatórios longos automaticamente.
 
 ## Nível 4 — Avançado
 

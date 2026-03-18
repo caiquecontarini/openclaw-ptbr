@@ -17,7 +17,7 @@ Acabei de assistir o Módulo 2 do curso sobre segurança. Leia o PRD de security
 1. Telegram allowlist (dmPolicy) — pra ninguém comandar meu bot
 2. Firewall UFW — bloquear portas desnecessárias
 3. Fail2ban — proteger contra brute force SSH
-4. Credenciais — como guardar API keys de forma segura
+4. Credenciais — guardar API keys com `openclaw secrets` (não em .env ou hardcodado). Use `openclaw secrets audit` pra verificar se há credenciais expostas e `openclaw secrets apply` pra migrar. Se usar 1Password, configure via `op` CLI.
 5. Portas de aplicação — não expor nada em 0.0.0.0
 
 Vamos blindar meu servidor?

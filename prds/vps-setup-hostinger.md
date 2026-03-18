@@ -2,6 +2,7 @@
 
 > Guia step-by-step para o Módulo 1 do curso.
 > Bruno segue este roteiro na gravação.
+> **Atualizado para OpenClaw v2026.3.2**
 
 ---
 
@@ -78,6 +79,71 @@ O wizard vai perguntar:
 
 ---
 
+## ⚠️ Passo 3.5: Configurar Perfil de Ferramentas (NOVO — v2026.3.2)
+
+> 🔴 **CRÍTICO:** Este passo é OBRIGATÓRIO a partir da versão 2026.3.2. Sem ele, seu agente vai responder mensagens mas não vai conseguir fazer NADA útil.
+
+A partir da versão **2026.3.2**, o OpenClaw vem com `tools.profile = messaging` por padrão. Isso significa que o agente só pode responder mensagens, mas **NÃO pode** executar comandos, ler arquivos, usar ferramentas ou fazer qualquer coisa além de conversar.
+
+Para ter um agente verdadeiramente funcional, você PRECISA mudar para o perfil `full`:
+
+```bash
+openclaw config set tools.profile full
+```
+
+Em seguida, valide que tudo está correto com o novo comando de validação:
+
+```bash
+openclaw config validate
+```
+
+A saída deve mostrar algo como:
+
+```
+✅ tools.profile: full
+✅ gateway.mode: local
+✅ ai.provider: anthropic
+✅ Configuration valid — 0 warnings
+```
+
+> 💡 **Por que esse default mudou?** A Anthropic e a comunidade de segurança identificaram que muitas instalações expostas na internet davam acesso completo de ferramentas a qualquer pessoa que encontrasse o bot. O novo default `messaging` é mais seguro para quem não sabe o que está fazendo. Mas **para o curso**, queremos `full` — daí este passo.
+
+> 📺 **Dica pro curso:** Mostrar o "antes e depois" — enviar uma mensagem pro bot sem configurar (`tools.profile = messaging`) e ver ele respondendo mas sem conseguir executar comandos. Depois configurar e mostrar a diferença. Muito didático!
+
+---
+
+## ⚠️ Passo 3.6: Configurar Timezone (NOVO — v2026.3.13)
+
+> 🕐 **IMPORTANTE para quem vai usar crons:** Sem este passo, todos os seus crons vão disparar no horário UTC — 3 horas adiantados em relação ao Brasil. Um cron configurado "todo dia às 9h" vai disparar às 12h.
+
+```bash
+sudo systemctl edit openclaw
+```
+
+No editor que abrir, adicione dentro de `[Service]`:
+
+```
+[Service]
+Environment="OPENCLAW_TZ=America/Sao_Paulo"
+```
+
+Salve e aplique:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart openclaw
+```
+
+Verifique que o gateway reiniciou corretamente:
+
+```bash
+openclaw gateway status
+```
+
+> 📺 **Dica pro curso:** Demonstrar o efeito ao vivo — criar um cron de teste, mostrar ele disparando no horário errado (UTC), depois configurar OPENCLAW_TZ e mostrar o horário correto. Momento muito didático.
+
+---
+
 ## Passo 4: Verificar se está rodando (30 seg)
 
 ```bash
@@ -91,6 +157,8 @@ Se quiser ver o painel web:
 openclaw dashboard
 ```
 Acesse: `http://SEU_IP:18789`
+
+> 📡 **Novo na v2026.3.2:** O Telegram streaming agora é ativado por padrão. Quando seu agente estiver "pensando", você vai ver o indicador "digitando..." no Telegram em tempo real. Isso é normal e esperado — o agente está processando sua mensagem ao vivo!
 
 ---
 
@@ -147,6 +215,8 @@ Envie uma mensagem pro bot no Telegram:
 
 Se o agente responder → **SETUP COMPLETO!** 🎉
 
+> 📱 **Novo na v2026.3.2:** Você vai ver "digitando..." aparecer no Telegram enquanto o agente processa. Isso é o streaming ativo — é normal e significa que o agente está funcionando!
+
 ---
 
 ## Checkpoint do Módulo 1
@@ -154,6 +224,9 @@ Se o agente responder → **SETUP COMPLETO!** 🎉
 - [ ] VPS rodando na Hostinger (Ubuntu 24.04)
 - [ ] OpenClaw instalado (bare metal, não Docker)
 - [ ] Gateway rodando como serviço (24/7)
+- [ ] **`tools.profile = full` configurado** ← NOVO (v2026.3.2)
+- [ ] `openclaw config validate` sem erros ← NOVO (v2026.3.2)
+- [ ] **`OPENCLAW_TZ=America/Sao_Paulo` configurado** ← NOVO (v2026.3.13)
 - [ ] Bot do Telegram criado e conectado
 - [ ] dmPolicy = allowlist (segurança básica)
 - [ ] Primeiro "oi" respondido ✅
@@ -182,6 +255,14 @@ openclaw gateway logs
 openclaw gateway status
 ```
 
+### "Agente responde mas não consegue executar comandos" (NOVO — v2026.3.2)
+```bash
+# Sintoma: bot responde "não consigo fazer isso" para qualquer tarefa
+# Causa: tools.profile ainda está como 'messaging'
+openclaw config set tools.profile full
+openclaw gateway restart
+```
+
 ### "Gateway não inicia"
 ```bash
 # Checar porta
@@ -198,10 +279,14 @@ openclaw gateway restart
 |------|-------------|
 | VPS Hostinger (KVM 1) | ~$5-10/mês |
 | API Anthropic (uso moderado) | ~$10-30/mês |
+| API Gemini 3.1 Pro (alternativa) | ~$5-15/mês |
 | Telegram | Grátis |
-| **Total** | **~$15-40/mês** |
+| **Total (Anthropic)** | **~$15-40/mês** |
+| **Total (Gemini — opção econômica)** | **~$10-25/mês** |
 
 > 💡 **Dica pro curso:** "Menos que um almoço por semana pra ter um assistente AI 24/7"
+
+> 💰 **Opção econômica:** O Gemini 3.1 Pro ($1.25/M tokens input) é uma alternativa viável e mais barata que o Claude Sonnet para quem quer começar com custo menor. Para tarefas simples e heartbeats, funciona muito bem!
 
 ---
 

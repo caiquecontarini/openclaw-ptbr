@@ -98,6 +98,65 @@ mkdir -p backups/$(date +%Y-%m-%d)
 cp /root/.openclaw/openclaw.json backups/$(date +%Y-%m-%d)/
 ```
 
+## 6. Auditoria de Secrets
+
+### openclaw secrets audit (novo na 3.2)
+
+A versão 3.2 traz um comando dedicado para auditar secrets expostos:
+
+```bash
+# Auditar todos os arquivos do workspace por secrets vazados
+openclaw secrets audit
+
+# Auditar diretório específico
+openclaw secrets audit --path /root/.openclaw/workspace-meu-agente
+
+# Saída com relatório detalhado
+openclaw secrets audit --report
+```
+
+O comando detecta:
+- API keys hardcodadas em arquivos `.json`, `.md`, `.env`
+- Tokens no histórico de git
+- Credenciais em SOUL.md, AGENTS.md ou TOOLS.md
+- Patterns conhecidos (OpenAI, Stripe, Telegram, AWS, etc.)
+
+> ⚠️ Execute `openclaw secrets audit` antes de compartilhar qualquer arquivo do workspace ou fazer backup em cloud.
+
+### openclaw doctor — Melhorado na 3.2
+
+O comando `openclaw doctor` foi expandido na 3.2 e agora verifica:
+
+```bash
+openclaw doctor
+```
+
+Checks adicionados na 3.2:
+- ✅ `tools.profile` compatibility (detecta profile incompatível com tarefas)
+- ✅ ACP dispatch status
+- ✅ Secrets audit rápido (arquivos mais críticos)
+- ✅ Versão do Node.js e dependências
+- ✅ Conectividade com canais configurados (Telegram, WhatsApp, Slack)
+- ✅ Crons com configuração inválida (`systemEvent` + `main` = problema)
+
+> 💡 Dica: rode `openclaw doctor` após qualquer atualização de versão ou quando algo estiver "estranho". É o ponto de partida do diagnóstico.
+
+## 7. Exec Approvals — Nunca Desabilite
+
+O OpenClaw pode executar comandos no seu servidor. O sistema de approvals é a sua última linha de defesa: quando o agente quer executar algo fora do padrão, ele pausa e pede sua confirmação antes de prosseguir.
+
+**Por que isso existe:** Em março/2026, 7 formas de burlar esse sistema foram encontradas e corrigidas — atacantes tentavam esconder comandos perigosos usando caracteres invisíveis Unicode, quebras de linha com backslash, e wrappers de ferramentas comuns (pnpm, npm, Perl). O sistema existe exatamente para bloquear isso.
+
+**Verificar configuração:**
+```bash
+openclaw config get exec.approvals
+# Deve retornar: ask
+```
+
+**Nunca use `allow`** (executa tudo sem confirmação). Mantenha sempre `ask`.
+
+> 📺 **Dica pro curso:** Mostrar ao vivo o sistema pausando e pedindo aprovação. O aluno tende a achar que é burocracia — mostrar o contexto de segurança muda a percepção.
+
 ## Checklist
 
 - [ ] Watchdog de crons ativo
@@ -105,6 +164,9 @@ cp /root/.openclaw/openclaw.json backups/$(date +%Y-%m-%d)/
 - [ ] Split de modelos aplicado
 - [ ] Regra de sub-agents documentada no AGENTS.md
 - [ ] Backup automático antes de mudanças
+- [ ] `openclaw secrets audit` executado — zero leaks confirmados
+- [ ] `openclaw doctor` rodado e sem erros críticos
+- [ ] `exec.approvals = ask` (nunca `allow`!) ← v2026.3.13
 
 ## Resultado Esperado
 

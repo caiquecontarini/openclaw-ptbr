@@ -2,6 +2,7 @@
 
 > Cole este prompt no chat do seu OpenClaw depois de assistir o Módulo 7.
 > Anexe junto o arquivo: `prds/multi-agent-setup.md`
+> ⚠️ Nota: `shared/lessons/` referenciado abaixo = `shared/lessons.md` na estrutura real.
 
 ---
 
@@ -26,9 +27,14 @@ Acabei de assistir o Módulo 7 do curso sobre multi-agentes. Leia o PRD e me gui
    - shared/outputs/ — resultados compartilhados
    - shared/lessons/ — aprendizados do time
 
-5. **Defina a economia:**
+5. **Defina a economia e demonstre o ciclo completo:**
    - Qual modelo pra cada agente (nem todo agente precisa de Opus)
    - Quando spawnar sub-agents vs fazer na main session
+   - Me demonstre ao vivo o ciclo de orquestração com sessions_yield:
+     1. Spawna um sub-agent com sessions_spawn para uma task simples
+     2. Chama sessions_yield para encerrar o turno limpo
+     3. Mostra o resultado chegando na próxima mensagem
+   - Explique a diferença de tokens com e sem sessions_yield
 
 **Regras:**
 - Menos é mais — 2 agentes bem feitos > 6 agentes bagunçados
