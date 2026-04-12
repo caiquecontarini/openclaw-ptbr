@@ -55,7 +55,7 @@ GUARDRAIL: apenas leitura nos dados. Nenhuma escrita, atualização ou deleção
 
 ```
 Minha fonte de dados é o Supabase do MyGroupMetrics.
-As credenciais estão no 1Password com o nome "Supabase MGM", vault "Amora Vault".
+As credenciais estão no 1Password com o nome "Supabase MGM", vault "Meu Vault".
 Campos relevantes da tabela interactions: created_at, message, user_name, chat_id, response_to.
 
 Meus grupos:
@@ -69,7 +69,7 @@ Meu group_owner no banco é: [seu ID de usuário no MGM]
 
 ```
 Minha fonte de dados é o Crisp.
-As credenciais (website_id e token) estão no 1Password como "Crisp API", vault "Amora Vault".
+As credenciais (website_id e token) estão no 1Password como "Crisp API", vault "Meu Vault".
 Quero analisar todas as conversas dos últimos 30 dias do workspace.
 ```
 

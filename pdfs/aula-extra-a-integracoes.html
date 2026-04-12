@@ -528,7 +528,7 @@ gog docs get ID_DO_DOC --account=SEU_EMAIL</div>
     <div class="code-block" data-lang="bash"># Via CLI (se tiver o op instalado)
 op item create --category=api-credential \
   --title="Stripe Produção" \
-  --vault="Amora Vault" \
+  --vault="Meu Vault" \
   secret_key="sk_live_..."</div>
     <p>Ou adicione manualmente pelo app/web do 1Password.</p>
   </div>
@@ -538,7 +538,7 @@ op item create --category=api-credential \
     <div class="step-title">Agente busca a credencial quando precisar</div>
     <div class="code-block" data-lang="bash"># O agente faz isso nos bastidores:
 STRIPE_KEY=$(op item get "Stripe Produção" \
-  --vault "Amora Vault" --field secret_key --reveal)
+  --vault "Meu Vault" --field secret_key --reveal)
 
 curl https://api.stripe.com/v1/balance \
   -u "$STRIPE_KEY:"</div>
@@ -549,7 +549,7 @@ curl https://api.stripe.com/v1/balance \
     <div class="step-title">Documentar no TOOLS.md</div>
     <div class="code-block" data-lang="markdown">### Stripe (Pagamentos)
 - **Item 1PW:** `Stripe Produção`
-- **Vault:** Amora Vault
+- **Vault:** Meu Vault
 - **Acesso:** Read livre, Write = aprovação obrigatória</div>
   </div>
 

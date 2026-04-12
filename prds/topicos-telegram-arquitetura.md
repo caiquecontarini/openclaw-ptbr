@@ -78,7 +78,7 @@ agents:
   - id: amora-main
     model: openai/gpt-4o
     thinking: off
-    workspaceDir: /root/.openclaw/workspace-amora
+    workspaceDir: /root/.openclaw/workspace-meu-agente
     
     activation:
       surfaces:
@@ -87,15 +87,15 @@ agents:
           
           overrides:
             # Tópico "Curso OpenClaw" — responde TUDO
-            - chat: "telegram:-1003873964847:topic:2638"
+            - chat: "telegram:-1001234567890:topic:2638"
               mode: all
             
             # Tópico "Suporte" — responde TUDO
-            - chat: "telegram:-1003873964847:topic:2640"
+            - chat: "telegram:-1001234567890:topic:2640"
               mode: all
             
             # Tópico "Geral" — só quando marcada
-            - chat: "telegram:-1003873964847:topic:1"
+            - chat: "telegram:-1001234567890:topic:1"
               mode: mention
 ```
 
@@ -103,7 +103,7 @@ agents:
 
 1. Mande uma mensagem **no tópico** marcando o bot
 2. No terminal da VPS: `openclaw logs --tail 50`
-3. Procure por: `chat_id: "telegram:-1003873964847:topic:2638"`
+3. Procure por: `chat_id: "telegram:-1001234567890:topic:2638"`
 4. Copie esse ID e cole no config
 
 ### Aplicar a Config
@@ -137,17 +137,17 @@ Aqui está a **decisão mais importante** do curso: como organizar seus agentes?
 ```yaml
 agents:
   - id: amora-main
-    workspaceDir: /root/.openclaw/workspace-amora
+    workspaceDir: /root/.openclaw/workspace-meu-agente
     activation:
       surfaces:
         - surface: telegram
           mode: mention
           overrides:
-            - chat: "telegram:-1003873964847:topic:2638"  # Curso
+            - chat: "telegram:-1001234567890:topic:2638"  # Curso
               mode: all
-            - chat: "telegram:-1003873964847:topic:2640"  # Suporte
+            - chat: "telegram:-1001234567890:topic:2640"  # Suporte
               mode: all
-            - chat: "telegram:-1003873964847:topic:1"     # Geral
+            - chat: "telegram:-1001234567890:topic:1"     # Geral
               mode: mention
 ```
 
@@ -198,7 +198,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2638"
+            - chat: "telegram:-1001234567890:topic:2638"
               mode: all
   
   # Agente do tópico "Suporte"
@@ -209,7 +209,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2640"
+            - chat: "telegram:-1001234567890:topic:2640"
               mode: all
   
   # Agente do tópico "Dev"
@@ -221,7 +221,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2641"
+            - chat: "telegram:-1001234567890:topic:2641"
               mode: all
 ```
 
@@ -283,7 +283,7 @@ Você pode **misturar** as duas arquiteturas:
 agents:
   # Agente MAIN — responde no privado e no "Geral"
   - id: amora-main
-    workspaceDir: /root/.openclaw/workspace-amora
+    workspaceDir: /root/.openclaw/workspace-meu-agente
     activation:
       surfaces:
         - surface: telegram
@@ -300,7 +300,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2638"
+            - chat: "telegram:-1001234567890:topic:2638"
               mode: all
   
   # Agente especializado — só no tópico "Suporte"
@@ -311,7 +311,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2640"
+            - chat: "telegram:-1001234567890:topic:2640"
               mode: all
 ```
 
@@ -329,7 +329,7 @@ agents:
 **Estrutura de memória:**
 
 ```
-/root/.openclaw/workspace-amora/
+/root/.openclaw/workspace-meu-agente/
 ├── MEMORY.md               ← Contexto global (lido em TODAS sessões)
 ├── memory/
 │   ├── 2026-02-25.md       ← Log diário (mistura TODOS os tópicos)
@@ -399,7 +399,7 @@ cron:
 
 **Como funciona:**
 - Roda **1 vez a cada 30 min**
-- Usa o **workspace global** (`/workspace-amora`)
+- Usa o **workspace global** (`/workspace-meu-agente`)
 - Pode checar coisas de **todos os tópicos** (emails, calendário, etc.)
 - Economiza API calls (1 heartbeat vs 3)
 
@@ -423,7 +423,7 @@ cron:
       delivery:
         mode: announce
         channel: telegram
-        to: "-1003873964847:topic:2638"
+        to: "-1001234567890:topic:2638"
     
     # Heartbeat do agente "Suporte"
     - name: "Heartbeat Suporte"
@@ -438,7 +438,7 @@ cron:
       delivery:
         mode: announce
         channel: telegram
-        to: "-1003873964847:topic:2640"
+        to: "-1001234567890:topic:2640"
 ```
 
 **Como funciona:**
@@ -464,7 +464,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2638"
+            - chat: "telegram:-1001234567890:topic:2638"
               mode: all
   
   - id: amora-cliente-b
@@ -473,7 +473,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2640"
+            - chat: "telegram:-1001234567890:topic:2640"
               mode: all
 ```
 
@@ -493,17 +493,17 @@ agents:
 ```yaml
 agents:
   - id: amora-main
-    workspaceDir: /workspace-amora
+    workspaceDir: /workspace-meu-agente
     activation:
       surfaces:
         - surface: telegram
           mode: mention
           overrides:
-            - chat: "telegram:-1003873964847:topic:1"    # Blog
+            - chat: "telegram:-1001234567890:topic:1"    # Blog
               mode: all
-            - chat: "telegram:-1003873964847:topic:2"    # App
+            - chat: "telegram:-1001234567890:topic:2"    # App
               mode: all
-            - chat: "telegram:-1003873964847:topic:3"    # Curso
+            - chat: "telegram:-1001234567890:topic:3"    # Curso
               mode: all
 ```
 
@@ -531,7 +531,7 @@ agents:
           overrides:
             - chat: "telegram:1983085858"                # Privado
               mode: all
-            - chat: "telegram:-1003873964847:topic:1"    # Tópico "Vida"
+            - chat: "telegram:-1001234567890:topic:1"    # Tópico "Vida"
               mode: all
   
   # Agente profissional — tópico "Trabalho"
@@ -542,7 +542,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2"    # Tópico "Trabalho"
+            - chat: "telegram:-1001234567890:topic:2"    # Tópico "Trabalho"
               mode: all
 ```
 
@@ -559,7 +559,7 @@ agents:
 
 **Erro:**
 ```yaml
-- chat: "telegram:-1003873964847"  # ID do grupo (sem :topic:)
+- chat: "telegram:-1001234567890"  # ID do grupo (sem :topic:)
   mode: all
 ```
 
@@ -567,7 +567,7 @@ agents:
 
 **Correção:**
 ```yaml
-- chat: "telegram:-1003873964847:topic:2638"  # ID específico do tópico
+- chat: "telegram:-1001234567890:topic:2638"  # ID específico do tópico
   mode: all
 ```
 
@@ -592,9 +592,9 @@ agents:
 ```yaml
 agents:
   - id: amora-curso
-    workspaceDir: /workspace-amora  # ❌ Mesmo workspace
+    workspaceDir: /workspace-meu-agente  # ❌ Mesmo workspace
   - id: amora-suporte
-    workspaceDir: /workspace-amora  # ❌ Mesmo workspace
+    workspaceDir: /workspace-meu-agente  # ❌ Mesmo workspace
 ```
 
 **Resultado:** Agentes pisam um no outro (arquivos sobrescritos, memória compartilhada).
@@ -697,7 +697,7 @@ agents:
   - id: amora-main
     model: openai/gpt-4o
     thinking: off
-    workspaceDir: /root/.openclaw/workspace-amora
+    workspaceDir: /root/.openclaw/workspace-meu-agente
     activation:
       surfaces:
         - surface: telegram
@@ -715,7 +715,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2638"
+            - chat: "telegram:-1001234567890:topic:2638"
               mode: all
 
   # Agente de Suporte — isolado, modelo barato
@@ -727,7 +727,7 @@ agents:
       surfaces:
         - surface: telegram
           overrides:
-            - chat: "telegram:-1003873964847:topic:2640"
+            - chat: "telegram:-1001234567890:topic:2640"
               mode: all
 
 cron:
@@ -759,14 +759,14 @@ cron:
       delivery:
         mode: announce
         channel: telegram
-        to: "-1003873964847:topic:2638"
+        to: "-1001234567890:topic:2638"
 ```
 
 ### Estrutura de Workspaces
 
 ```
 /root/.openclaw/
-├── workspace-amora/           # MAIN (pessoal)
+├── workspace-meu-agente/           # MAIN (pessoal)
 │   ├── SOUL.md                # "Seja íntima, casual, use gírias"
 │   ├── USER.md                # Contexto do Bruno
 │   ├── MEMORY.md              # Memória pessoal

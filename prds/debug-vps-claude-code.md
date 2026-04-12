@@ -92,7 +92,7 @@ Ensinar como acessar a VPS e usar o Claude Code (CLI do OpenClaw) direto no term
    ```
    Exemplo:
    ```bash
-   cd ~/.openclaw/workspace-amora-cos
+   cd ~/.openclaw/workspace-meu-agente
    ```
 
 4. **Ver conteúdo de um arquivo:**

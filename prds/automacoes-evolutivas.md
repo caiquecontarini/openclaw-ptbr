@@ -81,7 +81,7 @@ O erro clássico: tentar automatizar algo que você fez 1 vez. O jeito certo:
 
 **Você fez pela 3ª vez. Hora de documentar.**
 
-Criar: `/root/.openclaw/workspace-amora/skills/notion-backup/SKILL.md`
+Criar: `/root/.openclaw/workspace-meu-agente/skills/notion-backup/SKILL.md`
 
 ```markdown
 # Notion Backup
@@ -126,7 +126,7 @@ Criar: `/root/.openclaw/workspace-amora/skills/notion-backup/SKILL.md`
 
 **Solução:** Criar script executável.
 
-Criar: `/root/.openclaw/workspace-amora/skills/notion-backup/run.sh`
+Criar: `/root/.openclaw/workspace-meu-agente/skills/notion-backup/run.sh`
 
 ```bash
 #!/bin/bash
@@ -160,7 +160,7 @@ echo "📦 Arquivo encontrado: $(basename $LATEST_ZIP)"
 
 # Passo 3: Upload pro Drive
 echo "☁️  Fazendo upload pro Google Drive..."
-export GOG_KEYRING_PASSWORD=$(op item get "GOG Keyring" --vault "Amora Vault" --field password --reveal)
+export GOG_KEYRING_PASSWORD=$(op item get "GOG Keyring" --vault "Meu Vault" --field password --reveal)
 gog drive upload "$LATEST_ZIP" --parent "$DRIVE_FOLDER_ID" --account seu-email@exemplo.com
 
 # Passo 4: Limpar Downloads
@@ -173,12 +173,12 @@ echo "📅 Próximo backup: sexta-feira, $(date -d 'next friday' +%Y-%m-%d)"
 
 Tornar executável:
 ```bash
-chmod +x /root/.openclaw/workspace-amora/skills/notion-backup/run.sh
+chmod +x /root/.openclaw/workspace-meu-agente/skills/notion-backup/run.sh
 ```
 
 Criar alias no `.bashrc`:
 ```bash
-alias backup-notion="/root/.openclaw/workspace-amora/skills/notion-backup/run.sh"
+alias backup-notion="/root/.openclaw/workspace-meu-agente/skills/notion-backup/run.sh"
 ```
 
 **Benefício:** Agora você só roda `backup-notion` — o script guia você.
@@ -191,7 +191,7 @@ alias backup-notion="/root/.openclaw/workspace-amora/skills/notion-backup/run.sh
 
 **Solução:** Adicionar check no `HEARTBEAT.md`.
 
-Editar: `/root/.openclaw/workspace-amora/HEARTBEAT.md`
+Editar: `/root/.openclaw/workspace-meu-agente/HEARTBEAT.md`
 
 ```markdown
 ## Checks Semanais
@@ -219,14 +219,14 @@ No heartbeat (cron que roda a cada 30 min), a Amora vai:
 
 **Solução:** Automatizar o export usando browser automation.
 
-Criar: `/root/.openclaw/workspace-amora/skills/notion-backup/auto-export.sh`
+Criar: `/root/.openclaw/workspace-meu-agente/skills/notion-backup/auto-export.sh`
 
 ```bash
 #!/bin/bash
 set -e
 
 # Variáveis
-WORKSPACE_DIR="/root/.openclaw/workspace-amora"
+WORKSPACE_DIR="/root/.openclaw/workspace-meu-agente"
 BACKUP_DIR="$HOME/Downloads"
 DRIVE_FOLDER_ID="1aB2cD3eF4gH5iJ6kL7mN8oP9qR0"
 DATE=$(date +%Y-%m-%d)
@@ -277,7 +277,7 @@ if [ -z "$LATEST_ZIP" ]; then
 fi
 
 echo "☁️  Upload: $(basename $LATEST_ZIP)"
-export GOG_KEYRING_PASSWORD=$(op item get "GOG Keyring" --vault "Amora Vault" --field password --reveal)
+export GOG_KEYRING_PASSWORD=$(op item get "GOG Keyring" --vault "Meu Vault" --field password --reveal)
 gog drive upload "$LATEST_ZIP" --parent "$DRIVE_FOLDER_ID" --account seu-email@exemplo.com
 
 # Passo 4: Limpar
@@ -300,7 +300,7 @@ cron:
         tz: "America/Sao_Paulo"
       payload:
         kind: agentTurn
-        message: "Rodar backup automático do Notion: /root/.openclaw/workspace-amora/skills/notion-backup/auto-export.sh"
+        message: "Rodar backup automático do Notion: /root/.openclaw/workspace-meu-agente/skills/notion-backup/auto-export.sh"
       sessionTarget: isolated
       delivery:
         mode: announce
@@ -499,8 +499,8 @@ Nem tudo precisa virar cron. Às vezes, um alias já é suficiente.
 ## 📚 Recursos
 
 - **Skill de exemplo:** `/skills/notion-backup/` (completo, do manual ao cron)
-- **Docs de cron:** `/root/.openclaw/workspace-amora/docs/cron-jobs.md`
-- **Heartbeat guide:** `/root/.openclaw/workspace-amora/HEARTBEAT.md`
+- **Docs de cron:** `/root/.openclaw/workspace-meu-agente/docs/cron-jobs.md`
+- **Heartbeat guide:** `/root/.openclaw/workspace-meu-agente/HEARTBEAT.md`
 
 ---
 

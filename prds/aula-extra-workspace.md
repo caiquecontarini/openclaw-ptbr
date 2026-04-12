@@ -89,4 +89,4 @@ O prompt funcionou quando:
 
 - **Material HTML:** `reports/misc/aula-extra-workspace-v2.html`
 - **Prompt do aluno:** `memory/curso-openclaw/prompts/aula-extra-workspace-prompt-aluno.md`
-- **Referência real:** Workspace da Amora (workspace-amora-cos)
+- **Referência real:** Workspace da Amora (workspace-meu-agente)

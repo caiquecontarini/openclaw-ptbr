@@ -482,7 +482,7 @@ tr:last-child td { border-bottom: none; }
   <div class="highlight">
     <strong>No chat privado com seu agente, mande:</strong><br><br>
     <em>"Amora, entra no grupo X, manda uma mensagem qualquer no tópico Y e me diz qual é o chat ID completo desse tópico."</em><br><br>
-    Ela vai responder algo como: <code>telegram:-1003873964847:topic:2638</code>
+    Ela vai responder algo como: <code>telegram:-1001234567890:topic:2638</code>
   </div>
 
   <p>Anote o ID de cada tópico que você quer configurar. Você vai precisar deles no próximo passo.</p>
@@ -526,20 +526,20 @@ tr:last-child td { border-bottom: none; }
 
           overrides:
             # Tópico "Curso" — responde tudo, sem precisar marcar
-            - chat: "telegram:-1003873964847:topic:2638"
+            - chat: "telegram:-1001234567890:topic:2638"
               mode: all
 
             # Tópico "Suporte" — também responde tudo
-            - chat: "telegram:-1003873964847:topic:2640"
+            - chat: "telegram:-1001234567890:topic:2640"
               mode: all
 
             # Tópico "Geral" — só quando marcada
-            - chat: "telegram:-1003873964847:topic:1"
+            - chat: "telegram:-1001234567890:topic:1"
               mode: mention</div>
 
   <div class="callout warning">
     <span class="callout-icon">⚠️</span>
-    <div><strong>Cuidado com o Chat ID:</strong> use sempre o ID com <code>:topic:XXXX</code> no final. Se usar só o ID do grupo (<code>telegram:-1003873964847</code> sem o tópico), o agente vai responder em <strong>todos</strong> os tópicos do grupo.</div>
+    <div><strong>Cuidado com o Chat ID:</strong> use sempre o ID com <code>:topic:XXXX</code> no final. Se usar só o ID do grupo (<code>telegram:-1001234567890</code> sem o tópico), o agente vai responder em <strong>todos</strong> os tópicos do grupo.</div>
   </div>
 
   <p>Depois de editar o config, reinicie o gateway para as mudanças entrarem em vigor:</p>

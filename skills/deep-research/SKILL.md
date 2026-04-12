@@ -34,7 +34,7 @@ Protocolo estruturado para pesquisa profunda. Combina múltiplas fontes, sinteti
 2. `web_fetch` — extrair conteúdo de URLs relevantes
 3. **Perplexity** — busca com AI-powered answers e citações (API key no 1Password: "Perplexity API")
    ```bash
-   PERPLEXITY_API_KEY=$(op item get "Perplexity API" --vault "Amora Vault" --field credential --reveal)
+   PERPLEXITY_API_KEY=$(op item get "Perplexity API" --vault "Meu Vault" --field credential --reveal)
    node /root/.openclaw/workspace/skills/perplexity/scripts/search.mjs "query"
    ```
 4. Knowledge Base — se tiver conteúdo relevante já ingestado

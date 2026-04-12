@@ -129,7 +129,7 @@ gog drive search "minha pasta"
    # Se tiver a CLI do 1Password instalada
    op item create --category=api-credential \
      --title="Stripe MGM" \
-     --vault="Amora Vault" \
+     --vault="Meu Vault" \
      secret_key="sk_live_..."
    ```
    Ou manualmente pelo app/web.
@@ -139,7 +139,7 @@ gog drive search "minha pasta"
 
    Por trás dos panos, o agente vai:
    ```bash
-   STRIPE_KEY=$(op item get "Stripe MGM" --vault "Amora Vault" --field secret_key --reveal)
+   STRIPE_KEY=$(op item get "Stripe MGM" --vault "Meu Vault" --field secret_key --reveal)
    curl https://api.stripe.com/v1/balance \
      -u "$STRIPE_KEY:"
    ```
@@ -148,7 +148,7 @@ gog drive search "minha pasta"
    ```markdown
    ### Stripe (Pagamentos MGM)
    - **Item 1PW:** `Stripe MGM`
-   - **Vault:** Amora Vault
+   - **Vault:** Meu Vault
    - **Acesso:** Read livre, Write = aprovação do Bruno
    ```
 

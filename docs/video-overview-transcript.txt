@@ -711,7 +711,7 @@ caso é assistente
 assist.
 Eu não consigo escrever e falar ao mesmo
 tempo, cara.
-assistente.camoto@gmail.com.
+assistente@exemplo.com.
 Então, no caso, esse aqui é o e-mail da
 minha assistente. Aí, depois eu criei um
 cofre compartilhado no One Password.
