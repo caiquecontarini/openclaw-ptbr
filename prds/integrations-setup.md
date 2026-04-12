@@ -10,17 +10,22 @@ Um agente sem integrações é só um chatbot. Estas são as integrações mais 
 
 ### Google Calendar
 ```bash
-# Instalar GOG CLI (recomendado — alternativa ao OAuth manual)
-npm install -g gog
+# gog CLI já vem instalado no OpenClaw (2026.4+)
+# Se precisar instalar manualmente:
+npm install -g gogcli
+# ou
+brew install steipete/tap/gogcli
 
-# Autenticar
-gog auth login --client=calendar-client --account=SEU_EMAIL
+# Autenticar (Google Workspace completo)
+gog auth credentials /path/to/client_secret.json
+gog auth add SEU_EMAIL@gmail.com --services gmail,calendar,drive,contacts,docs,sheets
+gog auth list
 ```
-- Permite: ver compromissos, criar eventos, lembretes
+- Permite: ver compromissos, criar/atualizar eventos, lembretes
 - Cron sugerido: checar agenda a cada heartbeat
-- **Novidade 3.2:** Use o `gog` CLI como alternativa recomendada ao fluxo OAuth manual. Mais simples, menos configuração, mesmo acesso ao Google Workspace (Calendar, Drive, Gmail).
+- **gog CLI (2026.4+)** é o caminho recomendado: autenticação via arquivo `client_secret.json` do Google Cloud Console — menos configuração manual, mesmo acesso completo ao Google Workspace (Calendar, Drive, Gmail, Docs, Sheets, Contacts).
 
-> 💡 **gog CLI** é o caminho recomendado para Google Workspace: um único comando configura autenticação OAuth para Calendar, Drive, Gmail e Docs. Sem precisar criar projeto no Google Cloud Console manualmente.
+> 💡 **gog CLI** é o caminho recomendado para Google Workspace: configura uma vez e o agente usa pra sempre. Suporta Google Workspace completo — Calendar, Drive, Gmail, Docs, Sheets e Contacts.
 
 ### Telegram (já configurado no setup)
 - Criar grupo com tópicos para organizar conversas
@@ -31,7 +36,7 @@ gog auth login --client=calendar-client --account=SEU_EMAIL
 
 ### Google Drive
 ```bash
-gog drive ls --client=drive-client --account=SEU_EMAIL
+gog drive search "minha pasta" --account=SEU_EMAIL@gmail.com
 ```
 - Upload/download de arquivos
 - Útil para compartilhar reports, docs, planilhas
@@ -72,21 +77,41 @@ op item get "Nome do Item" --field credential --reveal
 - API para pesquisa web
 - Já vem configurado no OpenClaw (verificar)
 
-## Nível 3.5 — PDF Nativo (Novo na 3.2)
+## Nível 3.2 — Geração de Mídia (Built-in, sem skill)
+
+### image_generate, video_generate, music_generate
+Estas ferramentas são **primeira classe no OpenClaw** — nenhuma skill extra ou API key extra necessária.
+
+```
+# Gerar imagem
+image_generate(prompt="Um carrossel de LinkedIn sobre automação de agentes")
+
+# Gerar vídeo (built-in)
+video_generate(prompt="...", durationSeconds=5, size="1280x720")
+
+# Gerar música (built-in)
+music_generate(prompt="ambient technology background music", durationSeconds=30)
+```
+- **image_generate:** OpenAI (DALL-E) como primário, Google Imagen como secundário
+- **video_generate:** Built-in via provedores configurados (Hunyuan, Wan, etc.)
+- **music_generate:** Built-in via provedores configurados
+- **Importante:** não são skills — são ferramentas nativas do OpenClaw, disponíveis diretamente
+
+## Nível 3.5 — PDF Nativo (Built-in desde 3.2)
 
 ### PDF Tool Nativo
-A partir da versão 3.2, agentes podem analisar documentos PDF **nativamente** — sem precisar instalar nada.
+Agentes OpenClaw analisam documentos PDF **nativamente** — sem precisar instalar nada.
 
 ```
 # O agente simplesmente faz:
 Analise este PDF: /caminho/para/documento.pdf
 ```
 
-- **Suportado por:** Anthropic Claude e Google Gemini (análise nativa)
-- **Outros modelos:** fallback automático via extração de texto/imagens
+- **Suportado por:** OpenAI (GPT-4o) como primário, Google Gemini e Anthropic Claude como secundários
+- **Multimodal nativo:** extrai texto e imagens automaticamente
 - **Uso prático:** contratos, relatórios, notas fiscais, planilhas PDF
 - **Limite:** até 10 PDFs por chamada
-- Nenhuma configuração extra — já disponível no agente
+- Ferramenta: `pdf` tool — primeira classe no OpenClaw, nenhuma configuração extra
 
 > 💡 Casos de uso reais: o agente analisa boletos, extrai dados de NFs para o Notion, resume relatórios longos automaticamente.
 

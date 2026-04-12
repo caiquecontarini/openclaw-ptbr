@@ -179,7 +179,7 @@ openclaw secrets audit
 
 > ℹ️ **Compatibilidade retroativa:** Se você já tem um `.env` manual com chaves, o `openclaw secrets apply` lê de lá também e migra pro sistema seguro. Após migração, o `.env` manual pode ser removido.
 
-**Rotação trimestral:** A cada 3 meses, gerar novas chaves nos painéis (Anthropic, OpenAI, Telegram). O `openclaw secrets` faz a atualização:
+**Rotação trimestral:** A cada 3 meses, gerar novas chaves nos painéis (OpenAI, OpenRouter, Telegram). O `openclaw secrets` faz a atualização:
 
 ```bash
 openclaw secrets set ANTHROPIC_API_KEY=sk-ant-nova-chave-aqui

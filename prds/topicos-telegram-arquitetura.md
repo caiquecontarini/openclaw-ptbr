@@ -76,7 +76,7 @@ Por padrão, bots do Telegram só respondem quando mencionados. Para habilitar *
 ```yaml
 agents:
   - id: amora-main
-    model: anthropic/claude-sonnet-4-6
+    model: openai/gpt-4o
     thinking: off
     workspaceDir: /root/.openclaw/workspace-amora
     
@@ -192,7 +192,7 @@ agents:
 agents:
   # Agente do tópico "Curso OpenClaw"
   - id: amora-curso
-    model: anthropic/claude-sonnet-4-6
+    model: openai/gpt-4o
     workspaceDir: /root/.openclaw/workspace-curso
     activation:
       surfaces:
@@ -203,7 +203,7 @@ agents:
   
   # Agente do tópico "Suporte"
   - id: amora-suporte
-    model: anthropic/claude-haiku-4-5  # Mais barato
+    model: openai/gpt-4o-mini  # Mais barato
     workspaceDir: /root/.openclaw/workspace-suporte
     activation:
       surfaces:
@@ -214,7 +214,7 @@ agents:
   
   # Agente do tópico "Dev"
   - id: amora-dev
-    model: anthropic/claude-opus-4-6  # Mais poderoso
+    model: openai/gpt-5.4  # Mais poderoso
     thinking: on
     workspaceDir: /root/.openclaw/workspace-dev
     activation:
@@ -294,7 +294,7 @@ agents:
   
   # Agente especializado — só no tópico "Curso"
   - id: amora-curso
-    model: anthropic/claude-sonnet-4-6
+    model: openai/gpt-4o
     workspaceDir: /root/.openclaw/workspace-curso
     activation:
       surfaces:
@@ -305,7 +305,7 @@ agents:
   
   # Agente especializado — só no tópico "Suporte"
   - id: amora-suporte
-    model: anthropic/claude-haiku-4-5
+    model: openai/gpt-4o-mini
     workspaceDir: /root/.openclaw/workspace-suporte
     activation:
       surfaces:
@@ -536,7 +536,7 @@ agents:
   
   # Agente profissional — tópico "Trabalho"
   - id: amora-trabalho
-    model: anthropic/claude-opus-4-6
+    model: openai/gpt-5.4
     workspaceDir: /workspace-trabalho
     activation:
       surfaces:
@@ -695,7 +695,7 @@ Amora HQ (Telegram Group)
 agents:
   # Agente MAIN — privado com Bruno
   - id: amora-main
-    model: anthropic/claude-sonnet-4-6
+    model: openai/gpt-4o
     thinking: off
     workspaceDir: /root/.openclaw/workspace-amora
     activation:
@@ -708,7 +708,7 @@ agents:
 
   # Agente do Curso — isolado
   - id: amora-curso
-    model: anthropic/claude-sonnet-4-6
+    model: openai/gpt-4o
     thinking: off
     workspaceDir: /root/.openclaw/workspace-curso
     activation:
@@ -720,7 +720,7 @@ agents:
 
   # Agente de Suporte — isolado, modelo barato
   - id: amora-suporte
-    model: anthropic/claude-haiku-4-5
+    model: openai/gpt-4o-mini
     thinking: off
     workspaceDir: /root/.openclaw/workspace-suporte
     activation:

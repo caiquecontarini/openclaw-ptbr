@@ -74,28 +74,40 @@ Ensinar como conectar o agente às ferramentas que o aluno já usa (Notion, Goog
 
 ### Bloco 2.5: gog CLI — Google Workspace de forma simples (2 min)
 
-**Novo na 3.2 — alternativa recomendada ao fluxo OAuth manual:**
+**gog CLI já vem instalado no OpenClaw (2026.4+).** Se precisar instalar manualmente:
 
 ```bash
 # Instalar gog CLI
-npm install -g gog
+npm install -g gogcli
+# ou via brew
+brew install steipete/tap/gogcli
 
-# Autenticar (um comando pra tudo: Calendar, Drive, Gmail, Docs)
-gog auth login
+# Autenticar (um comando pra tudo: Calendar, Drive, Gmail, Docs, Sheets, Contacts)
+gog auth credentials /path/to/client_secret.json
+gog auth add voce@gmail.com --services gmail,calendar,drive,contacts,docs,sheets
+gog auth list
 
 # Usar
-gog calendar list --account=SEU_EMAIL
-gog drive ls
-gog gmail inbox --limit 10
+gog calendar events <calendarId> --from 2026-01-01 --to 2026-01-07
+gog gmail search 'newer_than:7d'
+gog drive search "minha pasta"
 ```
 
-**Por que usar o gog em vez do fluxo OAuth manual?**
-- Sem precisar criar projeto no Google Cloud Console
-- Sem configurar OAuth credentials manualmente
-- Um único `gog auth login` autentica todos os serviços Google
-- Skills de Calendar, Drive e Gmail já usam gog por padrão
+**O que o gog cobre (2026.4):**
+- Gmail: busca, envio, reply, drafts (suporta HTML e stdin via `--body-file -`)
+- Calendar: listar, criar, atualizar eventos com cores
+- Drive: busca de arquivos
+- Contacts: listar contatos
+- Sheets: get, update, append, clear
+- Docs: export e cat (leitura)
 
-> 💡 Se você usa Google Calendar, Drive, Gmail ou Docs — instale o gog primeiro. É o caminho mais rápido.
+**Por que usar o gog?**
+- Google Workspace completo em um CLI unificado — sem precisar criar projeto no Google Cloud Console manualmente
+- Autenticação via arquivo `client_secret.json` — o `gog auth` faz o fluxo OAuth inteiro
+- Skills de Calendar, Drive e Gmail já usam gog por padrão
+- Confirma antes de enviar email ou criar evento (safe by default)
+
+> 💡 Se você usa Google Workspace — o gog é o caminho mais rápido. Configure uma vez e o agente usa pra sempre.
 
 ---
 
@@ -163,9 +175,10 @@ gog gmail inbox --limit 10
 - Revisar contratos (com alerta: agente não é advogado!)
 
 **Detalhes técnicos (breve):**
-- Suporte nativo: Claude (Anthropic) e Gemini (Google)
-- Outros modelos: extração automática de texto/imagens como fallback
+- Suporte nativo: OpenAI (GPT-4o) como primário, Google (Gemini) e Anthropic (Claude) como secundários
+- Multimodal nativo — extrai texto e imagens automaticamente
 - Limite: até 10 PDFs por mensagem
+- Ferramenta: `pdf` tool (primeira classe no OpenClaw)
 
 ---
 
@@ -301,6 +314,13 @@ Vai estar no arquivo `prompts/modulo-extra-a-integracoes.md`.
 ---
 
 ## Troubleshooting Comum
+
+### "gog: command not found"
+```bash
+npm install -g gogcli
+# ou
+brew install steipete/tap/gogcli
+```
 
 ### "clawhub: command not found"
 ```bash

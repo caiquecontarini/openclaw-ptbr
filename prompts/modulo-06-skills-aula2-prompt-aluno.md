@@ -4,16 +4,20 @@
 
 ---
 
-## 📦 Dica — Instalar o /criar-skill para criar skills mais rápido
+## 📦 Dica — O skill-creator já vem instalado no seu OpenClaw
 
-Não é obrigatório nesta aula, mas se quiser criar skills com ajuda do agente:
+O skill-creator já faz parte das skills oficiais do OpenClaw. Para verificar se está ativo:
 
 ```bash
-cd ~/seu-workspace/skills/operations
-git clone https://github.com/okjpg/skill-creator criar-skill
+openclaw skills list | grep skill-creator
 ```
 
-Ou peça pro agente: *"Instala o /criar-skill do repositório https://github.com/okjpg/skill-creator em skills/operations/criar-skill/"*
+Se não aparecer, instale:
+```bash
+clawhub install skill-creator
+```
+
+O comando `/criar-skill` vai estar disponível automaticamente no seu agente.
 
 ---
 

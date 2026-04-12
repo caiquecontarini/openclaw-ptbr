@@ -199,7 +199,7 @@ openclaw doctor
 ✅ Disk: 38GB free (76%)
 ✅ Memory: 2.1GB free (52%)
 ✅ Config: valid
-✅ Provider: Anthropic API OK
+✅ Provider: OpenAI API OK
 ✅ Telegram: connected
 ⚠️ Logs: 450MB (considere limpar)
 ⚠️ Workspace "amora-cos": 2.3GB (revisar arquivos grandes)
@@ -271,7 +271,7 @@ All checks passed. System healthy.
 1. SSH na VPS
 2. `openclaw gateway status` → se "stopped", rodar `openclaw gateway start`
 3. Se continua parado, ver logs: `openclaw gateway logs --tail 50`
-4. Se erro de API key, reconfigurar: `openclaw provider update anthropic`
+4. Se erro de API key, reconfigurar: `openclaw provider update openai`
 5. Se erro de token, rodar `openclaw doctor fix`
 
 #### Cenário 2: "Erro de contexto muito grande"

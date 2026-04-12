@@ -370,3 +370,49 @@ Ao final da implementação v2, você terá:
 ---
 
 *"Agents are 30% of the work. The other 70% is the immune system + governance."*
+
+## 13. ACP bind — Agentes Isolados em Topics (v2026.4+)
+
+O ACP bind permite criar agentes **isolados** em topics Telegram específicos, cada um com seu próprio contexto e memória — sem interferir no CoS (Chief of Staff) principal.
+
+**Como usar:**
+```
+/acp spawn codex --bind here
+```
+
+Isso cria um agente isolado no topic onde o comando foi executado.
+
+**Arquitetura com ACP bind:**
+```
+Você (CEO)
+    ↓
+CoS (Chief of Staff, topic principal)
+    ↓ coordena via sessions_spawn
+Bosses (topics próprios)
+    ↓
+Workers (spawnados sob demanda)
+
++ ACP bind agents (isolados por topic)
+  → Cada ACP bind agent = seu próprio contexto/memória
+  → Não compartilha com CoS nem com outros ACP bind agents
+```
+
+**Quando usar ACP bind vs Boss:**
+
+| Critério | Boss (sessions_spawn) | ACP bind
+|----------|----------------------|----------|
+| Compartilha memória com CoS | ✅ Sim | ❌ Não
+| Contexto isolado | ❌ Não | ✅ Sim
+| Melhor para | Domínios conectados ao negócio | experiments, áreas muito distintas |
+| Custo | Tokens do CoS | Tokens independentes |
+
+## 14. ACPX Runtime e Embed (v2026.4+)
+
+O ACPX é o modelo de runtime que permite a agentes operarem de forma **embedded** (embutida) — rodando como processos leves dentro do gateway, sem overhead de LLM externo para tarefas simples de coordenação.
+
+**Benefícios:**
+- Tasks de coordenação não precisam de LLM externo
+- Redução de latência e custo
+- Agentes podem reagir a eventos sem round-trip de API
+
+> ⚠️ **Nota:** ACPX runtime é um conceito avançado. A configuração padrão com `sessions_spawn` + `sessions_yield` é suficiente para a maioria dos casos. Explore ACPX quando a orquestração de múltiplos agentes começar a custar caro ou ficar lenta.

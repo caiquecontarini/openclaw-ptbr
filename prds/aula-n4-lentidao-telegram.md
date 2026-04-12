@@ -140,11 +140,11 @@ openclaw gateway logs | grep "response_time"
 {
   "sessions": {
     "main": {
-      "model": "claude-sonnet-4-6"
+      "model": "gpt-4o"
     }
   },
   "crons": {
-    "defaultModel": "claude-haiku-4-5"
+    "defaultModel": "gpt-4o-mini"
   }
 }
 ```
@@ -277,7 +277,7 @@ cat ~/.openclaw/config.json | grep -A 5 heartbeat
   "heartbeat": {
     "enabled": true,
     "intervalMinutes": 30,
-    "model": "claude-haiku-4-5"
+    "model": "gpt-4o-mini"
   }
 }
 ```

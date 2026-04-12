@@ -2,14 +2,14 @@
 
 > Guia step-by-step para o Módulo 1 do curso.
 > Bruno segue este roteiro na gravação.
-> **Atualizado para OpenClaw v2026.3.2**
+> **Atualizado para OpenClaw v2026.4.9** (ChatGPT OAuth como padrão)
 
 ---
 
 ## Pré-requisitos
 
 - Conta na Hostinger (https://www.hostinger.com)
-- Conta na Anthropic (https://console.anthropic.com) com billing ativo
+- Conta no ChatGPT (https://chat.openai.com) — Plus (R$99/mês) ou Pro. O login OAuth não precisa de API key.
 - Telegram instalado no celular
 
 ## Tempo estimado: 15-20 minutos
@@ -19,11 +19,16 @@
 ## Passo 1: Criar a VPS na Hostinger (3 min)
 
 1. Acesse https://www.hostinger.com/vps-hosting
-2. Escolha o plano mais barato (KVM 1 — suficiente pra OpenClaw)
-   - 1 vCPU, 4GB RAM, 50GB SSD — mais que suficiente
+2. Escolha o plano KVM 2 (melhor custo-benefício):
+   - 2 vCPUs, 4GB RAM, 80GB SSD — ~R$50-70/mês com cupom BRUNOOKAMOTO (10% off)
 3. **IMPORTANTE:** NÃO use o template Docker/One-Click do OpenClaw
 4. Selecione **Ubuntu 24.04** como sistema operacional
-5. Defina uma senha root forte (ou SSH key se souber)
+5. Gere uma **SSH key** (mais seguro que senha root):
+   ```bash
+   ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
+   cat ~/.ssh/id_ed25519.pub
+   ```
+   Cole a chave pública no painel Hostinger. Se preferir senha: defina uma root forte.
 6. Anote o IP da VPS
 
 > **Por que não o One-Click Docker?**
@@ -70,12 +75,12 @@ openclaw onboard --install-daemon
 O wizard vai perguntar:
 
 1. **Gateway mode:** → Escolher `Local`
-2. **AI Provider:** → Escolher `Anthropic`
-3. **API Key:** → Colar a API key da Anthropic
-4. **Model:** → Escolher `Claude Sonnet` (bom e barato pra começar)
+2. **AI Provider:** → Escolher `OpenAI`
+3. **Login OAuth:** → O wizard abre o fluxo OAuth do ChatGPT. Login com conta Plus/Pro. **Não precisa de API key.**
+4. **Model:** → `GPT-5.4` (recomendado) ou `GPT-4o` (mais econômico)
 5. **Instalar como serviço?** → Sim (roda 24/7 automaticamente)
 
-> 💡 **Dica pro curso:** Mostrar onde pegar a API key na Anthropic (console.anthropic.com → API Keys → Create Key). Explicar que precisa ter billing ativo.
+> 💡 **Dica pro curso:** Mostrar o fluxo OAuth — 1 clique no navegador, muito mais simples que API key. Explicar que a assinatura ChatGPT existente é suficiente.
 
 ---
 
@@ -102,11 +107,11 @@ A saída deve mostrar algo como:
 ```
 ✅ tools.profile: full
 ✅ gateway.mode: local
-✅ ai.provider: anthropic
+✅ ai.provider: openai
 ✅ Configuration valid — 0 warnings
 ```
 
-> 💡 **Por que esse default mudou?** A Anthropic e a comunidade de segurança identificaram que muitas instalações expostas na internet davam acesso completo de ferramentas a qualquer pessoa que encontrasse o bot. O novo default `messaging` é mais seguro para quem não sabe o que está fazendo. Mas **para o curso**, queremos `full` — daí este passo.
+> 💡 **Por que esse default mudou?** A comunidade de segurança identificou que muitas instalações expostas na internet davam acesso completo de ferramentas a qualquer pessoa que encontrasse o bot. O novo default `messaging` é mais seguro para quem não sabe o que está fazendo. Mas **para o curso**, queremos `full` — daí este passo.
 
 > 📺 **Dica pro curso:** Mostrar o "antes e depois" — enviar uma mensagem pro bot sem configurar (`tools.profile = messaging`) e ver ele respondendo mas sem conseguir executar comandos. Depois configurar e mostrar a diferença. Muito didático!
 
@@ -243,8 +248,10 @@ source ~/.bashrc
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
-### "API key inválida"
-- Verificar se tem billing ativo na Anthropic
+### "Falha na autenticação OAuth"
+- Verificar se a conta ChatGPT tem assinatura Plus/Pro ativa
+- Tentar login manual em https://chat.openai.com
+- Se ok: openclaw auth login --provider openai
 - Copiar a key novamente (sem espaços extras)
 
 ### "Bot não responde no Telegram"
@@ -277,16 +284,17 @@ openclaw gateway restart
 
 | Item | Custo mensal |
 |------|-------------|
-| VPS Hostinger (KVM 1) | ~$5-10/mês |
-| API Anthropic (uso moderado) | ~$10-30/mês |
-| API Gemini 3.1 Pro (alternativa) | ~$5-15/mês |
+| VPS Hostinger (KVM 2) | ~$10-15/mês (cupom BRUNOOKAMOTO 10% off) |
+| ChatGPT API fallback (opcional) | ~$5-15/mês |
+| OpenRouter multi-LLM (opcional) | ~$5-15/mês |
 | Telegram | Grátis |
-| **Total (Anthropic)** | **~$15-40/mês** |
-| **Total (Gemini — opção econômica)** | **~$10-25/mês** |
+| **Total (ChatGPT OAuth)** | **~$99/mês (só assinatura)** |
+| **Total (ChatGPT API key)** | **~$15-30/mês** |
+| **Total (OpenRouter — opção econômica)** | **~$10-25/mês** | — opção econômica)** | **~$10-25/mês** |
 
-> 💡 **Dica pro curso:** "Menos que um almoço por semana pra ter um assistente AI 24/7"
+> 💡 **Dica pro curso:** "Se você já tem ChatGPT Plus, o custo marginal é zero — o OpenClaw usa sua conta existente."
 
-> 💰 **Opção econômica:** O Gemini 3.1 Pro ($1.25/M tokens input) é uma alternativa viável e mais barata que o Claude Sonnet para quem quer começar com custo menor. Para tarefas simples e heartbeats, funciona muito bem!
+> 💰 **OpenRouter como alternativa:** Se quiser usar múltiplos modelos (GPT-4o, Gemini Flash, Claude, etc.), a OpenRouter é ~$5-15/mês. Ver aula extra de OpenRouter.
 
 ---
 

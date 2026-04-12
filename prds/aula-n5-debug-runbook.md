@@ -88,7 +88,7 @@ tail -f ~/.openclaw/logs/gateway.log
 >
 > **3. `context error` ou `context length exceeded`** — A conversa ficou longa demais para o modelo processar. Você precisa limpar o histórico da sessão ou ajustar o limite de contexto na configuração.
 >
-> **4. `connection refused` ou `timeout`** — Problema de rede ou o endpoint da API está fora. Verifica sua conexão e o status da API do seu provedor (Anthropic, OpenAI, etc.).
+> **4. `connection refused` ou `timeout`** — Problema de rede ou o endpoint da API está fora. Verifica sua conexão e o status da API do seu provedor (OpenAI, OpenRouter, etc.).
 >
 > Vou mostrar ao vivo como ler um log real e identificar esses sinais."
 
@@ -113,7 +113,7 @@ openclaw status
 
 ```
 Models configured:
-  ✓ anthropic/claude-opus-4   [active]
+  ✓ openai/gpt-5.4   [active]
   ✗ openai/gpt-4o             [auth error]
 ```
 

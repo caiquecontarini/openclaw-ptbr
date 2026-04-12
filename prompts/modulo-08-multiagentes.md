@@ -1,12 +1,12 @@
-# Prompt — Módulo 7: Multi-Agentes
+# Prompt — Módulo 8: Multi-Agentes
 
-> Cole este prompt no chat do seu OpenClaw depois de assistir o Módulo 7.
+> Cole este prompt no chat do seu OpenClaw depois de assistir o Módulo 8.
 > Anexe junto o arquivo: `prds/multi-agent-setup.md`
 > ⚠️ Nota: `shared/lessons/` referenciado abaixo = `shared/lessons.md` na estrutura real.
 
 ---
 
-Acabei de assistir o Módulo 7 do curso sobre multi-agentes. Leia o PRD e me guie na criação do meu primeiro time de agentes.
+Acabei de assistir o Módulo 8 do curso sobre multi-agentes. Leia o PRD e me guie na criação do meu primeiro time de agentes.
 
 **O que preciso que você faça:**
 
@@ -28,13 +28,15 @@ Acabei de assistir o Módulo 7 do curso sobre multi-agentes. Leia o PRD e me gui
    - shared/lessons/ — aprendizados do time
 
 5. **Defina a economia e demonstre o ciclo completo:**
-   - Qual modelo pra cada agente (nem todo agente precisa de Opus)
+   - Qual modelo pra cada agente (modelo principal: GPT-4o via ChatGPT; fallback: GPT-4o-mini)
    - Quando spawnar sub-agents vs fazer na main session
    - Me demonstre ao vivo o ciclo de orquestração com sessions_yield:
      1. Spawna um sub-agent com sessions_spawn para uma task simples
      2. Chama sessions_yield para encerrar o turno limpo
      3. Mostra o resultado chegando na próxima mensagem
    - Explique a diferença de tokens com e sem sessions_yield
+
+6. **ACP bind (v2026.4+):** Se eu quiser vincular um agente secundário a um topic Telegram diferente do meu agente principal, me mostre o comando `/acp spawn codex --bind here`. Isso cria um agente isolado naquele topic, útil para um "agente escravo" que só responde num topic específico. Explique quando usar isso vs. sessions_spawn.
 
 **Regras:**
 - Menos é mais — 2 agentes bem feitos > 6 agentes bagunçados

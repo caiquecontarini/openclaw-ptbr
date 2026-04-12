@@ -138,12 +138,30 @@ A partir da versão 3.2, o ACP (Agent Communication Protocol) dispatch está **h
 
 Casos de uso: passar PDFs pra análise, imagens pra processamento, arquivos de dados pra transformação — tudo numa única chamada sem etapas extras.
 
+## ACP bind (v2026.4+)
+
+O ACP bind permite vincular um agente secundário a um topic Telegram específico, criando um "agente escravo" que só responde naquele topic — isolado do agente principal.
+
+**Como usar:**
+```
+/acp spawn codex --bind here
+```
+
+Isso spawna um agente Codex isolado no topic atual do Telegram, sem interferir no agente principal.
+
+**Casos de uso:**
+- Criar um agente de conteúdo isolado num topic próprio
+- experiments em topics separados sempoluir o contexto do agente principal
+- Ter múltiplos agentes "slave" em topics diferentes, cada um com seu próprio contexto
+
+> ⚠️ O ACP bind cria um agente **isolado** — ele não compartilha memória nem contexto com o hub. Use quando precisa de isolamento real de contexto.
+
 ## Tarefas
 
 1. Definir quais agentes você precisa (max 2-3 pra começar)
 2. Criar config de cada agente com SOUL.md próprio
 3. Configurar shared/TEAM.md
-4. Definir modelos (Opus vs Sonnet)
+4. Definir modelos (GPT-4o para coordenação, GPT-4o-mini para tarefas)
 5. Fazer primeiro test drive com task simples
 6. Review após 1 semana → decidir promoção
 

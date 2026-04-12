@@ -81,7 +81,7 @@ Execute os comandos e confirme cada passo.
 Preciso configurar proteções para não ter surpresas na fatura.
 
 Por favor:
-1. Me diga como configurar o limite de gasto mensal no console.anthropic.com (instruções passo a passo)
+1. Me diga como configurar o limite de gasto mensal no platform.openai.com (instruções passo a passo)
 2. Configure o rateLimit no OpenClaw: `openclaw config set rateLimit.requestsPerHour 100`
 3. Me ensine a verificar o gasto atual com `openclaw usage report`
 4. Sugira um limite de gasto adequado para o meu perfil de uso
@@ -117,7 +117,7 @@ Por favor:
 3. Calcule se estaria gastando menos com uma configuração mais otimizada
 4. Sugira ajustes na minha configuração baseado no uso real
 
-Se `openclaw usage report` não estiver disponível, me explique como ver o uso no console da Anthropic/OpenAI.
+Se `openclaw usage report` não estiver disponível, me explique como ver o uso no console da OpenAI/Anthropic.
 ```
 
 ---

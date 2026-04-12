@@ -2,7 +2,7 @@
 
 > **Como usar:** Copie o prompt abaixo e cole no chat do seu agente OpenClaw após assistir a aula.
 >
-> ⚠️ **Nota:** Esta aula usa **API Key** diretamente — não OAuth. Você vai precisar da sua chave de API do Anthropic (ou outro provider) em mãos.
+> ⚠️ **Nota:** Esta aula configura credenciais no OpenClaw. O caminho recomendado é **ChatGPT OAuth** (1 clique, usa sua assinatura existente). Também mostra API Key direta como alternativa.
 
 ---
 
@@ -27,7 +27,7 @@ Vamos começar com um diagnóstico completo da minha configuração?
 Por favor, faça um diagnóstico completo da minha configuração atual do OpenClaw:
 
 1. Execute `openclaw status` e me mostre o resultado
-2. Identifique quais providers estão configurados (Anthropic, OpenAI, Google, etc.)
+2. Identifique quais providers estão configurados (OpenAI/ChatGPT, Anthropic, Google, etc.)
 3. Para cada provider, verifique se o status é "Connected"
 4. Me diga se há algum problema ou alerta
 
@@ -43,9 +43,9 @@ Quero configurar minha API Key no OpenClaw usando o fluxo correto.
 
 Por favor, me guie pelo processo:
 1. Me explique a diferença entre API Key e setup-token — quando uso cada um?
-2. Me guie para obter minha API Key da Anthropic (console.anthropic.com)
+2. Me guie para obter minha API Key da OpenAI (platform.openai.com)
 3. Configure a key no OpenClaw:
-   - Primeiro tente: `openclaw config set providers.anthropic.apiKey <minha-key>`
+   - Primeiro tente: `openclaw config set providers.openai.apiKey <minha-key>`
    - Ou via arquivo: edite `~/.openclaw/config.json` e adicione a key no campo correto
 4. Confirme que está funcionando com `openclaw status`
 
@@ -76,7 +76,7 @@ Se houver algum problema, use `openclaw secrets apply` para migrar as credenciai
 Agora vamos testar se as credenciais funcionam de verdade, não só se estão configuradas.
 
 Por favor, faça um teste real:
-1. Tente uma chamada simples à API da Anthropic (se configurada)
+1. Tente uma chamada simples à API da OpenAI (se configurada)
 2. Confirme qual modelo está sendo usado
 3. Me mostre o resultado — seja sucesso ou erro específico
 
@@ -157,7 +157,7 @@ Após eu responder, me dê um feedback detalhado sobre o que acertei e o que pre
 
 ```
 Preciso configurar minha API Key do OpenClaw do zero. 
-Tenho minha API Key da Anthropic em mãos (obtida em console.anthropic.com).
+Tenho minha API Key da OpenAI em mãos (obtida em platform.openai.com).
 
 Por favor, me guie passo a passo pelo processo completo, desde o terminal até verificar que está funcionando. Estou usando [Linux/Mac/Windows — escolha um].
 

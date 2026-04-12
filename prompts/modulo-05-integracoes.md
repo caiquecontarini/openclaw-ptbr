@@ -28,7 +28,7 @@ Acabei de assistir o Módulo 5 do curso sobre integrações e crons. Leia o PRD 
 
 **Regras:**
 - Comece com integrações simples (calendário, clima) antes das complexas
-- Se der erro de cloud IP bloqueado, me explique a solução (RapidAPI como proxy)
+- Ferramentas de mídia são built-in: `image_generate`, `video_generate` e `music_generate` estão disponíveis de graça no OpenClaw — não precisa de skill separada
 - TODAS as credenciais vão no 1Password — zero hardcode nos arquivos
 - Cuidado: systemd override sobrescreve .env — atualizar AMBOS ao trocar credenciais
 - No final, me mostre os crons ativos e quando vão rodar
@@ -36,7 +36,8 @@ Acabei de assistir o Módulo 5 do curso sobre integrações e crons. Leia o PRD 
 **Dica de produção:**
 - Use Telegram com grupo + tópicos como hub central
 - Cada cron entrega no tópico certo — zero ruído
-- Modelo Split: Sonnet pra crons de execução (sync, watchdog, lembretes), Opus pra análise e estratégia (~90% economia)
+- Crons usam o mesmo modelo primário do agente — não trocar modelo no cron isolado (causa `LiveSessionModelSwitchError`)
+- OpenRouter MiniMax como baseline econômico para crons de execução
 
 **Comandos úteis:**
 ```
@@ -44,5 +45,7 @@ openclaw channels status --probe
 openclaw models fallbacks add <model>
 openclaw models aliases add <alias> <model>
 ```
+
+> **📡 Posicionamento de modelos (2026.4+):** OpenRouter é o hub principal — `openrouter/minimax/minimax-m2.7` como primário, com fallbacks para `openai-codex/gpt-5.4`, `anthropic/claude-sonnet-4-6` e `anthropic/claude-haiku-4-5`. Crons devem usar o mesmo modelo primário do agente que os dispatcha.
 
 Vamos conectar ao mundo real?

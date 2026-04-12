@@ -38,7 +38,7 @@ Além disso, foram coletadas **~2000 mensagens dos grupos** de alunos (24/02 a 0
 | # | Tema Real Gravado | Corresponde a | Precisa Regravar? |
 |---|-------------------|---------------|-------------------|
 | Aula 1 | Como instalar pela VPS e remover o Docker | M1 Setup | ⚠️ **SIM** — falta `tools.profile full` |
-| Aula 2 | Como usar assinatura Claude/OpenAI no OpenClaw | N-1 OAuth | ⚠️ **PARCIAL** — OAuth Anthropic bloqueado |
+| Aula 2 | Como usar assinatura ChatGPT no OpenClaw | N-1 OAuth | ✅ ATUALIZADO — ChatGPT OAuth como padrão |
 | Aula 3 | Como configurar agentes pra executar tarefas | N-3 Config Set | ✅ OK (cobre o `config set`) |
 | Aula 4 | O que acontece quando agente para de responder | N-4/N-5 Debug | ⚠️ **PARCIAL** — faltam cenários |
 
@@ -69,7 +69,7 @@ Além disso, foram coletadas **~2000 mensagens dos grupos** de alunos (24/02 a 0
 
 | # | Dúvida | Freq. | Aula que Cobre | Status |
 |---|--------|-------|----------------|--------|
-| 1 | 🔑 **OAuth/Token Anthropic — "Não consigo autenticar"** | ~20x | N-1 (OAuth) | ⚠️ Precisa atualizar (Anthropic bloqueou OAuth Pro) |
+| 1 | 🔑 **OAuth/Token ChatGPT — "Não consigo autenticar"** | ~20x | N-1 (OAuth) | ✅ Atualizado — ChatGPT OAuth como caminho padrão |
 | 2 | 💥 **Contexto estourando — "Agente promete e some"** | ~15x | Extra E (Contexto) | ✅ Coberto no material |
 | 3 | 💰 **Assinatura vs API — "Quanto vou gastar?"** | ~15x | ❌ NOVA AULA NECESSÁRIA | 🆕 Criar aula de Custos |
 | 4 | 📹 **"Onde estão as aulas?" — Onboarding confuso** | ~12x | Não é aula — é UX da plataforma | 📋 Fix operacional |
@@ -130,7 +130,7 @@ Além disso, foram coletadas **~2000 mensagens dos grupos** de alunos (24/02 a 0
 | **M9 Immune System** | ⚠️ ATUALIZAR | + `openclaw secrets audit` no checklist · + `openclaw doctor` melhorado |
 | **M10 Mission Control** | ✅ MANTER | + Mencionar Apple Watch |
 | **M11 Wrap-up** | ✅ MANTER | Sem mudanças |
-| **N-1 OAuth** | ⚠️ ATUALIZAR | + Anthropic bloqueou OAuth Pro · + novo fluxo via API Key |
+| **N-1 OAuth** | ⚠️ ATUALIZAR | + ChatGPT OAuth como caminho padrão · OpenAI API Key como fallback |
 | **N-2 Bot sem Shell** | ⚠️ ATUALIZAR | + `tools.profile full` como causa #1 · + BotFather privacy mode |
 | **N-3 Config Set** | ✅ MANTER | ✅ Já cobre o necessário |
 | **N-4 Lentidão** | ✅ MANTER | Sem mudanças |
@@ -151,7 +151,7 @@ Além disso, foram coletadas **~2000 mensagens dos grupos** de alunos (24/02 a 0
 |------|--------|-----------|
 | **M1 Setup** (Aula 1) | Falta `tools.profile full` — alunos travam | 🔴 P0 |
 | **M2 Segurança** | `openclaw secrets` muda todo o fluxo + CVE | 🔴 P0 |
-| **N-1 OAuth** (Aula 2) | OAuth Anthropic bloqueado, precisa novo fluxo | 🔴 P1 |
+| **N-1 OAuth** (Aula 2) | Fluxo ChatGPT OAuth pronto | 🔴 P1 |
 
 ### 🟡 ATUALIZAR MATERIAL (regravação opcional, mas docs precisam update)
 | Aula | O que mudar no material | Regravar? |
@@ -182,7 +182,7 @@ M0, M3, M4, M6, M7, M10, M11, N-3, N-4, N-5, N-6, Extra B, Extra C, Extra D, Ext
 |------|-----------|-----------|--------|
 | T1.1 | Atualizar PRD M1 Setup com `tools.profile full` + `config validate` + streaming | — | PRD atualizado |
 | T1.2 | Atualizar PRD M2 Segurança com `openclaw secrets` + CVE + WebSocket | — | PRD atualizado |
-| T1.3 | Atualizar PRD N-1 OAuth com novo fluxo pós-bloqueio Anthropic | — | PRD atualizado |
+| T1.3 | Atualizar PRD N-1 OAuth com fluxo ChatGPT OAuth | — | PRD atualizado |
 | T1.4 | Atualizar PRD N-2 com tools.profile como causa #1 + BotFather privacy | — | PRD atualizado |
 | T1.5 | Criar PRD N-7 (Custos & Modelos) do zero | — | PRD novo |
 | T1.6 | Criar PRD N-8 (Telegram Bot em Grupo) do zero | — | PRD novo |

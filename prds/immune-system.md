@@ -79,15 +79,24 @@ Criar `memory/feedback/` com arquivos JSON por domínio:
 - Heartbeats em Haiku
 - Só a interação direta usa Opus
 
-## 4. Sub-agents: Nunca "Fire and Forget"
+## 4. Sub-agents: sessions_yield (v2026.3.13+) — Nunca "Fire and Forget"
 
-Todo sub-agent spawnado DEVE ter follow-up:
+A partir da v2026.3.13, o tool `sessions_yield` permite encerrar o turno do agente principal imediatamente após spawnar um sub-agent, sem ficar "preso" esperando. Isso reduz tokens e melhora a coordenação.
 
-1. **Ao spawnar:** informar o que vai fazer
-2. **Follow-up:** checar status em 15-30 min
-3. **Sucesso:** resumir resultado em linguagem humana
-4. **Falha:** retry imediato → se falhar 2x → avisar o usuário
-5. **Nunca** deixar cair no limbo silencioso
+**Fluxo com sessions_yield:**
+```
+1. Agent spawna sub-agent com sessions_spawn
+2. Agent chama sessions_yield → turno encerra limpo
+3. Sub-agent termina → próximo turno começa com o resultado
+```
+
+**Regras de follow-up (sempre.apply):**
+1. **Ao spawnar:** informar o que o sub-agent vai fazer
+2. **sessions_yield:** chamar após spawnar para encerrar turno limpo
+3. **Follow-up:** checar status em 15-30 min
+4. **Sucesso:** resumir resultado em linguagem humana
+5. **Falha:** retry imediato → se falhar 2x → avisar o usuário
+6. **Nunca** deixar cair no limbo silencioso
 
 ## 5. Backup antes de mudanças
 
@@ -100,7 +109,7 @@ cp /root/.openclaw/openclaw.json backups/$(date +%Y-%m-%d)/
 
 ## 6. Auditoria de Secrets
 
-### openclaw secrets audit (novo na 3.2)
+### openclaw secrets audit (v2026.3.2+)
 
 A versão 3.2 traz um comando dedicado para auditar secrets expostos:
 
@@ -122,6 +131,20 @@ O comando detecta:
 - Patterns conhecidos (OpenAI, Stripe, Telegram, AWS, etc.)
 
 > ⚠️ Execute `openclaw secrets audit` antes de compartilhar qualquer arquivo do workspace ou fazer backup em cloud.
+
+### Plugin SDK — Novo Path (v2026.3.22+)
+
+A partir da v2026.3.22, o Plugin SDK mudou de path:
+
+```bash
+# ANTES (v3.21 e anterior):
+@anthropic-ai/extension-api
+
+# AGORA (v3.22+):
+@openclaws/extension-api
+```
+
+Se você usa plugins no workspace, atualize o import nos arquivos do plugin.
 
 ### openclaw doctor — Melhorado na 3.2
 
@@ -167,6 +190,8 @@ openclaw config get exec.approvals
 - [ ] `openclaw secrets audit` executado — zero leaks confirmados
 - [ ] `openclaw doctor` rodado e sem erros críticos
 - [ ] `exec.approvals = ask` (nunca `allow`!) ← v2026.3.13
+- [ ] ACP bind configurado (se usar topic separado para agente secundário) ← v2026.4
+- [ ] Plugin SDK path atualizado (`@openclaws/extension-api`) ← v2026.3.22
 
 ## Resultado Esperado
 

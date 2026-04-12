@@ -112,13 +112,13 @@ Ao final desta aula, o aluno será capaz de:
 
 ```bash
 # Modelo padrão para interações do dia a dia
-openclaw config set model anthropic/claude-sonnet-4-5
+openclaw config set model openai/gpt-5.4
 
 # Modelo específico para heartbeats (econômico)
-openclaw config set heartbeat.model anthropic/claude-haiku-4-5
+openclaw config set heartbeat.model openai/gpt-4o-mini
 
 # Modelo para análises pesadas (opcional, usar com moderação)
-openclaw config set analysis.model anthropic/claude-opus-4
+openclaw config set analysis.model openai/gpt-5.4
 ```
 
 > "Dessa forma, o agente usa Haiku automaticamente nas 20 execuções de heartbeat do dia, Sonnet quando você manda mensagem, e Opus só quando você pedir uma análise profunda."
@@ -158,9 +158,9 @@ openclaw config get heartbeat.model
 
 > "Isso acontece quando um loop de código ou skill mal configurada faz milhares de chamadas sem querer. Como se proteger:"
 
-**Na Anthropic:**
+**Na OpenAI:**
 ```
-console.anthropic.com → Settings → Billing → Usage Limits
+platform.openai.com → Settings → Billing → Usage Limits
 → "Monthly spend limit" → Defina um valor (ex: $50)
 → "Notification threshold" → Defina um alerta (ex: $25)
 ```
@@ -182,15 +182,15 @@ openclaw usage report
 
 ```bash
 # Setup básico e econômico para começar
-openclaw config set model anthropic/claude-sonnet-4-5
-openclaw config set heartbeat.model anthropic/claude-haiku-4-5
+openclaw config set model openai/gpt-5.4
+openclaw config set heartbeat.model openai/gpt-4o-mini
 
 # Verificar configuração
 openclaw config get model
 openclaw config get heartbeat.model
 ```
 
-E no console.anthropic.com:
+E no platform.openai.com:
 - Monthly spend limit: $50
 - Notification at: $25
 
@@ -212,9 +212,9 @@ E no console.anthropic.com:
 ## ✅ Checklist Final do Aluno
 
 - [ ] Entende a diferença entre assinatura e API Key
-- [ ] Modelo padrão configurado: `openclaw config set model anthropic/claude-sonnet-4-5`
-- [ ] Modelo de heartbeat configurado: `openclaw config set heartbeat.model anthropic/claude-haiku-4-5`
-- [ ] Limite de gasto configurado no console.anthropic.com
+- [ ] Modelo padrão configurado: `openclaw config set model openai/gpt-5.4`
+- [ ] Modelo de heartbeat configurado: `openclaw config set heartbeat.model openai/gpt-4o-mini`
+- [ ] Limite de gasto configurado no platform.openai.com
 - [ ] Notificação de gasto configurada (threshold)
 - [ ] `openclaw usage report` testado e funcionando
 
@@ -236,7 +236,7 @@ E no console.anthropic.com:
 
 **4. Como saber exatamente quanto gastei?**
 
-> `openclaw usage report` mostra breakdown por modelo. Console da Anthropic mostra em tempo real com gráficos.
+> `openclaw usage report` mostra breakdown por modelo. Platform.openai.com mostra em tempo real com gráficos (para API key).
 
 **5. Haiku é "burro"?**
 

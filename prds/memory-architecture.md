@@ -120,6 +120,26 @@ Formato:
 }
 ```
 
+### 8. Configure dreaming (experimental, opt-in)
+
+O OpenClaw tem um sistema de consolidação automática de memória que funciona em segundo plano — o **Dreaming**.
+
+**As 3 fases do ciclo:**
+
+| Fase | O que faz | Escreve em MEMORY.md? |
+|------|-----------|----------------------|
+| 🌅 **Light** | Coleta sinais recentes das sessões e notas diárias, separa ruído do relevante | Não |
+| 🌙 **Deep** | Pontua candidatos e promove os melhores para `MEMORY.md` | ✅ Sim |
+| 💤 **REM** | Extrai temas recorrentes e gera resumo narrativo | Não |
+
+**Output:** Depois de cada ciclo, escreve um **Dream Diary** em `DREAMS.md` (ou `dreams.md`). É leitura humana — não é fonte de promoção.
+
+**Como ativar:**
+- Na sessão: `/dreaming` — roda o ciclo completo
+- `/dreaming --dry-run` — mostra o que faria sem executar
+
+**Nota:** Dreaming vem desabilitado por padrão. Ative se quiser que o agente promova memórias automaticamente entre sessões.
+
 ## Como pedir para salvar
 
 | ❌ Não funciona | ✅ Funciona |

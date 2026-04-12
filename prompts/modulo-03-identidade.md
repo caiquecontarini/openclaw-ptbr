@@ -33,7 +33,7 @@ Acabei de assistir o Módulo 3 do curso sobre identidade e personalidade. Quero 
 **Regras:**
 - Não aceite respostas genéricas minhas — me pressione pra dar contexto real
 - Me mostre exemplos de SOUL.md bom vs ruim pra eu entender a diferença
-- Se eu já uso Claude Code, importe o CLAUDE.md como base de contexto
+- Se eu já uso OpenClaw em outra máquina, importe os arquivos SOUL.md e USER.md como base de contexto
 - No final, leia os arquivos criados e me diga se falta algo
 - Dica do Bruno: "Trata como seu Tamagotchi — alimenta, conversa, dá carinho"
 

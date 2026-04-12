@@ -4,26 +4,20 @@
 
 ---
 
-## 📦 Passo 1 — Instalar o /criar-skill
+## 📦 Passo 1 — O /criar-skill já vem com o OpenClaw
 
-A skill está disponível no GitHub. Instale antes de usar:
+A skill `skill-creator` já faz parte das skills oficiais. Verifique:
 
 ```bash
-# No terminal do seu workspace
-cd ~/seu-workspace/skills/operations
-
-# Clone a skill
-git clone https://github.com/okjpg/skill-creator criar-skill
-
-# Pronto. O agente já consegue usar.
+openclaw skills list | grep skill-creator
 ```
 
-Ou peça pro agente instalar:
+Se precisar instalar:
+```bash
+clawhub install skill-creator
 ```
-Instala a skill do /criar-skill no meu workspace. 
-Repositório: https://github.com/okjpg/skill-creator
-Coloca em skills/operations/criar-skill/
-```
+
+O comando `/criar-skill` fica disponível automaticamente no chat do agente — nenhum clone manual necessário.
 
 ---
 

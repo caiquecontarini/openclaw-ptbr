@@ -45,6 +45,12 @@ Acabei de assistir o Módulo 4 do curso sobre memória. Leia o PRD de arquitetur
    - O agente consulta ANTES de sugerir novamente
    - Não repete erros — evolução real
 
+8. **Configure dreaming (experimental, opt-in)** — consolidação automática de memória enquanto o agente está ocioso:
+   - O sistema passa por 3 fases: **Light** (triagem, sem escrita permanente), **Deep** (promove candidatos para MEMORY.md) e **REM** (extrai temas e gera resumo narrativo)
+   - Depois de cada ciclo, escreve um **Dream Diary** em `DREAMS.md` — você pode ler o que o agente está processando
+   - Para ativar: use `/dreaming` na sessão (ou `/dreaming --dry-run` para ver o que faria sem executar)
+   - Isso é diferente da memória ativa — é uma camada de promoção automática que roda em background
+
 **Regras:**
 - Me explique cada arquivo e PRA QUE SERVE antes de criar
 - Me mostre um exemplo prático de como uma decisão vira memória permanente
