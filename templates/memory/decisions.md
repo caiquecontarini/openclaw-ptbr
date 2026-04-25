@@ -1,14 +1,18 @@
-# Decisões Permanentes
+﻿# DecisÃµes Permanentes
 
-> Decisões que o agente deve respeitar SEMPRE.
+> DecisÃµes que o agente deve respeitar SEMPRE.
 > Formato: O que decidiu + Por que + Data
 
 ### [Exemplo] Credenciais no 1Password (DD/MM/AAAA)
-Toda credencial vive no 1Password. Sem exceções. Nunca hardcodar chaves em código, .env ou markdown.
+Toda credencial vive no 1Password. Sem exceÃ§Ãµes. Nunca hardcodar chaves em cÃ³digo, .env ou markdown.
 
-### [Exemplo] Horário protegido (DD/MM/AAAA)
-Não enviar notificações entre 13h-16h. Esse horário é de produção.
+### [Exemplo] HorÃ¡rio protegido (DD/MM/AAAA)
+NÃ£o enviar notificaÃ§Ãµes entre 13h-16h. Esse horÃ¡rio Ã© de produÃ§Ã£o.
 
 ---
 
-*Adicione suas decisões conforme for usando o agente.*
+*Adicione suas decisÃµes conforme for usando o agente.*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

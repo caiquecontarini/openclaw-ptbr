@@ -1,79 +1,79 @@
-# PRD: Setup Multi-Agentes
+﻿# PRD: Setup Multi-Agentes
 
-> ⚠️ **Nota (19/02/2026):** Refs a `shared/TEAM.md` refletem a v2 original. Na estrutura real, equipe está em `shared/people.md` e agentes nos workspace files.
+> âš ï¸ **Nota (19/02/2026):** Refs a `shared/TEAM.md` refletem a v2 original. Na estrutura real, equipe estÃ¡ em `shared/people.md` e agentes nos workspace files.
 
-> Para quando um agente não é suficiente. Jogue no agente principal.
+> Para quando um agente nÃ£o Ã© suficiente. Jogue no agente principal.
 
 ## Contexto
 
-Quando as responsabilidades crescem, um único agente fica sobrecarregado. A solução: múltiplos agentes especializados, coordenados por um principal (hub).
+Quando as responsabilidades crescem, um Ãºnico agente fica sobrecarregado. A soluÃ§Ã£o: mÃºltiplos agentes especializados, coordenados por um principal (hub).
 
 ## Arquitetura
 
 ```
 Gateway (1 servidor)
-├── Agente Principal (Opus) ← hub, coordena tudo
-├── Agente de Conteúdo (Sonnet) ← produção, drafts
-├── Agente Scraper (Sonnet) ← coleta de dados
-└── [Outros conforme necessidade]
+â”œâ”€â”€ Agente Principal (Opus) â† hub, coordena tudo
+â”œâ”€â”€ Agente de ConteÃºdo (Sonnet) â† produÃ§Ã£o, drafts
+â”œâ”€â”€ Agente Scraper (Sonnet) â† coleta de dados
+â””â”€â”€ [Outros conforme necessidade]
 ```
 
 ## Leveling System (Kevin Simback)
 
-Todo agente novo começa em L1 e sobe conforme ganha confiança:
+Todo agente novo comeÃ§a em L1 e sobe conforme ganha confianÃ§a:
 
-| Nível | Nome | Autonomia | Revisão |
+| NÃ­vel | Nome | Autonomia | RevisÃ£o |
 |-------|------|-----------|---------|
-| L1 | Observer | Zero — output sempre revisado | Cada entrega |
-| L2 | Contributor | Baixa — pode sugerir, não executar | Semanal |
-| L3 | Operator | Média — executa dentro de guidelines | Semanal |
-| L4 | Trusted | Alta — autonomia quase total | Quinzenal |
+| L1 | Observer | Zero â€” output sempre revisado | Cada entrega |
+| L2 | Contributor | Baixa â€” pode sugerir, nÃ£o executar | Semanal |
+| L3 | Operator | MÃ©dia â€” executa dentro de guidelines | Semanal |
+| L4 | Trusted | Alta â€” autonomia quase total | Quinzenal |
 
 **Regras:**
-- Promoção via performance review semanal
-- Rebaixamento é possível (se qualidade cair)
-- NUNCA "rushar" um agente pra L3+ sem histórico
+- PromoÃ§Ã£o via performance review semanal
+- Rebaixamento Ã© possÃ­vel (se qualidade cair)
+- NUNCA "rushar" um agente pra L3+ sem histÃ³rico
 
 ## Shared Context
 
-Criar pasta `shared/` acessível por todos os agentes:
+Criar pasta `shared/` acessÃ­vel por todos os agentes:
 
 ```
 shared/
-├── TEAM.md          ← Registry: quem faz o quê, nível, status
-├── outputs/         ← Resultados compartilhados
-└── lessons/         ← Aprendizados do time
+â”œâ”€â”€ TEAM.md          â† Registry: quem faz o quÃª, nÃ­vel, status
+â”œâ”€â”€ outputs/         â† Resultados compartilhados
+â””â”€â”€ lessons/         â† Aprendizados do time
 ```
 
 **TEAM.md exemplo:**
 ```markdown
-| Agente | Papel | Nível | Modelo | Status |
+| Agente | Papel | NÃ­vel | Modelo | Status |
 |--------|-------|-------|--------|--------|
 | Amora | COO / Hub | L4 | Opus | Ativo |
-| Content | Produção | L1 | Sonnet | Ativo |
+| Content | ProduÃ§Ã£o | L1 | Sonnet | Ativo |
 | Scraper | Coleta | L1 | Sonnet | Ativo |
 ```
 
 ## Economia
 
-- **Agente principal:** Opus (interação, decisões)
-- **Agentes de execução:** Sonnet (crons, tarefas rotineiras)
+- **Agente principal:** Opus (interaÃ§Ã£o, decisÃµes)
+- **Agentes de execuÃ§Ã£o:** Sonnet (crons, tarefas rotineiras)
 - **Heartbeats:** Haiku (economia ~90%)
-- Regra: agente que não precisa de Opus NÃO deve usar Opus
+- Regra: agente que nÃ£o precisa de Opus NÃƒO deve usar Opus
 
-## Coordenação
+## CoordenaÃ§Ã£o
 
-- Agente principal é o HUB — usuário fala só com ele
-- Agentes secundários não têm binding Telegram
-- Hub model > Mesh model (aprendizado cruzado entre domínios distintos não funciona)
+- Agente principal Ã© o HUB â€” usuÃ¡rio fala sÃ³ com ele
+- Agentes secundÃ¡rios nÃ£o tÃªm binding Telegram
+- Hub model > Mesh model (aprendizado cruzado entre domÃ­nios distintos nÃ£o funciona)
 - Sub-agents (sessions_spawn) para tasks paralelas
-- **Após spawnar sub-agents: use `sessions_yield`** para encerrar o turno limpo e receber os resultados na próxima mensagem (v2026.3.12+)
+- **ApÃ³s spawnar sub-agents: use `sessions_yield`** para encerrar o turno limpo e receber os resultados na prÃ³xima mensagem (v2026.3.12+)
 
 ## Novidades 3.13
 
-### sessions_yield — Novo Tool de Orquestração
+### sessions_yield â€” Novo Tool de OrquestraÃ§Ã£o
 
-A versão 2026.3.13 adicionou o tool `sessions_yield`, que permite ao agente principal **encerrar o turno atual imediatamente** após spawnar sub-agentes, recebendo os resultados como próxima mensagem.
+A versÃ£o 2026.3.13 adicionou o tool `sessions_yield`, que permite ao agente principal **encerrar o turno atual imediatamente** apÃ³s spawnar sub-agentes, recebendo os resultados como prÃ³xima mensagem.
 
 ```json
 // Fluxo antes (3.12 e anterior):
@@ -83,25 +83,25 @@ A versão 2026.3.13 adicionou o tool `sessions_yield`, que permite ao agente pri
 
 // Fluxo com sessions_yield (3.13+):
 // 1. Agent spawna sub-agent
-// 2. Agent chama sessions_yield → turno encerra
-// 3. Sub-agent termina → próximo turno começa com resultado
+// 2. Agent chama sessions_yield â†’ turno encerra
+// 3. Sub-agent termina â†’ prÃ³ximo turno comeÃ§a com resultado
 ```
 
-**Por que importa:** O orquestrador agora pode encerrar a sessão limpa, sem ficar "preso" enquanto sub-agents trabalham. Reduz consumo de tokens e melhora a coordenação.
+**Por que importa:** O orquestrador agora pode encerrar a sessÃ£o limpa, sem ficar "preso" enquanto sub-agents trabalham. Reduz consumo de tokens e melhora a coordenaÃ§Ã£o.
 
-**Exemplo prático:**
+**Exemplo prÃ¡tico:**
 ```
-Após spawnar 3 sub-agents para tarefas paralelas, o hub chama
+ApÃ³s spawnar 3 sub-agents para tarefas paralelas, o hub chama
 sessions_yield para sair do turno. Os resultados chegam como
-a próxima mensagem — tudo organizado.
+a prÃ³xima mensagem â€” tudo organizado.
 ```
 
-> ✅ **Não requer config extra.** O tool `sessions_yield` já está disponível após atualizar para v2026.3.13.
+> âœ… **NÃ£o requer config extra.** O tool `sessions_yield` jÃ¡ estÃ¡ disponÃ­vel apÃ³s atualizar para v2026.3.13.
 
 ## Novidades 3.2
 
-### ACP Dispatch — Enabled by Default
-A partir da versão 3.2, o ACP (Agent Communication Protocol) dispatch está **habilitado por padrão**. Não é mais necessário habilitar manualmente no config.
+### ACP Dispatch â€” Enabled by Default
+A partir da versÃ£o 3.2, o ACP (Agent Communication Protocol) dispatch estÃ¡ **habilitado por padrÃ£o**. NÃ£o Ã© mais necessÃ¡rio habilitar manualmente no config.
 
 ```json
 // ANTES (3.1 e anterior):
@@ -111,11 +111,11 @@ A partir da versão 3.2, o ACP (Agent Communication Protocol) dispatch está **h
   }
 }
 
-// AGORA (3.2+): não precisa mais desta config
-// ACP dispatch já está ativo automaticamente
+// AGORA (3.2+): nÃ£o precisa mais desta config
+// ACP dispatch jÃ¡ estÃ¡ ativo automaticamente
 ```
 
-> ✅ Se você tem essa config antiga, pode remover — não causa problema, mas é redundante.
+> âœ… Se vocÃª tem essa config antiga, pode remover â€” nÃ£o causa problema, mas Ã© redundante.
 
 ### sessions_spawn com Attachments
 `sessions_spawn` agora suporta envio de **attachments** (arquivos, imagens, buffers) diretamente ao spawnar um sub-agente:
@@ -125,7 +125,7 @@ A partir da versão 3.2, o ACP (Agent Communication Protocol) dispatch está **h
   "sessionTarget": "isolated",
   "payload": {
     "kind": "agentTurn",
-    "message": "Analise este relatório e me dê um resumo executivo.",
+    "message": "Analise este relatÃ³rio e me dÃª um resumo executivo.",
     "attachments": [
       {
         "type": "file",
@@ -136,11 +136,11 @@ A partir da versão 3.2, o ACP (Agent Communication Protocol) dispatch está **h
 }
 ```
 
-Casos de uso: passar PDFs pra análise, imagens pra processamento, arquivos de dados pra transformação — tudo numa única chamada sem etapas extras.
+Casos de uso: passar PDFs pra anÃ¡lise, imagens pra processamento, arquivos de dados pra transformaÃ§Ã£o â€” tudo numa Ãºnica chamada sem etapas extras.
 
 ## ACP bind (v2026.4+)
 
-O ACP bind permite vincular um agente secundário a um topic Telegram específico, criando um "agente escravo" que só responde naquele topic — isolado do agente principal.
+O ACP bind permite vincular um agente secundÃ¡rio a um topic Telegram especÃ­fico, criando um "agente escravo" que sÃ³ responde naquele topic â€” isolado do agente principal.
 
 **Como usar:**
 ```
@@ -150,21 +150,25 @@ O ACP bind permite vincular um agente secundário a um topic Telegram específic
 Isso spawna um agente Codex isolado no topic atual do Telegram, sem interferir no agente principal.
 
 **Casos de uso:**
-- Criar um agente de conteúdo isolado num topic próprio
+- Criar um agente de conteÃºdo isolado num topic prÃ³prio
 - experiments em topics separados sempoluir o contexto do agente principal
-- Ter múltiplos agentes "slave" em topics diferentes, cada um com seu próprio contexto
+- Ter mÃºltiplos agentes "slave" em topics diferentes, cada um com seu prÃ³prio contexto
 
-> ⚠️ O ACP bind cria um agente **isolado** — ele não compartilha memória nem contexto com o hub. Use quando precisa de isolamento real de contexto.
+> âš ï¸ O ACP bind cria um agente **isolado** â€” ele nÃ£o compartilha memÃ³ria nem contexto com o hub. Use quando precisa de isolamento real de contexto.
 
 ## Tarefas
 
-1. Definir quais agentes você precisa (max 2-3 pra começar)
-2. Criar config de cada agente com SOUL.md próprio
+1. Definir quais agentes vocÃª precisa (max 2-3 pra comeÃ§ar)
+2. Criar config de cada agente com SOUL.md prÃ³prio
 3. Configurar shared/TEAM.md
-4. Definir modelos (GPT-4o para coordenação, GPT-4o-mini para tarefas)
+4. Definir modelos (GPT-4o para coordenaÃ§Ã£o, GPT-4o-mini para tarefas)
 5. Fazer primeiro test drive com task simples
-6. Review após 1 semana → decidir promoção
+6. Review apÃ³s 1 semana â†’ decidir promoÃ§Ã£o
 
 ## Resultado Esperado
 
-Time de 2-3 agentes coordenados, cada um com papel claro e nível definido.
+Time de 2-3 agentes coordenados, cada um com papel claro e nÃ­vel definido.
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

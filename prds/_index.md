@@ -1,28 +1,28 @@
-# PRDs do Curso OpenClaw
+﻿# PRDs do Curso OpenClaw
 
-> Product Requirement Documents — estrutura e especificação de cada aula/módulo.
+> Product Requirement Documents â€” estrutura e especificaÃ§Ã£o de cada aula/mÃ³dulo.
 > Atualizado: 2026-04-19
 
 ## Master
 
-- [PRD-MASTER-REGRAVACAO-2026-03.md](PRD-MASTER-REGRAVACAO-2026-03.md) — plano master de regravação de março/26
+- [PRD-MASTER-REGRAVACAO-2026-03.md](PRD-MASTER-REGRAVACAO-2026-03.md) â€” plano master de regravaÃ§Ã£o de marÃ§o/26
 
-## Aulas numeradas (N1–N8)
+## Aulas numeradas (N1â€“N8)
 
-- [aula-n1-oauth-config.md](aula-n1-oauth-config.md) — OAuth config
-- [aula-n2-bot-sem-shell.md](aula-n2-bot-sem-shell.md) — Bot sem shell
-- [aula-n4-lentidao-telegram.md](aula-n4-lentidao-telegram.md) — Lentidão Telegram
-- [aula-n5-debug-runbook.md](aula-n5-debug-runbook.md) — Debug runbook
-- [aula-n6-vps-vs-macmini.md](aula-n6-vps-vs-macmini.md) — VPS vs Mac mini
-- [aula-n7-custos-modelos.md](aula-n7-custos-modelos.md) — Custos modelos ⚠️ (precisa update Opus 4.7)
-- [aula-n8-telegram-bot-grupo.md](aula-n8-telegram-bot-grupo.md) — Telegram bot grupo
+- [aula-n1-oauth-config.md](aula-n1-oauth-config.md) â€” OAuth config
+- [aula-n2-bot-sem-shell.md](aula-n2-bot-sem-shell.md) â€” Bot sem shell
+- [aula-n4-lentidao-telegram.md](aula-n4-lentidao-telegram.md) â€” LentidÃ£o Telegram
+- [aula-n5-debug-runbook.md](aula-n5-debug-runbook.md) â€” Debug runbook
+- [aula-n6-vps-vs-macmini.md](aula-n6-vps-vs-macmini.md) â€” VPS vs Mac mini
+- [aula-n7-custos-modelos.md](aula-n7-custos-modelos.md) â€” Custos modelos âš ï¸ (precisa update Opus 4.7)
+- [aula-n8-telegram-bot-grupo.md](aula-n8-telegram-bot-grupo.md) â€” Telegram bot grupo
 
 ## Aulas extras / bonus
 
 - [aula-bonus-report-comunidade.md](aula-bonus-report-comunidade.md)
 - [aula-extra-workspace.md](aula-extra-workspace.md)
 
-## Módulos temáticos
+## MÃ³dulos temÃ¡ticos
 
 - [automacoes-evolutivas.md](automacoes-evolutivas.md)
 - [debug-vps-claude-code.md](debug-vps-claude-code.md)
@@ -38,11 +38,15 @@
 
 ## Status (ver `maintenance-state.json` da skill `curso-openclaw-selfupdate`)
 
-Pendências conhecidas (abril/26):
+PendÃªncias conhecidas (abril/26):
 - N-7 precisa update pra Opus 4.7 + pricing vigente
-- M5 (Integrações) + M6 (Skills) pendentes no Drive/HTML final
-- M12 Avançado bloqueado por falta de fonte confiável
+- M5 (IntegraÃ§Ãµes) + M6 (Skills) pendentes no Drive/HTML final
+- M12 AvanÃ§ado bloqueado por falta de fonte confiÃ¡vel
 
 ---
 
-*Índice gerado manualmente 19/04. Skills relacionadas: `curso-atualizar-aula`, `curso-openclaw-selfupdate`, `curso-gerar-prd`.*
+*Ãndice gerado manualmente 19/04. Skills relacionadas: `curso-atualizar-aula`, `curso-openclaw-selfupdate`, `curso-gerar-prd`.*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

@@ -1,11 +1,11 @@
-# 👥 Use Case: Análise de Comunidade
+﻿# ðŸ‘¥ Use Case: AnÃ¡lise de Comunidade
 
-> Entenda o que sua comunidade está falando, pedindo e sentindo.
+> Entenda o que sua comunidade estÃ¡ falando, pedindo e sentindo.
 
 ## O que faz
 
 Conecta na API da sua comunidade (Circle, Discord, Slack) e analisa:
-- Hot topics (o que está gerando mais discussão)
+- Hot topics (o que estÃ¡ gerando mais discussÃ£o)
 - Perguntas frequentes (FAQ natural da comunidade)
 - Membros mais ativos e influentes
 - Spam e posts duplicados
@@ -15,29 +15,33 @@ Conecta na API da sua comunidade (Circle, Discord, Slack) e analisa:
 ## Prompt
 
 ```
-Quero uma análise completa da minha comunidade nos últimos [30/60] dias.
+Quero uma anÃ¡lise completa da minha comunidade nos Ãºltimos [30/60] dias.
 
-Minha comunidade é [CIRCLE/DISCORD/SLACK] com [NÚMERO] membros.
+Minha comunidade Ã© [CIRCLE/DISCORD/SLACK] com [NÃšMERO] membros.
 
 Me entregue:
 
-1. **Hot Topics** — os 10 assuntos mais discutidos, com volume de posts
-2. **Perguntas Frequentes** — as 10 perguntas que mais aparecem (base pra FAQ/conteúdo)
-3. **Membros destaque** — top 10 mais ativos e top 10 que mais ajudam outros
-4. **Spam check** — posts duplicados, cross-posting excessivo, padrões suspeitos
-5. **Trends** — assuntos que estão CRESCENDO (não os maiores, os que estão acelerando)
-6. **Sentimento** — como está o clima? Positivo? Frustrado? Qual a vibe?
-7. **Oportunidades** — ideias de conteúdo, features, ou ações baseadas nos dados
+1. **Hot Topics** â€” os 10 assuntos mais discutidos, com volume de posts
+2. **Perguntas Frequentes** â€” as 10 perguntas que mais aparecem (base pra FAQ/conteÃºdo)
+3. **Membros destaque** â€” top 10 mais ativos e top 10 que mais ajudam outros
+4. **Spam check** â€” posts duplicados, cross-posting excessivo, padrÃµes suspeitos
+5. **Trends** â€” assuntos que estÃ£o CRESCENDO (nÃ£o os maiores, os que estÃ£o acelerando)
+6. **Sentimento** â€” como estÃ¡ o clima? Positivo? Frustrado? Qual a vibe?
+7. **Oportunidades** â€” ideias de conteÃºdo, features, ou aÃ§Ãµes baseadas nos dados
 
-Formato: report com insights acionáveis, não só números.
+Formato: report com insights acionÃ¡veis, nÃ£o sÃ³ nÃºmeros.
 
-Dica: cruze os dados da comunidade com os tickets de suporte pra ver padrões completos.
+Dica: cruze os dados da comunidade com os tickets de suporte pra ver padrÃµes completos.
 ```
 
 ## Exemplo real
 
 A Amora analisou 345 posts da comunidade Micro-SaaS (20k membros):
-- Spam puro: não encontrado
-- Padrões de atenção: cross-posting e repetição
-- "150 MVPs em 60 dias" — dado que virou post LinkedIn viral
+- Spam puro: nÃ£o encontrado
+- PadrÃµes de atenÃ§Ã£o: cross-posting e repetiÃ§Ã£o
+- "150 MVPs em 60 dias" â€” dado que virou post LinkedIn viral
 - Cruzamento com Crisp revelou: vibe coding domina em ambos
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

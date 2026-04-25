@@ -1,10 +1,14 @@
-# Pendências
+﻿# PendÃªncias
 
-> Itens aguardando input, acesso ou decisão.
+> Itens aguardando input, acesso ou decisÃ£o.
 
 ## Aguardando [SEU NOME]
-- [ ] [Pendência 1 — contexto]
-- [ ] [Pendência 2 — contexto]
+- [ ] [PendÃªncia 1 â€” contexto]
+- [ ] [PendÃªncia 2 â€” contexto]
 
 ## Aguardando Terceiros
-- [ ] [Pendência — quem — desde quando]
+- [ ] [PendÃªncia â€” quem â€” desde quando]
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

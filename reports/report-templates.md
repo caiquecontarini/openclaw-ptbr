@@ -1,13 +1,13 @@
-# Templates de Reports
+﻿# Templates de Reports
 
-> Referências de design para reports que o agente pode gerar.
+> ReferÃªncias de design para reports que o agente pode gerar.
 
-## 📊 Tipos de Reports
+## ðŸ“Š Tipos de Reports
 
-### 1. Métricas Semanais
-- **Uso:** Resumo semanal de métricas de negócio
-- **Formato:** PDF dark mode, gráficos, comparativo semana anterior
-- **Dados:** MRR, churn, novos clientes, métricas de redes sociais
+### 1. MÃ©tricas Semanais
+- **Uso:** Resumo semanal de mÃ©tricas de negÃ³cio
+- **Formato:** PDF dark mode, grÃ¡ficos, comparativo semana anterior
+- **Dados:** MRR, churn, novos clientes, mÃ©tricas de redes sociais
 - **Exemplo:** Reports ChartMogul da Amora
 
 ### 2. Social Media Report
@@ -19,22 +19,22 @@
 ### 3. Sponsor Report
 - **Uso:** Media kit / proposta para patrocinadores
 - **Formato:** PDF premium (dark mode, stats hero, grid)
-- **Dados:** Audiência, demographics, use cases, pricing
-- **Exemplo:** Sponsor report da Amora (7 páginas, design premium)
+- **Dados:** AudiÃªncia, demographics, use cases, pricing
+- **Exemplo:** Sponsor report da Amora (7 pÃ¡ginas, design premium)
 
 ### 4. QA Report
 - **Uso:** Auditoria de qualidade de projetos
-- **Formato:** Markdown → PDF
-- **Dados:** Bugs encontrados, severidade, status, recomendações
+- **Formato:** Markdown â†’ PDF
+- **Dados:** Bugs encontrados, severidade, status, recomendaÃ§Ãµes
 
 ### 5. Competitive Intelligence
-- **Uso:** Análise de concorrentes
+- **Uso:** AnÃ¡lise de concorrentes
 - **Formato:** PDF com SWOT, comparativos
 - **Dados:** Features, pricing, positioning, gaps
 
-## 🎨 Diretrizes de Design
+## ðŸŽ¨ Diretrizes de Design
 
-### Para reports HTML → PDF:
+### Para reports HTML â†’ PDF:
 ```css
 /* Dark mode premium */
 body { background: #0d1117; color: #c9d1d9; }
@@ -48,17 +48,21 @@ body { background: #0d1117; color: #c9d1d9; }
 .neutral { color: #d29922; }
 ```
 
-### Estrutura padrão:
-1. **Header:** Logo/nome + período + data de geração
-2. **Hero stats:** 3-4 métricas de destaque (números grandes)
-3. **Seções:** Cards com dados detalhados
+### Estrutura padrÃ£o:
+1. **Header:** Logo/nome + perÃ­odo + data de geraÃ§Ã£o
+2. **Hero stats:** 3-4 mÃ©tricas de destaque (nÃºmeros grandes)
+3. **SeÃ§Ãµes:** Cards com dados detalhados
 4. **Footer:** Fonte dos dados + "Gerado por [Nome do Agente]"
 
-## 💡 Dica
+## ðŸ’¡ Dica
 
 Pra gerar PDFs bonitos sem instalar LaTeX:
 1. Agente gera HTML estilizado
 2. Abre no browser (Playwright/Puppeteer)
 3. Exporta como PDF via browser
 
-Funciona em qualquer servidor sem dependências pesadas.
+Funciona em qualquer servidor sem dependÃªncias pesadas.
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

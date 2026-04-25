@@ -1,34 +1,34 @@
-# Configurações Recomendadas do OpenClaw
+﻿# ConfiguraÃ§Ãµes Recomendadas do OpenClaw
 
-> Referência para configurar seu openclaw.json
+> ReferÃªncia para configurar seu openclaw.json
 
 ## Modelo por Uso
 
-| Uso | Modelo Recomendado | Por quê |
+| Uso | Modelo Recomendado | Por quÃª |
 |-----|-------------------|---------|
-| Interação direta | Claude Opus | Melhor raciocínio, mais criativo |
-| Crons / automação | Claude Sonnet | 90% mais barato, suficiente pra tasks |
-| Heartbeats | Claude Haiku | Mínimo custo, só checa e reporta |
+| InteraÃ§Ã£o direta | Claude Opus | Melhor raciocÃ­nio, mais criativo |
+| Crons / automaÃ§Ã£o | Claude Sonnet | 90% mais barato, suficiente pra tasks |
+| Heartbeats | Claude Haiku | MÃ­nimo custo, sÃ³ checa e reporta |
 | Imagens | Gemini Flash | Bom e barato |
-| Análise avançada / multimodal | Gemini 2.5 Pro | Contexto enorme (1M tokens), multimodal nativo |
-| Alternativa Google | Gemini 3.1 Pro (`google/gemini-3.1-pro-preview`) | Reasoning avançado, boa opção de fallback |
-| Volume alto / custo mínimo | MiniMax (`minimax/minimax-01`) | Contexto de 1M tokens a custo extremamente baixo |
+| AnÃ¡lise avanÃ§ada / multimodal | Gemini 2.5 Pro | Contexto enorme (1M tokens), multimodal nativo |
+| Alternativa Google | Gemini 3.1 Pro (`google/gemini-3.1-pro-preview`) | Reasoning avanÃ§ado, boa opÃ§Ã£o de fallback |
+| Volume alto / custo mÃ­nimo | MiniMax (`minimax/minimax-01`) | Contexto de 1M tokens a custo extremamente baixo |
 
 ### IDs dos Modelos (para openclaw.json)
 
 ```json
-"anthropic/claude-opus-4-5"       // Claude Opus — interação principal
-"anthropic/claude-sonnet-4-5"     // Claude Sonnet — crons e automação
-"anthropic/claude-haiku-4-5"      // Claude Haiku — heartbeats
-"google/gemini-2.5-pro-preview"   // Gemini 2.5 Pro — análise avançada
-"google/gemini-3.1-pro-preview"   // Gemini 3.1 Pro — reasoning / fallback
-"google/gemini-flash-2.0"         // Gemini Flash — imagens e volume
-"minimax/minimax-01"              // MiniMax — custo mínimo, contexto longo
+"anthropic/claude-opus-4-5"       // Claude Opus â€” interaÃ§Ã£o principal
+"anthropic/claude-sonnet-4-5"     // Claude Sonnet â€” crons e automaÃ§Ã£o
+"anthropic/claude-haiku-4-5"      // Claude Haiku â€” heartbeats
+"google/gemini-2.5-pro-preview"   // Gemini 2.5 Pro â€” anÃ¡lise avanÃ§ada
+"google/gemini-3.1-pro-preview"   // Gemini 3.1 Pro â€” reasoning / fallback
+"google/gemini-flash-2.0"         // Gemini Flash â€” imagens e volume
+"minimax/minimax-01"              // MiniMax â€” custo mÃ­nimo, contexto longo
 ```
 
 ## Config de Compaction (IMPORTANTE)
 
-Se não configurar, sua sessão vai estourar tokens e o agente trava.
+Se nÃ£o configurar, sua sessÃ£o vai estourar tokens e o agente trava.
 
 ```json
 {
@@ -42,12 +42,12 @@ Se não configurar, sua sessão vai estourar tokens e o agente trava.
 
 ## Thinking Mode
 
-| Nível | Quando usar | Custo |
+| NÃ­vel | Quando usar | Custo |
 |-------|------------|-------|
-| off | Tasks simples, respostas rápidas | $ |
-| low | Dia a dia, maioria das interações | $$ |
-| medium | Análise, planejamento, conteúdo | $$$ |
-| high | Coding, problemas complexos, estratégia | $$$$ |
+| off | Tasks simples, respostas rÃ¡pidas | $ |
+| low | Dia a dia, maioria das interaÃ§Ãµes | $$ |
+| medium | AnÃ¡lise, planejamento, conteÃºdo | $$$ |
+| high | Coding, problemas complexos, estratÃ©gia | $$$$ |
 
 ## Crons: Regra de Ouro
 
@@ -63,11 +63,15 @@ Se não configurar, sua sessão vai estourar tokens e o agente trava.
 }
 ```
 
-**NUNCA** usar `sessionTarget: "main"` + `payload.kind: "systemEvent"` — dispara mas não executa.
+**NUNCA** usar `sessionTarget: "main"` + `payload.kind: "systemEvent"` â€” dispara mas nÃ£o executa.
 
 ## Dicas de Economia
 
 1. Heartbeats com Haiku: ~$0.005 cada (vs ~$0.10 com Opus)
 2. Crons com Sonnet: economia de ~90% vs Opus
-3. Espaçar crons: não colocar múltiplos no mesmo minuto (rate limit)
-4. config.patch reinicia gateway — fazer em horários sem crons
+3. EspaÃ§ar crons: nÃ£o colocar mÃºltiplos no mesmo minuto (rate limit)
+4. config.patch reinicia gateway â€” fazer em horÃ¡rios sem crons
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

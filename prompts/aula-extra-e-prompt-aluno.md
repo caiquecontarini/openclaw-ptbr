@@ -1,142 +1,142 @@
-# Prompt do Aluno: Aula Extra E — Gerenciamento de Contexto & Memória
+﻿# Prompt do Aluno: Aula Extra E â€” Gerenciamento de Contexto & MemÃ³ria
 
 > **Cole este prompt no chat com seu agente OpenClaw para praticar os conceitos da aula.**
 
 ---
 
-Olá! Vou praticar gerenciamento de contexto e memória com você.
+OlÃ¡! Vou praticar gerenciamento de contexto e memÃ³ria com vocÃª.
 
-**Objetivo:** Aprender a usar `/status`, `/compact`, `/new`, entender compactação automática e como a memória funciona entre sessões.
+**Objetivo:** Aprender a usar `/status`, `/compact`, `/new`, entender compactaÃ§Ã£o automÃ¡tica e como a memÃ³ria funciona entre sessÃµes.
 
-Por favor, me guie através dos seguintes exercícios:
+Por favor, me guie atravÃ©s dos seguintes exercÃ­cios:
 
 ---
 
-## Exercício 1: Entendendo o `/status`
+## ExercÃ­cio 1: Entendendo o `/status`
 
 1. Me mostre como usar o comando `/status`
-2. Me explique o que cada informação significa:
+2. Me explique o que cada informaÃ§Ã£o significa:
    - Modelo atual
    - Uso de contexto (tokens e %)
-   - Custo (se disponível)
-   - Tempo de sessão
-3. Me diga: em qual % de contexto eu deveria começar a me preocupar?
+   - Custo (se disponÃ­vel)
+   - Tempo de sessÃ£o
+3. Me diga: em qual % de contexto eu deveria comeÃ§ar a me preocupar?
 
 ---
 
-## Exercício 2: Simulando Crescimento de Contexto
+## ExercÃ­cio 2: Simulando Crescimento de Contexto
 
-Vamos fazer uma conversa longa para encher o contexto (não precisa ser útil, só pra praticar):
+Vamos fazer uma conversa longa para encher o contexto (nÃ£o precisa ser Ãºtil, sÃ³ pra praticar):
 
-1. Me conte uma história sobre como você foi criado (use bastante texto)
-2. Depois, me explique como funciona um LLM em detalhes técnicos (de novo, bastante texto)
+1. Me conte uma histÃ³ria sobre como vocÃª foi criado (use bastante texto)
+2. Depois, me explique como funciona um LLM em detalhes tÃ©cnicos (de novo, bastante texto)
 3. Depois disso, rode `/status` de novo e me mostre quanto o contexto cresceu
 
 **Pergunta reflexiva:** Por que conversas longas aumentam tanto o contexto?
 
 ---
 
-## Exercício 3: Compactação Manual
+## ExercÃ­cio 3: CompactaÃ§Ã£o Manual
 
 1. Me mostre como usar o comando `/compact`
-2. Rode `/status` antes e depois para eu ver a diferença
+2. Rode `/status` antes e depois para eu ver a diferenÃ§a
 3. Me explique:
    - O que foi preservado?
    - O que foi resumido?
-   - Você ainda lembra da nossa conversa anterior?
+   - VocÃª ainda lembra da nossa conversa anterior?
 
 ---
 
-## Exercício 4: Diferença entre `/compact` e `/new`
+## ExercÃ­cio 4: DiferenÃ§a entre `/compact` e `/new`
 
-1. Me explique a diferença entre:
-   - Compactar a sessão (`/compact`)
-   - Iniciar sessão nova (`/new`)
+1. Me explique a diferenÃ§a entre:
+   - Compactar a sessÃ£o (`/compact`)
+   - Iniciar sessÃ£o nova (`/new`)
 
-2. Me dê exemplos de quando usar cada um:
-   - 3 situações para `/compact`
-   - 3 situações para `/new`
+2. Me dÃª exemplos de quando usar cada um:
+   - 3 situaÃ§Ãµes para `/compact`
+   - 3 situaÃ§Ãµes para `/new`
 
 ---
 
-## Exercício 5: Testando `/new`
+## ExercÃ­cio 5: Testando `/new`
 
 **Antes de fazer `/new`:**
 1. Me ajude a criar um arquivo `memory/teste-aula-e.md` com:
-   - Resumo do que praticamos até agora
-   - Uma decisão fictícia importante: "Projeto X deve usar Python 3.11"
+   - Resumo do que praticamos atÃ© agora
+   - Uma decisÃ£o fictÃ­cia importante: "Projeto X deve usar Python 3.11"
    - Data e hora atual
 
-**Agora faça `/new`**
+**Agora faÃ§a `/new`**
 
 **Depois do `/new`:**
-1. Você ainda lembra de mim?
-2. Você lembra do que conversamos antes?
-3. Você consegue acessar o arquivo `memory/teste-aula-e.md`?
-4. Me explique o que aconteceu: o que você perdeu e o que você manteve?
+1. VocÃª ainda lembra de mim?
+2. VocÃª lembra do que conversamos antes?
+3. VocÃª consegue acessar o arquivo `memory/teste-aula-e.md`?
+4. Me explique o que aconteceu: o que vocÃª perdeu e o que vocÃª manteve?
 
 ---
 
-## Exercício 6: Compactação Automática
+## ExercÃ­cio 6: CompactaÃ§Ã£o AutomÃ¡tica
 
-Me explique como configurar compactação automática no OpenClaw:
+Me explique como configurar compactaÃ§Ã£o automÃ¡tica no OpenClaw:
 
 1. Qual arquivo eu preciso editar?
-2. Quais parâmetros eu devo configurar?
-3. Qual threshold você recomenda? (70%, 75%, 80%?)
-4. Quais são as vantagens e desvantagens de ativar?
+2. Quais parÃ¢metros eu devo configurar?
+3. Qual threshold vocÃª recomenda? (70%, 75%, 80%?)
+4. Quais sÃ£o as vantagens e desvantagens de ativar?
 
 ---
 
-## Exercício 7: Hierarquia de Memória
+## ExercÃ­cio 7: Hierarquia de MemÃ³ria
 
-Me desenhe (em texto/ASCII) a hierarquia de memória do OpenClaw:
+Me desenhe (em texto/ASCII) a hierarquia de memÃ³ria do OpenClaw:
 
-1. Contexto da sessão (temporário)
-2. Memória recente (memory/*.md)
-3. Memória de longo prazo (MEMORY.md)
+1. Contexto da sessÃ£o (temporÃ¡rio)
+2. MemÃ³ria recente (memory/*.md)
+3. MemÃ³ria de longo prazo (MEMORY.md)
 
 E me explique:
-- O que acontece com cada nível quando uso `/compact`?
-- O que acontece com cada nível quando uso `/new`?
-- Como você decide o que salvar em cada nível?
+- O que acontece com cada nÃ­vel quando uso `/compact`?
+- O que acontece com cada nÃ­vel quando uso `/new`?
+- Como vocÃª decide o que salvar em cada nÃ­vel?
 
 ---
 
-## Exercício 8: Troubleshooting
+## ExercÃ­cio 8: Troubleshooting
 
-Me ajude a resolver estes problemas fictícios:
+Me ajude a resolver estes problemas fictÃ­cios:
 
-**Problema 1:** "Fiz `/new` e o agente não lembra do projeto que começamos ontem"
+**Problema 1:** "Fiz `/new` e o agente nÃ£o lembra do projeto que comeÃ§amos ontem"
 - O que pode ter acontecido?
 - Como eu resolvo?
 
-**Problema 2:** "Meu contexto tá em 95% e `/compact` só liberou 10%"
+**Problema 2:** "Meu contexto tÃ¡ em 95% e `/compact` sÃ³ liberou 10%"
 - O que devo fazer?
 - Como prevenir isso no futuro?
 
-**Problema 3:** "Após compactar, o agente esqueceu uma decisão importante"
+**Problema 3:** "ApÃ³s compactar, o agente esqueceu uma decisÃ£o importante"
 - Por que isso acontece?
-- Como eu garanto que decisões importantes não se percam?
+- Como eu garanto que decisÃµes importantes nÃ£o se percam?
 
 ---
 
-## Exercício 9: Estratégia Pessoal
+## ExercÃ­cio 9: EstratÃ©gia Pessoal
 
-Com base no meu uso (você pode me perguntar como eu pretendo usar o OpenClaw), me recomende:
+Com base no meu uso (vocÃª pode me perguntar como eu pretendo usar o OpenClaw), me recomende:
 
 1. Devo ativar auto-compact? Com qual threshold?
-2. Com que frequência devo usar `/new`?
-3. Devo monitorar contexto ativamente ou deixar no automático?
-4. Dicas específicas para economizar custo de API
+2. Com que frequÃªncia devo usar `/new`?
+3. Devo monitorar contexto ativamente ou deixar no automÃ¡tico?
+4. Dicas especÃ­ficas para economizar custo de API
 
 ---
 
-## Exercício 10: Checklist Final
+## ExercÃ­cio 10: Checklist Final
 
-Me crie um checklist personalizado de boas práticas de gestão de contexto que eu possa imprimir e deixar do lado do computador. Algo tipo:
+Me crie um checklist personalizado de boas prÃ¡ticas de gestÃ£o de contexto que eu possa imprimir e deixar do lado do computador. Algo tipo:
 
-**Antes de começar:**
+**Antes de comeÃ§ar:**
 - [ ] ...
 
 **Durante o trabalho:**
@@ -147,26 +147,30 @@ Me crie um checklist personalizado de boas práticas de gestão de contexto que 
 
 ---
 
-## Reflexão Final
+## ReflexÃ£o Final
 
-Depois de fazer todos esses exercícios, me responda:
+Depois de fazer todos esses exercÃ­cios, me responda:
 
-1. Qual é a diferença prática entre `/compact` e `/new`?
-2. Por que compactação automática é importante?
-3. Como memória funciona entre sessões?
-4. Qual é a maior lição que você aprendeu sobre gestão de contexto?
+1. Qual Ã© a diferenÃ§a prÃ¡tica entre `/compact` e `/new`?
+2. Por que compactaÃ§Ã£o automÃ¡tica Ã© importante?
+3. Como memÃ³ria funciona entre sessÃµes?
+4. Qual Ã© a maior liÃ§Ã£o que vocÃª aprendeu sobre gestÃ£o de contexto?
 
 ---
 
-**Obrigado por me guiar! 🚀**
+**Obrigado por me guiar! ðŸš€**
 
 Agora eu sei:
-✅ Usar `/status`, `/compact`, `/new` com confiança  
-✅ Configurar compactação automática  
-✅ Entender a hierarquia de memória  
-✅ Gerenciar contexto de forma proativa  
-✅ Economizar custo de API  
+âœ… Usar `/status`, `/compact`, `/new` com confianÃ§a  
+âœ… Configurar compactaÃ§Ã£o automÃ¡tica  
+âœ… Entender a hierarquia de memÃ³ria  
+âœ… Gerenciar contexto de forma proativa  
+âœ… Economizar custo de API  
 
 ---
 
-*Se tiver dúvidas adicionais durante os exercícios, sinta-se livre para perguntar!*
+*Se tiver dÃºvidas adicionais durante os exercÃ­cios, sinta-se livre para perguntar!*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

@@ -1,4 +1,4 @@
-# Prompt do Aluno — Aula Bônus: Report de Comunidade
+﻿# Prompt do Aluno â€” Aula BÃ´nus: Report de Comunidade
 
 > Copie, adapte as partes entre colchetes e mande para o seu agente OpenClaw.
 
@@ -7,86 +7,86 @@
 ## Prompt Principal
 
 ```
-Quero criar um relatório semanal automático das mensagens da minha comunidade.
+Quero criar um relatÃ³rio semanal automÃ¡tico das mensagens da minha comunidade.
 
 **Minha fonte de dados:**
 [Descreva onde ficam as mensagens. Exemplos:
 - "Tenho um Supabase com tabela 'messages'. Campos: created_at, content, user_name, chat_id"
-- "Uso o MyGroupMetrics — meu user_owner é [seu ID]"
-- "Tenho acesso à API do Crisp com workspace_id [seu ID]"
-- "Tenho um CSV exportado do grupo — posso fazer upload"]
+- "Uso o MyGroupMetrics â€” meu user_owner Ã© [seu ID]"
+- "Tenho acesso Ã  API do Crisp com workspace_id [seu ID]"
+- "Tenho um CSV exportado do grupo â€” posso fazer upload"]
 
 **Grupos/canais a analisar:**
 [Liste os grupos ou canais. Exemplos:
-- "Grupo WhatsApp Alunos — chat_id: 120363xxxxxxxx"
-- "Canal Telegram Clientes — @meucanal"
-- "Workspace Crisp — todos os tickets"]
+- "Grupo WhatsApp Alunos â€” chat_id: 120363xxxxxxxx"
+- "Canal Telegram Clientes â€” @meucanal"
+- "Workspace Crisp â€” todos os tickets"]
 
 **Credenciais:**
-[As credenciais estão no 1Password? Se sim, informe o nome do item e o vault.
-Se não, me avise que eu te oriento a guardar antes de continuar.]
+[As credenciais estÃ£o no 1Password? Se sim, informe o nome do item e o vault.
+Se nÃ£o, me avise que eu te oriento a guardar antes de continuar.]
 
-**O que quero no relatório:**
+**O que quero no relatÃ³rio:**
 - Sentimento geral da semana (positivo / negativo / neutro)
-- Dúvidas e temas mais frequentes
-- Horários de pico de atividade
-- Quem mais ajuda os outros (possíveis embaixadores)
-- Comparação com as semanas anteriores
+- DÃºvidas e temas mais frequentes
+- HorÃ¡rios de pico de atividade
+- Quem mais ajuda os outros (possÃ­veis embaixadores)
+- ComparaÃ§Ã£o com as semanas anteriores
 
 **Formato de entrega:**
-- HTML dark theme com gráficos visuais
+- HTML dark theme com grÃ¡ficos visuais
 - Convertido em PDF
-- Enviado aqui no Telegram toda segunda às 9h
+- Enviado aqui no Telegram toda segunda Ã s 9h
 
-**O que preciso que você faça:**
+**O que preciso que vocÃª faÃ§a:**
 1. Criar uma Skill em skills/research/report-[nome-comunidade]/ com todo o processo documentado
-2. Testar a conexão com minha fonte de dados
-3. Gerar o primeiro relatório agora para eu ver como fica
-4. Criar o cron para rodar automaticamente toda segunda às 9h
+2. Testar a conexÃ£o com minha fonte de dados
+3. Gerar o primeiro relatÃ³rio agora para eu ver como fica
+4. Criar o cron para rodar automaticamente toda segunda Ã s 9h
 
-GUARDRAIL: apenas leitura nos dados. Nenhuma escrita, atualização ou deleção sem minha autorização explícita.
+GUARDRAIL: apenas leitura nos dados. Nenhuma escrita, atualizaÃ§Ã£o ou deleÃ§Ã£o sem minha autorizaÃ§Ã£o explÃ­cita.
 ```
 
 ---
 
-## Variações por Fonte de Dados
+## VariaÃ§Ãµes por Fonte de Dados
 
-### Se você usa MyGroupMetrics (Supabase MGM)
+### Se vocÃª usa MyGroupMetrics (Supabase MGM)
 
 ```
-Minha fonte de dados é o Supabase do MyGroupMetrics.
-As credenciais estão no 1Password com o nome "Supabase MGM", vault "Meu Vault".
+Minha fonte de dados Ã© o Supabase do MyGroupMetrics.
+As credenciais estÃ£o no 1Password com o nome "Supabase MGM", vault "Meu Vault".
 Campos relevantes da tabela interactions: created_at, message, user_name, chat_id, response_to.
 
 Meus grupos:
-- [Nome do grupo 1] — chat_id: [ID do grupo no WhatsApp]
-- [Nome do grupo 2] — chat_id: [ID do grupo no WhatsApp]
+- [Nome do grupo 1] â€” chat_id: [ID do grupo no WhatsApp]
+- [Nome do grupo 2] â€” chat_id: [ID do grupo no WhatsApp]
 
-Meu group_owner no banco é: [seu ID de usuário no MGM]
+Meu group_owner no banco Ã©: [seu ID de usuÃ¡rio no MGM]
 ```
 
-### Se você usa Crisp
+### Se vocÃª usa Crisp
 
 ```
-Minha fonte de dados é o Crisp.
-As credenciais (website_id e token) estão no 1Password como "Crisp API", vault "Meu Vault".
-Quero analisar todas as conversas dos últimos 30 dias do workspace.
+Minha fonte de dados Ã© o Crisp.
+As credenciais (website_id e token) estÃ£o no 1Password como "Crisp API", vault "Meu Vault".
+Quero analisar todas as conversas dos Ãºltimos 30 dias do workspace.
 ```
 
-### Se você tem Supabase próprio
+### Se vocÃª tem Supabase prÃ³prio
 
 ```
-Tenho um Supabase próprio.
-URL e service_key estão no 1Password como "[Nome do Item]", vault "[Nome do Vault]".
+Tenho um Supabase prÃ³prio.
+URL e service_key estÃ£o no 1Password como "[Nome do Item]", vault "[Nome do Vault]".
 Tabela: [nome da tabela]
-Campos: [created_at ou equivalente], [campo de texto], [campo de usuário], [campo de grupo/canal se houver]
+Campos: [created_at ou equivalente], [campo de texto], [campo de usuÃ¡rio], [campo de grupo/canal se houver]
 ```
 
-### Se você tem só um CSV
+### Se vocÃª tem sÃ³ um CSV
 
 ```
-Tenho um arquivo CSV com o histórico do grupo.
-Vou fazer upload agora. Depois de analisar, quero que você crie um processo para eu poder atualizar o CSV toda semana e gerar o novo relatório.
+Tenho um arquivo CSV com o histÃ³rico do grupo.
+Vou fazer upload agora. Depois de analisar, quero que vocÃª crie um processo para eu poder atualizar o CSV toda semana e gerar o novo relatÃ³rio.
 Campos no CSV: [liste as colunas]
 ```
 
@@ -96,12 +96,12 @@ Campos no CSV: [liste as colunas]
 
 O agente vai:
 
-1. **Confirmar a conexão** — vai testar o acesso à sua fonte de dados e te dizer quantas mensagens encontrou
-2. **Criar a Skill** — vai documentar todo o processo em `skills/research/report-[nome]/SKILL.md`
-3. **Gerar o primeiro relatório** — HTML + PDF direto no chat para você ver e aprovar
-4. **Criar o cron** — vai verificar se segunda às 9h está livre e configurar o agendamento
+1. **Confirmar a conexÃ£o** â€” vai testar o acesso Ã  sua fonte de dados e te dizer quantas mensagens encontrou
+2. **Criar a Skill** â€” vai documentar todo o processo em `skills/research/report-[nome]/SKILL.md`
+3. **Gerar o primeiro relatÃ³rio** â€” HTML + PDF direto no chat para vocÃª ver e aprovar
+4. **Criar o cron** â€” vai verificar se segunda Ã s 9h estÃ¡ livre e configurar o agendamento
 
-Se algo não funcionar (credencial errada, estrutura de tabela diferente), o agente vai te pedir as informações que faltam antes de continuar.
+Se algo nÃ£o funcionar (credencial errada, estrutura de tabela diferente), o agente vai te pedir as informaÃ§Ãµes que faltam antes de continuar.
 
 ---
 
@@ -109,23 +109,27 @@ Se algo não funcionar (credencial errada, estrutura de tabela diferente), o age
 
 **Calibre o sentimento para o seu nicho**
 
-Depois do primeiro relatório, se os percentuais não parecerem certos, peça:
+Depois do primeiro relatÃ³rio, se os percentuais nÃ£o parecerem certos, peÃ§a:
 ```
-O sentimento positivo está alto demais / baixo demais. 
+O sentimento positivo estÃ¡ alto demais / baixo demais. 
 Me mostra quais mensagens foram classificadas como positivas e negativas.
-Quero ajustar o dicionário de palavras.
+Quero ajustar o dicionÃ¡rio de palavras.
 ```
 
-**Adicione tópicos específicos da sua área**
+**Adicione tÃ³picos especÃ­ficos da sua Ã¡rea**
 
 ```
-Quero que o relatório identifique também mensagens sobre [seu tópico específico].
+Quero que o relatÃ³rio identifique tambÃ©m mensagens sobre [seu tÃ³pico especÃ­fico].
 Palavras-chave: [lista de palavras]
 ```
 
-**Mude a frequência**
+**Mude a frequÃªncia**
 
 ```
-Em vez de semanal, quero relatório mensal — todo dia 1 às 8h.
+Em vez de semanal, quero relatÃ³rio mensal â€” todo dia 1 Ã s 8h.
 Ajusta o cron para: 0 8 1 * *
 ```
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

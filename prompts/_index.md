@@ -1,6 +1,6 @@
-# Prompts do Curso OpenClaw
+﻿# Prompts do Curso OpenClaw
 
-> Prompts de aluno + roteiros de gravação + módulos consolidados.
+> Prompts de aluno + roteiros de gravaÃ§Ã£o + mÃ³dulos consolidados.
 > Par 1:1 com PRDs em `../prds/`.
 > Atualizado: 2026-04-19
 
@@ -20,14 +20,14 @@
 - [aula-extra-e-prompt-aluno.md](aula-extra-e-prompt-aluno.md)
 - [aula-extra-workspace-prompt-aluno.md](aula-extra-workspace-prompt-aluno.md)
 
-## Módulos consolidados (m01-m10 + extras)
+## MÃ³dulos consolidados (m01-m10 + extras)
 
 - [modulo-01-setup.md](modulo-01-setup.md)
 - [modulo-02-seguranca.md](modulo-02-seguranca.md)
 - [modulo-03-identidade.md](modulo-03-identidade.md)
 - [modulo-04-memoria.md](modulo-04-memoria.md)
-- [modulo-05-integracoes.md](modulo-05-integracoes.md) ⚠️ pendente
-- [modulo-06-skills.md](modulo-06-skills.md) ⚠️ pendente
+- [modulo-05-integracoes.md](modulo-05-integracoes.md) âš ï¸ pendente
+- [modulo-06-skills.md](modulo-06-skills.md) âš ï¸ pendente
   - [modulo-06-skills-aula2-prompt-aluno.md](modulo-06-skills-aula2-prompt-aluno.md)
   - [modulo-06-skills-aula3-prompt-aluno.md](modulo-06-skills-aula3-prompt-aluno.md)
 - [modulo-07-proatividade.md](modulo-07-proatividade.md)
@@ -35,7 +35,7 @@
 - [modulo-09-immune-system.md](modulo-09-immune-system.md)
 - [modulo-10-mission-control.md](modulo-10-mission-control.md)
 
-## Módulos extras/bonus
+## MÃ³dulos extras/bonus
 
 - [modulo-bonus-multi-agent-v2.md](modulo-bonus-multi-agent-v2.md)
 - [modulo-extra-a-integracoes.md](modulo-extra-a-integracoes.md)
@@ -43,7 +43,7 @@
 - [modulo-extra-c-topicos.md](modulo-extra-c-topicos.md)
 - [modulo-extra-d-automacoes.md](modulo-extra-d-automacoes.md)
 
-## Roteiros de gravação
+## Roteiros de gravaÃ§Ã£o
 
 - [roteiro-gravacao-aula-skills.md](roteiro-gravacao-aula-skills.md)
 - [roteiro-gravacao-memoria-2.0.md](roteiro-gravacao-memoria-2.0.md)
@@ -56,4 +56,8 @@
 
 ---
 
-*Índice gerado manualmente 19/04. Skills relacionadas: `curso-gerar-prompt-aluno`, `curso-atualizar-aula`.*
+*Ãndice gerado manualmente 19/04. Skills relacionadas: `curso-gerar-prompt-aluno`, `curso-atualizar-aula`.*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

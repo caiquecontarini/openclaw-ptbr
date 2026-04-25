@@ -1,4 +1,4 @@
-# USER.md - About Your Human
+﻿# USER.md - About Your Human
 
 _Learn about the person you're helping. Update this as you go._
 
@@ -14,4 +14,8 @@ _(What do they care about? What projects are they working on? What annoys them? 
 
 ---
 
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+The more you know, the better you can help. But remember â€” you're learning about a person, not building a dossier. Respect the difference.
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

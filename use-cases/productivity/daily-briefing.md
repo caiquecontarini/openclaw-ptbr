@@ -1,57 +1,61 @@
-# ☀️ Use Case: Daily Briefing
+﻿# â˜€ï¸ Use Case: Daily Briefing
 
-> Acorde todos os dias com um resumo do que precisa de atenção.
+> Acorde todos os dias com um resumo do que precisa de atenÃ§Ã£o.
 
 ## O que faz
 
-Cron automático que roda todo dia de manhã e consolida:
-- Agenda do dia (eventos nas próximas 24h)
-- Emails urgentes não lidos
-- Métricas do negócio (se configurado)
-- Redes sociais (performance dos últimos posts)
+Cron automÃ¡tico que roda todo dia de manhÃ£ e consolida:
+- Agenda do dia (eventos nas prÃ³ximas 24h)
+- Emails urgentes nÃ£o lidos
+- MÃ©tricas do negÃ³cio (se configurado)
+- Redes sociais (performance dos Ãºltimos posts)
 - Projetos com prazo se aproximando
 - Lembretes pendentes
 
 ## Prompt para configurar
 
 ```
-Quero que você crie um Daily Briefing automático que rode todo dia às [HORÁRIO] da manhã.
+Quero que vocÃª crie um Daily Briefing automÃ¡tico que rode todo dia Ã s [HORÃRIO] da manhÃ£.
 
 O briefing deve incluir:
-1. 📅 **Agenda** — eventos de hoje e amanhã (Google Calendar)
-2. 📧 **Emails** — urgentes não lidos (se Gmail integrado)
-3. 📊 **Métricas** — resumo rápido do negócio (se integrado)
-4. 📱 **Redes sociais** — performance dos últimos posts
-5. 📋 **Projetos** — status dos projetos ativos, alertar prazos próximos
-6. ⏰ **Lembretes** — pendências que eu pedi pra lembrar
+1. ðŸ“… **Agenda** â€” eventos de hoje e amanhÃ£ (Google Calendar)
+2. ðŸ“§ **Emails** â€” urgentes nÃ£o lidos (se Gmail integrado)
+3. ðŸ“Š **MÃ©tricas** â€” resumo rÃ¡pido do negÃ³cio (se integrado)
+4. ðŸ“± **Redes sociais** â€” performance dos Ãºltimos posts
+5. ðŸ“‹ **Projetos** â€” status dos projetos ativos, alertar prazos prÃ³ximos
+6. â° **Lembretes** â€” pendÃªncias que eu pedi pra lembrar
 
 Formato:
-- Máximo 10 linhas — sou ocupado, quero ser rápido
-- Se não tem nada urgente, diga "Dia tranquilo 😎" e pronto
-- Se tem algo urgente, destaque com ⚠️
+- MÃ¡ximo 10 linhas â€” sou ocupado, quero ser rÃ¡pido
+- Se nÃ£o tem nada urgente, diga "Dia tranquilo ðŸ˜Ž" e pronto
+- Se tem algo urgente, destaque com âš ï¸
 - Entregue no [TELEGRAM/WHATSAPP]
 
 Configure como cron com:
 - sessionTarget: isolated
 - payload: agentTurn
 - delivery: announce
-- model: Sonnet (não precisa de Opus pra isso)
+- model: Sonnet (nÃ£o precisa de Opus pra isso)
 ```
 
 ## Exemplo de output
 
 ```
-☀️ Briefing — Terça 18/02
+â˜€ï¸ Briefing â€” TerÃ§a 18/02
 
-📅 14h: Call com investidor (Zoom)
-📅 17h: Lembrete gravar vídeo YouTube
+ðŸ“… 14h: Call com investidor (Zoom)
+ðŸ“… 17h: Lembrete gravar vÃ­deo YouTube
 
-📊 MRR: R$8.2k (+1.5% semana) ✅
-⚠️ 3 failed payments pendentes (R$347)
+ðŸ“Š MRR: R$8.2k (+1.5% semana) âœ…
+âš ï¸ 3 failed payments pendentes (R$347)
 
-📱 Post LinkedIn de ontem: 2.3k views, 89 likes — acima da média
+ðŸ“± Post LinkedIn de ontem: 2.3k views, 89 likes â€” acima da mÃ©dia
 
-📋 Projeto Content Waterfall: 3 peças pendentes de aprovação
+ðŸ“‹ Projeto Content Waterfall: 3 peÃ§as pendentes de aprovaÃ§Ã£o
 
-Dia produtivo pela frente! 🚀
+Dia produtivo pela frente! ðŸš€
 ```
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

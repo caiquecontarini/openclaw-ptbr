@@ -1,11 +1,11 @@
-# 📱 Use Case: Social Media Metrics Sync
+﻿# ðŸ“± Use Case: Social Media Metrics Sync
 
-> Todas as métricas de redes sociais num único report.
+> Todas as mÃ©tricas de redes sociais num Ãºnico report.
 
 ## O que faz
 
 Puxa dados de todas as plataformas e consolida:
-- YouTube: subscribers, views, vídeos com melhor performance
+- YouTube: subscribers, views, vÃ­deos com melhor performance
 - Instagram: followers, engagement rate, texto vs reels
 - LinkedIn: impressions, likes/post avg, crescimento
 - X/Twitter: followers, tweets, engajamento
@@ -14,7 +14,7 @@ Puxa dados de todas as plataformas e consolida:
 ## Prompt para configurar
 
 ```
-Quero que você monitore minhas redes sociais automaticamente.
+Quero que vocÃª monitore minhas redes sociais automaticamente.
 
 Minhas redes:
 - YouTube: [CANAL]
@@ -23,31 +23,35 @@ Minhas redes:
 - X/Twitter: [PERFIL]
 
 Configure:
-1. **Sync diário** (cron às 22h, Sonnet):
-   - Puxa métricas atualizadas de todas as plataformas
+1. **Sync diÃ¡rio** (cron Ã s 22h, Sonnet):
+   - Puxa mÃ©tricas atualizadas de todas as plataformas
    - Salva snapshot no banco/arquivo
 
-2. **Report semanal** (segunda às 9h):
+2. **Report semanal** (segunda Ã s 9h):
    - Comparativo semana atual vs anterior
    - Top 3 posts que mais performaram (com link)
    - Plataforma que mais cresceu
-   - Recomendação: onde focar essa semana
+   - RecomendaÃ§Ã£o: onde focar essa semana
 
 3. **Alertas** (imediato):
-   - Post viralizando (>5x média de engajamento)
+   - Post viralizando (>5x mÃ©dia de engajamento)
    - Queda brusca de followers
-   - Comentário negativo com muito alcance
+   - ComentÃ¡rio negativo com muito alcance
 
-Use RapidAPI como proxy para Instagram e X (cloud IPs são bloqueados).
+Use RapidAPI como proxy para Instagram e X (cloud IPs sÃ£o bloqueados).
 
-Entregue no tópico Métricas do Telegram.
+Entregue no tÃ³pico MÃ©tricas do Telegram.
 ```
 
 ## Exemplo real
 
-Métricas da Amora:
-- YouTube: 69.8k subs, 1.4M views, 276 vídeos
+MÃ©tricas da Amora:
+- YouTube: 69.8k subs, 1.4M views, 276 vÃ­deos
 - Instagram: 52.7k followers, 0.87% ER
 - Twitter: 2.3k followers, 338 tweets
 - LinkedIn: 247 likes/post avg
 - Insight descoberto: Instagram texto > reels (21x mais ER!)
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

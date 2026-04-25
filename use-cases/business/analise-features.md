@@ -1,41 +1,41 @@
-# 🔧 Use Case: Análise de Features e Roadmap
+﻿# ðŸ”§ Use Case: AnÃ¡lise de Features e Roadmap
 
 > Transforme feedback de clientes em roadmap priorizado.
 
 ## O que faz
 
-Cruza dados de múltiplas fontes pra priorizar features:
+Cruza dados de mÃºltiplas fontes pra priorizar features:
 - Pedidos de features no suporte
-- Discussões na comunidade
-- Análise de concorrentes
+- DiscussÃµes na comunidade
+- AnÃ¡lise de concorrentes
 - Dados de uso do produto
 - Feedback de churn (por que cancelaram)
 
 ## Prompt
 
 ```
-Quero que você me ajude a priorizar o roadmap do meu produto [NOME DO PRODUTO].
+Quero que vocÃª me ajude a priorizar o roadmap do meu produto [NOME DO PRODUTO].
 
 Analise estas fontes:
-1. Tickets de suporte dos últimos 60 dias — extraia pedidos de features
-2. Posts da comunidade — o que as pessoas estão pedindo
-3. Motivos de churn — o que faltou pro cliente ficar
-4. Concorrentes — features que eles têm e eu não
-5. [SE TIVER] Dados de uso — features mais e menos usadas
+1. Tickets de suporte dos Ãºltimos 60 dias â€” extraia pedidos de features
+2. Posts da comunidade â€” o que as pessoas estÃ£o pedindo
+3. Motivos de churn â€” o que faltou pro cliente ficar
+4. Concorrentes â€” features que eles tÃªm e eu nÃ£o
+5. [SE TIVER] Dados de uso â€” features mais e menos usadas
 
 Me entregue:
-1. **Feature requests rankeadas** — por frequência × impacto
-2. **Quick wins** — features fáceis de implementar com alto impacto (< 1 semana dev)
-3. **Must-have vs nice-to-have** — separar claramente
-4. **Comparativo concorrentes** — feature parity, gaps, vantagens
-5. **Roadmap sugerido** — próximas 4 semanas, priorizado
+1. **Feature requests rankeadas** â€” por frequÃªncia Ã— impacto
+2. **Quick wins** â€” features fÃ¡ceis de implementar com alto impacto (< 1 semana dev)
+3. **Must-have vs nice-to-have** â€” separar claramente
+4. **Comparativo concorrentes** â€” feature parity, gaps, vantagens
+5. **Roadmap sugerido** â€” prÃ³ximas 4 semanas, priorizado
 
-Formato: tabela com colunas (Feature | Frequência | Impacto | Esforço | Prioridade).
+Formato: tabela com colunas (Feature | FrequÃªncia | Impacto | EsforÃ§o | Prioridade).
 
-Use a fórmula: Prioridade = (Frequência × Impacto) / Esforço
+Use a fÃ³rmula: Prioridade = (FrequÃªncia Ã— Impacto) / EsforÃ§o
 ```
 
-## Variação: Feedback Loop de Features
+## VariaÃ§Ã£o: Feedback Loop de Features
 
 ```
 Configure um cron mensal que:
@@ -43,5 +43,9 @@ Configure um cron mensal que:
 2. Atualiza a lista de feature requests
 3. Compara com o roadmap atual
 4. Me avisa se alguma feature subiu muito em demanda
-5. Salva o histórico pra ver tendências ao longo do tempo
+5. Salva o histÃ³rico pra ver tendÃªncias ao longo do tempo
 ```
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

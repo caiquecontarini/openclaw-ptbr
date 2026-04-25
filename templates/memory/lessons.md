@@ -1,16 +1,20 @@
-# Lições Aprendidas
+﻿# LiÃ§Ãµes Aprendidas
 
-> Erros, padrões e aprendizados do dia a dia com o agente.
-> 🔒 Estratégicas = permanentes | ⏳ Táticas = expiram em 30 dias
+> Erros, padrÃµes e aprendizados do dia a dia com o agente.
+> ðŸ”’ EstratÃ©gicas = permanentes | â³ TÃ¡ticas = expiram em 30 dias
 
-## 🔒 Estratégicas
+## ðŸ”’ EstratÃ©gicas
 
-[As lições mais importantes ficam aqui — padrões que sempre valem]
+[As liÃ§Ãµes mais importantes ficam aqui â€” padrÃµes que sempre valem]
 
-## ⏳ Táticas
+## â³ TÃ¡ticas
 
-[Workarounds temporários, bugs específicos, configs que podem mudar]
+[Workarounds temporÃ¡rios, bugs especÃ­ficos, configs que podem mudar]
 
 ---
 
-*Revisão mensal: deletar táticas vencidas.*
+*RevisÃ£o mensal: deletar tÃ¡ticas vencidas.*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

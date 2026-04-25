@@ -1,30 +1,30 @@
-# Prompt do Aluno — Aula N-4: Lentidão do Bot no Telegram
+﻿# Prompt do Aluno â€” Aula N-4: LentidÃ£o do Bot no Telegram
 
-**Como usar:** Cole este prompt diretamente no seu agente OpenClaw para iniciar uma sessão interativa de diagnóstico e resolução da lentidão do bot.
+**Como usar:** Cole este prompt diretamente no seu agente OpenClaw para iniciar uma sessÃ£o interativa de diagnÃ³stico e resoluÃ§Ã£o da lentidÃ£o do bot.
 
 ---
 
-## 📋 PROMPT PRINCIPAL
+## ðŸ“‹ PROMPT PRINCIPAL
 
 ```
-Meu bot no Telegram está lento — às vezes demora 30 segundos ou mais pra responder, e às vezes parece que trava. 
+Meu bot no Telegram estÃ¡ lento â€” Ã s vezes demora 30 segundos ou mais pra responder, e Ã s vezes parece que trava. 
 
-Quero fazer um diagnóstico completo com você. Me guia pelo processo passo a passo, como na Aula N-4 do curso.
+Quero fazer um diagnÃ³stico completo com vocÃª. Me guia pelo processo passo a passo, como na Aula N-4 do curso.
 
 Para cada etapa:
 1. Me diz qual comando rodar ou qual config verificar
 2. Me explica o que procurar no resultado
-3. Aguarda eu colar a saída
-4. Analisa e me diz se essa é a causa
+3. Aguarda eu colar a saÃ­da
+4. Analisa e me diz se essa Ã© a causa
 
-Vamos começar pelo diagnóstico inicial. Qual é o primeiro passo?
+Vamos comeÃ§ar pelo diagnÃ³stico inicial. Qual Ã© o primeiro passo?
 ```
 
 ---
 
-## 🔍 PROMPTS DE DIAGNÓSTICO POR CAUSA
+## ðŸ” PROMPTS DE DIAGNÃ“STICO POR CAUSA
 
-Use os prompts abaixo conforme o diagnóstico avançar:
+Use os prompts abaixo conforme o diagnÃ³stico avanÃ§ar:
 
 ### Se suspeitar de contexto cheio:
 
@@ -32,13 +32,13 @@ Use os prompts abaixo conforme o diagnóstico avançar:
 Vou rodar /status agora e te mostrar o resultado.
 [cole o resultado do /status]
 
-É o contexto? O que você recomenda — /compact ou /new? Me explica a diferença antes de eu decidir.
+Ã‰ o contexto? O que vocÃª recomenda â€” /compact ou /new? Me explica a diferenÃ§a antes de eu decidir.
 ```
 
 ### Se suspeitar de modelo pesado:
 
 ```
-Me mostra como ver qual modelo está configurado agora e como trocar 
+Me mostra como ver qual modelo estÃ¡ configurado agora e como trocar 
 para usar Sonnet nas conversas e Haiku nos crons. 
 Quero entender o impacto real no tempo de resposta.
 ```
@@ -46,73 +46,77 @@ Quero entender o impacto real no tempo de resposta.
 ### Se suspeitar de VPS fraca:
 
 ```
-Me ajuda a interpretar a saída do `openclaw status` e do `htop`.
-O que os números me dizem sobre se minha VPS aguenta a carga atual?
+Me ajuda a interpretar a saÃ­da do `openclaw status` e do `htop`.
+O que os nÃºmeros me dizem sobre se minha VPS aguenta a carga atual?
 ```
 
-### Se suspeitar de crons simultâneos:
+### Se suspeitar de crons simultÃ¢neos:
 
 ```
-Roda mentalmente: se eu tiver 4 crons todos às 09:00, o que acontece 
+Roda mentalmente: se eu tiver 4 crons todos Ã s 09:00, o que acontece 
 no servidor? Me mostra como escalonar eles e como listar os crons ativos.
 ```
 
 ### Se suspeitar de heartbeat agressivo:
 
 ```
-Meu heartbeat está configurado a cada X minutos. 
-Qual é o intervalo ideal? E devo usar Haiku pra ele? Por quê?
+Meu heartbeat estÃ¡ configurado a cada X minutos. 
+Qual Ã© o intervalo ideal? E devo usar Haiku pra ele? Por quÃª?
 ```
 
 ### Para ativar streaming parcial:
 
 ```
-Quero ativar o streaming parcial no Telegram pra melhorar a percepção 
+Quero ativar o streaming parcial no Telegram pra melhorar a percepÃ§Ã£o 
 de velocidade. Me mostra exatamente onde e como configurar isso no openclaw.json.
 ```
 
 ---
 
-## ✅ PROMPT DE VERIFICAÇÃO FINAL
+## âœ… PROMPT DE VERIFICAÃ‡ÃƒO FINAL
 
-Após implementar as mudanças:
+ApÃ³s implementar as mudanÃ§as:
 
 ```
-Implementei as mudanças que você sugeriu. Agora vamos verificar se funcionou:
+Implementei as mudanÃ§as que vocÃª sugeriu. Agora vamos verificar se funcionou:
 
-1. Como eu testo se o bot ficou mais rápido de forma objetiva?
-2. O que devo monitorar nas próximas 24 horas para confirmar que está estável?
-3. Tem alguma configuração de "prevenção" que você recomenda pra não ter esse problema de novo?
+1. Como eu testo se o bot ficou mais rÃ¡pido de forma objetiva?
+2. O que devo monitorar nas prÃ³ximas 24 horas para confirmar que estÃ¡ estÃ¡vel?
+3. Tem alguma configuraÃ§Ã£o de "prevenÃ§Ã£o" que vocÃª recomenda pra nÃ£o ter esse problema de novo?
 
-Me faz um resumo das mudanças que fizemos e do que cada uma resolve.
+Me faz um resumo das mudanÃ§as que fizemos e do que cada uma resolve.
 ```
 
 ---
 
-## 📊 PROMPT DE EXERCÍCIO PRÁTICO
+## ðŸ“Š PROMPT DE EXERCÃCIO PRÃTICO
 
-Para praticar o diagnóstico de forma estruturada:
+Para praticar o diagnÃ³stico de forma estruturada:
 
 ```
-Vou te dar uma situação hipotética e você me guia no diagnóstico:
+Vou te dar uma situaÃ§Ã£o hipotÃ©tica e vocÃª me guia no diagnÃ³stico:
 
-Situação: Bot funcionando bem por semanas. De repente, hoje à tarde começa a 
-demorar 20-30s em toda mensagem. É o mesmo horário em que eu adicionei 3 novos 
+SituaÃ§Ã£o: Bot funcionando bem por semanas. De repente, hoje Ã  tarde comeÃ§a a 
+demorar 20-30s em toda mensagem. Ã‰ o mesmo horÃ¡rio em que eu adicionei 3 novos 
 crons de monitoramento e aumentei o heartbeat de 30 para 5 minutos.
 
-Sem olhar os logs ainda — quais são as hipóteses mais prováveis? 
-Em que ordem eu deveria investigar e por quê?
+Sem olhar os logs ainda â€” quais sÃ£o as hipÃ³teses mais provÃ¡veis? 
+Em que ordem eu deveria investigar e por quÃª?
 ```
 
 ---
 
-## 💡 DICAS DE USO
+## ðŸ’¡ DICAS DE USO
 
-- **Cole resultados reais:** Quando o agente pedir saída de um comando, cole o resultado real do seu terminal. O diagnóstico fica muito mais preciso.
-- **Um problema por vez:** Se tiver múltiplas causas, resolva uma por vez e teste antes de passar pra próxima.
-- **Salve as mudanças:** Após cada alteração no `openclaw.json`, recarregue o gateway com `openclaw gateway restart`.
-- **Meça antes e depois:** Anote o tempo médio de resposta antes das mudanças para comparar depois.
+- **Cole resultados reais:** Quando o agente pedir saÃ­da de um comando, cole o resultado real do seu terminal. O diagnÃ³stico fica muito mais preciso.
+- **Um problema por vez:** Se tiver mÃºltiplas causas, resolva uma por vez e teste antes de passar pra prÃ³xima.
+- **Salve as mudanÃ§as:** ApÃ³s cada alteraÃ§Ã£o no `openclaw.json`, recarregue o gateway com `openclaw gateway restart`.
+- **MeÃ§a antes e depois:** Anote o tempo mÃ©dio de resposta antes das mudanÃ§as para comparar depois.
 
 ---
 
-*Prompt criado para a Aula N-4 do Curso OpenClaw | Nível: Intermediário*
+*Prompt criado para a Aula N-4 do Curso OpenClaw | NÃ­vel: IntermediÃ¡rio*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

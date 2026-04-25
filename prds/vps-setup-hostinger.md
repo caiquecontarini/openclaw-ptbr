@@ -1,15 +1,15 @@
-# PRD: Setup VPS na Hostinger (Bare Metal, sem Docker)
+﻿# PRD: Setup VPS na Hostinger (Bare Metal, sem Docker)
 
-> Guia step-by-step para o Módulo 1 do curso.
-> Bruno segue este roteiro na gravação.
-> **Atualizado para OpenClaw v2026.4.9** (ChatGPT OAuth como padrão)
+> Guia step-by-step para o MÃ³dulo 1 do curso.
+> Bruno segue este roteiro na gravaÃ§Ã£o.
+> **Atualizado para OpenClaw v2026.4.9** (ChatGPT OAuth como padrÃ£o)
 
 ---
 
-## Pré-requisitos
+## PrÃ©-requisitos
 
 - Conta na Hostinger (https://www.hostinger.com)
-- Conta no ChatGPT (https://chat.openai.com) — Plus (R$99/mês) ou Pro. O login OAuth não precisa de API key.
+- Conta no ChatGPT (https://chat.openai.com) â€” Plus (R$99/mÃªs) ou Pro. O login OAuth nÃ£o precisa de API key.
 - Telegram instalado no celular
 
 ## Tempo estimado: 15-20 minutos
@@ -19,20 +19,20 @@
 ## Passo 1: Criar a VPS na Hostinger (3 min)
 
 1. Acesse https://www.hostinger.com/vps-hosting
-2. Escolha o plano KVM 2 (melhor custo-benefício):
-   - 2 vCPUs, 4GB RAM, 80GB SSD — ~R$50-70/mês com cupom BRUNOOKAMOTO (10% off)
-3. **IMPORTANTE:** NÃO use o template Docker/One-Click do OpenClaw
+2. Escolha o plano KVM 2 (melhor custo-benefÃ­cio):
+   - 2 vCPUs, 4GB RAM, 80GB SSD â€” ~R$50-70/mÃªs com cupom BRUNOOKAMOTO (10% off)
+3. **IMPORTANTE:** NÃƒO use o template Docker/One-Click do OpenClaw
 4. Selecione **Ubuntu 24.04** como sistema operacional
 5. Gere uma **SSH key** (mais seguro que senha root):
    ```bash
    ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
    cat ~/.ssh/id_ed25519.pub
    ```
-   Cole a chave pública no painel Hostinger. Se preferir senha: defina uma root forte.
+   Cole a chave pÃºblica no painel Hostinger. Se preferir senha: defina uma root forte.
 6. Anote o IP da VPS
 
-> **Por que não o One-Click Docker?**
-> O Docker isola o agente num container — instalar skills, integrações e ferramentas extras fica muito mais complicado. Pra quem não é técnico, é uma barreira desnecessária. Instalando direto, tudo funciona como esperado.
+> **Por que nÃ£o o One-Click Docker?**
+> O Docker isola o agente num container â€” instalar skills, integraÃ§Ãµes e ferramentas extras fica muito mais complicado. Pra quem nÃ£o Ã© tÃ©cnico, Ã© uma barreira desnecessÃ¡ria. Instalando direto, tudo funciona como esperado.
 
 ---
 
@@ -50,10 +50,10 @@ ssh root@SEU_IP_DA_VPS
 - User: root
 
 ### Primeira vez? A Hostinger tem terminal no painel:
-- hPanel → VPS → Terminal (botão no topo)
+- hPanel â†’ VPS â†’ Terminal (botÃ£o no topo)
 - Funciona direto no navegador, sem instalar nada
 
-> 💡 **Dica pro curso:** Mostrar as duas opções (terminal local + terminal do painel) pra atender quem não sabe usar SSH.
+> ðŸ’¡ **Dica pro curso:** Mostrar as duas opÃ§Ãµes (terminal local + terminal do painel) pra atender quem nÃ£o sabe usar SSH.
 
 ---
 
@@ -64,9 +64,9 @@ ssh root@SEU_IP_DA_VPS
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
-Isso instala o Node.js (se necessário) e o OpenClaw.
+Isso instala o Node.js (se necessÃ¡rio) e o OpenClaw.
 
-Depois, rodar o wizard de configuração:
+Depois, rodar o wizard de configuraÃ§Ã£o:
 
 ```bash
 openclaw onboard --install-daemon
@@ -74,52 +74,52 @@ openclaw onboard --install-daemon
 
 O wizard vai perguntar:
 
-1. **Gateway mode:** → Escolher `Local`
-2. **AI Provider:** → Escolher `OpenAI`
-3. **Login OAuth:** → O wizard abre o fluxo OAuth do ChatGPT. Login com conta Plus/Pro. **Não precisa de API key.**
-4. **Model:** → `GPT-5.4` (recomendado) ou `GPT-4o` (mais econômico)
-5. **Instalar como serviço?** → Sim (roda 24/7 automaticamente)
+1. **Gateway mode:** â†’ Escolher `Local`
+2. **AI Provider:** â†’ Escolher `OpenAI`
+3. **Login OAuth:** â†’ O wizard abre o fluxo OAuth do ChatGPT. Login com conta Plus/Pro. **NÃ£o precisa de API key.**
+4. **Model:** â†’ `GPT-5.4` (recomendado) ou `GPT-4o` (mais econÃ´mico)
+5. **Instalar como serviÃ§o?** â†’ Sim (roda 24/7 automaticamente)
 
-> 💡 **Dica pro curso:** Mostrar o fluxo OAuth — 1 clique no navegador, muito mais simples que API key. Explicar que a assinatura ChatGPT existente é suficiente.
+> ðŸ’¡ **Dica pro curso:** Mostrar o fluxo OAuth â€” 1 clique no navegador, muito mais simples que API key. Explicar que a assinatura ChatGPT existente Ã© suficiente.
 
 ---
 
-## ⚠️ Passo 3.5: Configurar Perfil de Ferramentas (NOVO — v2026.3.2)
+## âš ï¸ Passo 3.5: Configurar Perfil de Ferramentas (NOVO â€” v2026.3.2)
 
-> 🔴 **CRÍTICO:** Este passo é OBRIGATÓRIO a partir da versão 2026.3.2. Sem ele, seu agente vai responder mensagens mas não vai conseguir fazer NADA útil.
+> ðŸ”´ **CRÃTICO:** Este passo Ã© OBRIGATÃ“RIO a partir da versÃ£o 2026.3.2. Sem ele, seu agente vai responder mensagens mas nÃ£o vai conseguir fazer NADA Ãºtil.
 
-A partir da versão **2026.3.2**, o OpenClaw vem com `tools.profile = messaging` por padrão. Isso significa que o agente só pode responder mensagens, mas **NÃO pode** executar comandos, ler arquivos, usar ferramentas ou fazer qualquer coisa além de conversar.
+A partir da versÃ£o **2026.3.2**, o OpenClaw vem com `tools.profile = messaging` por padrÃ£o. Isso significa que o agente sÃ³ pode responder mensagens, mas **NÃƒO pode** executar comandos, ler arquivos, usar ferramentas ou fazer qualquer coisa alÃ©m de conversar.
 
-Para ter um agente verdadeiramente funcional, você PRECISA mudar para o perfil `full`:
+Para ter um agente verdadeiramente funcional, vocÃª PRECISA mudar para o perfil `full`:
 
 ```bash
 openclaw config set tools.profile full
 ```
 
-Em seguida, valide que tudo está correto com o novo comando de validação:
+Em seguida, valide que tudo estÃ¡ correto com o novo comando de validaÃ§Ã£o:
 
 ```bash
 openclaw config validate
 ```
 
-A saída deve mostrar algo como:
+A saÃ­da deve mostrar algo como:
 
 ```
-✅ tools.profile: full
-✅ gateway.mode: local
-✅ ai.provider: openai
-✅ Configuration valid — 0 warnings
+âœ… tools.profile: full
+âœ… gateway.mode: local
+âœ… ai.provider: openai
+âœ… Configuration valid â€” 0 warnings
 ```
 
-> 💡 **Por que esse default mudou?** A comunidade de segurança identificou que muitas instalações expostas na internet davam acesso completo de ferramentas a qualquer pessoa que encontrasse o bot. O novo default `messaging` é mais seguro para quem não sabe o que está fazendo. Mas **para o curso**, queremos `full` — daí este passo.
+> ðŸ’¡ **Por que esse default mudou?** A comunidade de seguranÃ§a identificou que muitas instalaÃ§Ãµes expostas na internet davam acesso completo de ferramentas a qualquer pessoa que encontrasse o bot. O novo default `messaging` Ã© mais seguro para quem nÃ£o sabe o que estÃ¡ fazendo. Mas **para o curso**, queremos `full` â€” daÃ­ este passo.
 
-> 📺 **Dica pro curso:** Mostrar o "antes e depois" — enviar uma mensagem pro bot sem configurar (`tools.profile = messaging`) e ver ele respondendo mas sem conseguir executar comandos. Depois configurar e mostrar a diferença. Muito didático!
+> ðŸ“º **Dica pro curso:** Mostrar o "antes e depois" â€” enviar uma mensagem pro bot sem configurar (`tools.profile = messaging`) e ver ele respondendo mas sem conseguir executar comandos. Depois configurar e mostrar a diferenÃ§a. Muito didÃ¡tico!
 
 ---
 
-## ⚠️ Passo 3.6: Configurar Timezone (NOVO — v2026.3.13)
+## âš ï¸ Passo 3.6: Configurar Timezone (NOVO â€” v2026.3.13)
 
-> 🕐 **IMPORTANTE para quem vai usar crons:** Sem este passo, todos os seus crons vão disparar no horário UTC — 3 horas adiantados em relação ao Brasil. Um cron configurado "todo dia às 9h" vai disparar às 12h.
+> ðŸ• **IMPORTANTE para quem vai usar crons:** Sem este passo, todos os seus crons vÃ£o disparar no horÃ¡rio UTC â€” 3 horas adiantados em relaÃ§Ã£o ao Brasil. Um cron configurado "todo dia Ã s 9h" vai disparar Ã s 12h.
 
 ```bash
 sudo systemctl edit openclaw
@@ -145,17 +145,17 @@ Verifique que o gateway reiniciou corretamente:
 openclaw gateway status
 ```
 
-> 📺 **Dica pro curso:** Demonstrar o efeito ao vivo — criar um cron de teste, mostrar ele disparando no horário errado (UTC), depois configurar OPENCLAW_TZ e mostrar o horário correto. Momento muito didático.
+> ðŸ“º **Dica pro curso:** Demonstrar o efeito ao vivo â€” criar um cron de teste, mostrar ele disparando no horÃ¡rio errado (UTC), depois configurar OPENCLAW_TZ e mostrar o horÃ¡rio correto. Momento muito didÃ¡tico.
 
 ---
 
-## Passo 4: Verificar se está rodando (30 seg)
+## Passo 4: Verificar se estÃ¡ rodando (30 seg)
 
 ```bash
 openclaw gateway status
 ```
 
-Deve mostrar: `running` ✅
+Deve mostrar: `running` âœ…
 
 Se quiser ver o painel web:
 ```bash
@@ -163,7 +163,7 @@ openclaw dashboard
 ```
 Acesse: `http://SEU_IP:18789`
 
-> 📡 **Novo na v2026.3.2:** O Telegram streaming agora é ativado por padrão. Quando seu agente estiver "pensando", você vai ver o indicador "digitando..." no Telegram em tempo real. Isso é normal e esperado — o agente está processando sua mensagem ao vivo!
+> ðŸ“¡ **Novo na v2026.3.2:** O Telegram streaming agora Ã© ativado por padrÃ£o. Quando seu agente estiver "pensando", vocÃª vai ver o indicador "digitando..." no Telegram em tempo real. Isso Ã© normal e esperado â€” o agente estÃ¡ processando sua mensagem ao vivo!
 
 ---
 
@@ -192,7 +192,7 @@ Depois, abra o chat com seu bot no Telegram e envie `/start`.
 
 ---
 
-## Passo 7: Segurança IMEDIATA (2 min)
+## Passo 7: SeguranÃ§a IMEDIATA (2 min)
 
 **ANTES de fazer qualquer outra coisa**, blindar o acesso:
 
@@ -201,14 +201,14 @@ Depois, abra o chat com seu bot no Telegram e envie `/start`.
 cat ~/.openclaw/openclaw.json
 ```
 
-Garantir que `dmPolicy` está como `allowlist` e que SÓ o seu Telegram ID está autorizado.
+Garantir que `dmPolicy` estÃ¡ como `allowlist` e que SÃ“ o seu Telegram ID estÃ¡ autorizado.
 
 Para descobrir seu Telegram ID:
 - Envie qualquer mensagem pro bot
 - Cheque os logs: `openclaw gateway logs`
 - O ID aparece nas mensagens recebidas
 
-> 🔴 **ALERTA no curso:** Se dmPolicy estiver "open", QUALQUER PESSOA que encontrar seu bot pode comandar seu agente. Isso é um risco de segurança gravíssimo. Mostrar isso no vídeo com ênfase.
+> ðŸ”´ **ALERTA no curso:** Se dmPolicy estiver "open", QUALQUER PESSOA que encontrar seu bot pode comandar seu agente. Isso Ã© um risco de seguranÃ§a gravÃ­ssimo. Mostrar isso no vÃ­deo com Ãªnfase.
 
 ---
 
@@ -216,25 +216,25 @@ Para descobrir seu Telegram ID:
 
 Envie uma mensagem pro bot no Telegram:
 
-> "Oi! Me diz quem você é e o que pode fazer."
+> "Oi! Me diz quem vocÃª Ã© e o que pode fazer."
 
-Se o agente responder → **SETUP COMPLETO!** 🎉
+Se o agente responder â†’ **SETUP COMPLETO!** ðŸŽ‰
 
-> 📱 **Novo na v2026.3.2:** Você vai ver "digitando..." aparecer no Telegram enquanto o agente processa. Isso é o streaming ativo — é normal e significa que o agente está funcionando!
+> ðŸ“± **Novo na v2026.3.2:** VocÃª vai ver "digitando..." aparecer no Telegram enquanto o agente processa. Isso Ã© o streaming ativo â€” Ã© normal e significa que o agente estÃ¡ funcionando!
 
 ---
 
-## Checkpoint do Módulo 1
+## Checkpoint do MÃ³dulo 1
 
 - [ ] VPS rodando na Hostinger (Ubuntu 24.04)
-- [ ] OpenClaw instalado (bare metal, não Docker)
-- [ ] Gateway rodando como serviço (24/7)
-- [ ] **`tools.profile = full` configurado** ← NOVO (v2026.3.2)
-- [ ] `openclaw config validate` sem erros ← NOVO (v2026.3.2)
-- [ ] **`OPENCLAW_TZ=America/Sao_Paulo` configurado** ← NOVO (v2026.3.13)
+- [ ] OpenClaw instalado (bare metal, nÃ£o Docker)
+- [ ] Gateway rodando como serviÃ§o (24/7)
+- [ ] **`tools.profile = full` configurado** â† NOVO (v2026.3.2)
+- [ ] `openclaw config validate` sem erros â† NOVO (v2026.3.2)
+- [ ] **`OPENCLAW_TZ=America/Sao_Paulo` configurado** â† NOVO (v2026.3.13)
 - [ ] Bot do Telegram criado e conectado
-- [ ] dmPolicy = allowlist (segurança básica)
-- [ ] Primeiro "oi" respondido ✅
+- [ ] dmPolicy = allowlist (seguranÃ§a bÃ¡sica)
+- [ ] Primeiro "oi" respondido âœ…
 
 ---
 
@@ -248,13 +248,13 @@ source ~/.bashrc
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
-### "Falha na autenticação OAuth"
+### "Falha na autenticaÃ§Ã£o OAuth"
 - Verificar se a conta ChatGPT tem assinatura Plus/Pro ativa
 - Tentar login manual em https://chat.openai.com
 - Se ok: openclaw auth login --provider openai
-- Copiar a key novamente (sem espaços extras)
+- Copiar a key novamente (sem espaÃ§os extras)
 
-### "Bot não responde no Telegram"
+### "Bot nÃ£o responde no Telegram"
 ```bash
 # Ver logs
 openclaw gateway logs
@@ -262,15 +262,15 @@ openclaw gateway logs
 openclaw gateway status
 ```
 
-### "Agente responde mas não consegue executar comandos" (NOVO — v2026.3.2)
+### "Agente responde mas nÃ£o consegue executar comandos" (NOVO â€” v2026.3.2)
 ```bash
-# Sintoma: bot responde "não consigo fazer isso" para qualquer tarefa
-# Causa: tools.profile ainda está como 'messaging'
+# Sintoma: bot responde "nÃ£o consigo fazer isso" para qualquer tarefa
+# Causa: tools.profile ainda estÃ¡ como 'messaging'
 openclaw config set tools.profile full
 openclaw gateway restart
 ```
 
-### "Gateway não inicia"
+### "Gateway nÃ£o inicia"
 ```bash
 # Checar porta
 ss -tlnp | grep 18789
@@ -284,18 +284,22 @@ openclaw gateway restart
 
 | Item | Custo mensal |
 |------|-------------|
-| VPS Hostinger (KVM 2) | ~$10-15/mês (cupom BRUNOOKAMOTO 10% off) |
-| ChatGPT API fallback (opcional) | ~$5-15/mês |
-| OpenRouter multi-LLM (opcional) | ~$5-15/mês |
-| Telegram | Grátis |
-| **Total (ChatGPT OAuth)** | **~$99/mês (só assinatura)** |
-| **Total (ChatGPT API key)** | **~$15-30/mês** |
-| **Total (OpenRouter — opção econômica)** | **~$10-25/mês** | — opção econômica)** | **~$10-25/mês** |
+| VPS Hostinger (KVM 2) | ~$10-15/mÃªs (cupom BRUNOOKAMOTO 10% off) |
+| ChatGPT API fallback (opcional) | ~$5-15/mÃªs |
+| OpenRouter multi-LLM (opcional) | ~$5-15/mÃªs |
+| Telegram | GrÃ¡tis |
+| **Total (ChatGPT OAuth)** | **~$99/mÃªs (sÃ³ assinatura)** |
+| **Total (ChatGPT API key)** | **~$15-30/mÃªs** |
+| **Total (OpenRouter â€” opÃ§Ã£o econÃ´mica)** | **~$10-25/mÃªs** | â€” opÃ§Ã£o econÃ´mica)** | **~$10-25/mÃªs** |
 
-> 💡 **Dica pro curso:** "Se você já tem ChatGPT Plus, o custo marginal é zero — o OpenClaw usa sua conta existente."
+> ðŸ’¡ **Dica pro curso:** "Se vocÃª jÃ¡ tem ChatGPT Plus, o custo marginal Ã© zero â€” o OpenClaw usa sua conta existente."
 
-> 💰 **OpenRouter como alternativa:** Se quiser usar múltiplos modelos (GPT-4o, Gemini Flash, Claude, etc.), a OpenRouter é ~$5-15/mês. Ver aula extra de OpenRouter.
+> ðŸ’° **OpenRouter como alternativa:** Se quiser usar mÃºltiplos modelos (GPT-4o, Gemini Flash, Claude, etc.), a OpenRouter Ã© ~$5-15/mÃªs. Ver aula extra de OpenRouter.
 
 ---
 
-*Este é o módulo mais técnico. Depois daqui, é só configurar o agente — e isso é a parte divertida.* 🍇
+*Este Ã© o mÃ³dulo mais tÃ©cnico. Depois daqui, Ã© sÃ³ configurar o agente â€” e isso Ã© a parte divertida.* ðŸ‡
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

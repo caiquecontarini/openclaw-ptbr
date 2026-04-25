@@ -1,52 +1,56 @@
-# 🔬 Use Case: Deep Research
+﻿# ðŸ”¬ Use Case: Deep Research
 
-> Pesquisa profunda sobre qualquer tópico com múltiplas fontes.
+> Pesquisa profunda sobre qualquer tÃ³pico com mÃºltiplas fontes.
 
 ## O que faz
 
 Spawna sub-agentes que pesquisam em paralelo e consolida tudo:
 - Busca na web (Brave, Perplexity)
-- Análise de papers e artigos longos
+- AnÃ¡lise de papers e artigos longos
 - Monitoramento de concorrentes
-- Comparação de ferramentas/soluções
-- Resumo executivo com recomendações
+- ComparaÃ§Ã£o de ferramentas/soluÃ§Ãµes
+- Resumo executivo com recomendaÃ§Ãµes
 
 ## Prompt
 
 ```
-Faça uma pesquisa profunda sobre [TÓPICO].
+FaÃ§a uma pesquisa profunda sobre [TÃ“PICO].
 
-Quero que você:
-1. Pesquise em pelo menos 5 fontes diferentes (web, papers, artigos, discussões)
-2. Analise os pontos de vista diferentes (prós, contras, debates)
-3. Identifique tendências e o que está mudando
-4. Compare as principais soluções/abordagens
-5. Me dê uma recomendação baseada no meu contexto
+Quero que vocÃª:
+1. Pesquise em pelo menos 5 fontes diferentes (web, papers, artigos, discussÃµes)
+2. Analise os pontos de vista diferentes (prÃ³s, contras, debates)
+3. Identifique tendÃªncias e o que estÃ¡ mudando
+4. Compare as principais soluÃ§Ãµes/abordagens
+5. Me dÃª uma recomendaÃ§Ã£o baseada no meu contexto
 
 Formato do output:
-- **Resumo executivo** (3 parágrafos, pra quem tem pressa)
-- **Análise detalhada** (por fonte, com links)
-- **Comparativo** (tabela se aplicável)
-- **Recomendação** (o que EU deveria fazer, considerando meu perfil)
+- **Resumo executivo** (3 parÃ¡grafos, pra quem tem pressa)
+- **AnÃ¡lise detalhada** (por fonte, com links)
+- **Comparativo** (tabela se aplicÃ¡vel)
+- **RecomendaÃ§Ã£o** (o que EU deveria fazer, considerando meu perfil)
 - **Fontes** (links pra eu aprofundar se quiser)
 
-Use thinking mode pra isso — quero qualidade, não velocidade.
+Use thinking mode pra isso â€” quero qualidade, nÃ£o velocidade.
 ```
 
-## Variações
+## VariaÃ§Ãµes
 
 ### Pesquisa de concorrentes
 ```
 Pesquise meus concorrentes: [LISTA].
-Pra cada um, me diga: preço, features, pontos fortes, pontos fracos, o que postaram recentemente, e onde eu tenho vantagem.
+Pra cada um, me diga: preÃ§o, features, pontos fortes, pontos fracos, o que postaram recentemente, e onde eu tenho vantagem.
 ```
 
-### Preparação para entrevista/podcast
+### PreparaÃ§Ã£o para entrevista/podcast
 ```
-Vou entrevistar [PESSOA]. Pesquise tudo sobre ela: trajetória, projetos, opiniões polêmicas, conteúdos recentes. Me dê 10 perguntas que NINGUÉM fez ainda.
+Vou entrevistar [PESSOA]. Pesquise tudo sobre ela: trajetÃ³ria, projetos, opiniÃµes polÃªmicas, conteÃºdos recentes. Me dÃª 10 perguntas que NINGUÃ‰M fez ainda.
 ```
 
-### Análise de tendências
+### AnÃ¡lise de tendÃªncias
 ```
-Quais são as tendências emergentes em [NICHO] para os próximos 6 meses? Pesquise newsletters, Twitter, Reddit, e HN. Me dê as 5 tendências com mais sinal.
+Quais sÃ£o as tendÃªncias emergentes em [NICHO] para os prÃ³ximos 6 meses? Pesquise newsletters, Twitter, Reddit, e HN. Me dÃª as 5 tendÃªncias com mais sinal.
 ```
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

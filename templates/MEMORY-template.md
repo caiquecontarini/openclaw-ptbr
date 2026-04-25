@@ -1,40 +1,44 @@
-# MEMORY.md — Template
+﻿# MEMORY.md â€” Template
 
-> Este arquivo é um índice. Conteúdo detalhado vive nos topic files.
+> Este arquivo Ã© um Ã­ndice. ConteÃºdo detalhado vive nos topic files.
 
-## 📂 Topic Files
+## ðŸ“‚ Topic Files
 
-| Arquivo | O que contém |
+| Arquivo | O que contÃ©m |
 |---------|-------------|
-| `memory/projects.md` | Projetos ativos e concluídos |
-| `memory/decisions.md` | Decisões permanentes com contexto |
-| `memory/lessons.md` | Lições aprendidas, erros, padrões |
+| `memory/projects.md` | Projetos ativos e concluÃ­dos |
+| `memory/decisions.md` | DecisÃµes permanentes com contexto |
+| `memory/lessons.md` | LiÃ§Ãµes aprendidas, erros, padrÃµes |
 | `memory/people.md` | Equipe, parceiros, contatos |
 | `memory/pending.md` | Aguardando input |
-| `memory/YYYY-MM-DD.md` | Notas diárias (raw capture) |
+| `memory/YYYY-MM-DD.md` | Notas diÃ¡rias (raw capture) |
 
-## 🔄 Ciclo de Memória
+## ðŸ”„ Ciclo de MemÃ³ria
 
 ```
-Sessão (conversa) → memory/YYYY-MM-DD.md (raw)
-                   ↓ consolidação periódica
+SessÃ£o (conversa) â†’ memory/YYYY-MM-DD.md (raw)
+                   â†“ consolidaÃ§Ã£o periÃ³dica
               Topic files (curado)
-                   ↓ índice atualizado
-              MEMORY.md (sumário)
+                   â†“ Ã­ndice atualizado
+              MEMORY.md (sumÃ¡rio)
 ```
 
-## 📸 Estado Atual
+## ðŸ“¸ Estado Atual
 
 [PREENCHA COM O ESTADO ATUAL DOS SEUS PROJETOS E PRIORIDADES]
 
 ### Projetos Ativos
-- **[PROJETO 1]** — [status]
-- **[PROJETO 2]** — [status]
+- **[PROJETO 1]** â€” [status]
+- **[PROJETO 2]** â€” [status]
 
-### Pendências
-- [PENDÊNCIA 1]
-- [PENDÊNCIA 2]
+### PendÃªncias
+- [PENDÃŠNCIA 1]
+- [PENDÃŠNCIA 2]
 
 ---
 
-*Última atualização: [DATA]*
+*Ãšltima atualizaÃ§Ã£o: [DATA]*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

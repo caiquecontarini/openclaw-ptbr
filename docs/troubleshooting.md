@@ -1,21 +1,21 @@
-# 🔧 Troubleshooting — FAQ de Problemas Comuns
+﻿# ðŸ”§ Troubleshooting â€” FAQ de Problemas Comuns
 
-> 35+ lições aprendidas em 13 dias de produção. Se deu erro, a resposta provavelmente tá aqui.
+> 35+ liÃ§Ãµes aprendidas em 13 dias de produÃ§Ã£o. Se deu erro, a resposta provavelmente tÃ¡ aqui.
 
 ---
 
-## 🔴 Críticos (quebra tudo se não resolver)
+## ðŸ”´ CrÃ­ticos (quebra tudo se nÃ£o resolver)
 
-### Meu cron dispara mas não executa nada
-**Sintoma:** Cron mostra `status: "ok"` mas `durationMs` é ~0ms. Nada acontece.
+### Meu cron dispara mas nÃ£o executa nada
+**Sintoma:** Cron mostra `status: "ok"` mas `durationMs` Ã© ~0ms. Nada acontece.
 **Causa:** Usar `systemEvent` + `sessionTarget: main`
-**Solução:**
+**SoluÃ§Ã£o:**
 ```json
 {
   "sessionTarget": "isolated",
   "payload": {
     "kind": "agentTurn",
-    "message": "sua instrução aqui"
+    "message": "sua instruÃ§Ã£o aqui"
   }
 }
 ```
@@ -23,10 +23,10 @@
 
 ---
 
-### Token overflow — sessão estourou
+### Token overflow â€” sessÃ£o estourou
 **Sintoma:** Agente para de responder, erros de contexto, respostas cortadas.
-**Causa:** Contexto excedeu o limite sem compactação configurada.
-**Solução:**
+**Causa:** Contexto excedeu o limite sem compactaÃ§Ã£o configurada.
+**SoluÃ§Ã£o:**
 ```json
 {
   "compaction": { "mode": "default" },
@@ -34,14 +34,14 @@
   "reserveTokensFloor": 30000
 }
 ```
-**Dica:** O `reserveTokensFloor` garante que o agente termina o raciocínio antes de compactar.
+**Dica:** O `reserveTokensFloor` garante que o agente termina o raciocÃ­nio antes de compactar.
 
 ---
 
 ### Qualquer pessoa comanda meu bot
 **Sintoma:** Estranhos mandando mensagem pro seu bot e ele respondendo.
 **Causa:** `dmPolicy` configurado como `"open"`.
-**Solução:** Mudar pra `"allowlist"` e adicionar só o seu Telegram ID:
+**SoluÃ§Ã£o:** Mudar pra `"allowlist"` e adicionar sÃ³ o seu Telegram ID:
 ```json
 {
   "dmPolicy": "allowlist",
@@ -53,141 +53,145 @@
 ---
 
 ### Me tranquei fora do SSH
-**Sintoma:** Não consigo acessar o servidor depois de configurar firewall.
+**Sintoma:** NÃ£o consigo acessar o servidor depois de configurar firewall.
 **Causa:** UFW bloqueou a porta SSH antes de liberar.
-**Solução:** Acesse pelo console web do painel da Hostinger (ou sua VPS) e rode:
+**SoluÃ§Ã£o:** Acesse pelo console web do painel da Hostinger (ou sua VPS) e rode:
 ```bash
 sudo ufw allow ssh
 sudo ufw allow 22/tcp
 ```
-**Prevenção:** SEMPRE rode `sudo ufw allow ssh` ANTES de `sudo ufw enable`.
+**PrevenÃ§Ã£o:** SEMPRE rode `sudo ufw allow ssh` ANTES de `sudo ufw enable`.
 
 ---
 
-## 🟠 Importantes (funciona mas com problemas)
+## ðŸŸ  Importantes (funciona mas com problemas)
 
-### Lembrete/cron não notifica no Telegram
-**Sintoma:** Cron roda mas não aparece mensagem no Telegram.
-**Causa:** `systemEvent` não envia pra canais — é evento interno.
-**Solução:** Usar `agentTurn` + `delivery: { mode: "announce" }`. O agente precisa usar a tool `message` pra enviar.
+### Lembrete/cron nÃ£o notifica no Telegram
+**Sintoma:** Cron roda mas nÃ£o aparece mensagem no Telegram.
+**Causa:** `systemEvent` nÃ£o envia pra canais â€” Ã© evento interno.
+**SoluÃ§Ã£o:** Usar `agentTurn` + `delivery: { mode: "announce" }`. O agente precisa usar a tool `message` pra enviar.
 
 ---
 
-### Múltiplos crons falhando no mesmo horário
-**Sintoma:** Alguns crons executam, outros dão timeout ou falham.
-**Causa:** Colisão de horários — muitos crons no mesmo minuto causam rate limit.
-**Solução:** Espaçar crons em pelo menos 15-30 minutos entre si.
+### MÃºltiplos crons falhando no mesmo horÃ¡rio
+**Sintoma:** Alguns crons executam, outros dÃ£o timeout ou falham.
+**Causa:** ColisÃ£o de horÃ¡rios â€” muitos crons no mesmo minuto causam rate limit.
+**SoluÃ§Ã£o:** EspaÃ§ar crons em pelo menos 15-30 minutos entre si.
 
 ---
 
 ### config.patch matou meus crons
 **Sintoma:** Crons pararam depois de alterar a config.
-**Causa:** `config.patch` reinicia o gateway e mata crons em execução.
-**Solução:** Fazer patches em horários sem crons rodando. Verificar schedule antes de alterar.
+**Causa:** `config.patch` reinicia o gateway e mata crons em execuÃ§Ã£o.
+**SoluÃ§Ã£o:** Fazer patches em horÃ¡rios sem crons rodando. Verificar schedule antes de alterar.
 
 ---
 
 ### Cloud IP bloqueado pelo YouTube/Instagram/X
 **Sintoma:** Erros ao tentar acessar YouTube transcripts, scraping de redes sociais.
-**Causa:** IPs de cloud (AWS, Hetzner, DigitalOcean) são bloqueados por plataformas.
-**Solução:** Usar **RapidAPI** como proxy:
-- YouTube Transcripts: Apify actor (~$0.007/vídeo)
+**Causa:** IPs de cloud (AWS, Hetzner, DigitalOcean) sÃ£o bloqueados por plataformas.
+**SoluÃ§Ã£o:** Usar **RapidAPI** como proxy:
+- YouTube Transcripts: Apify actor (~$0.007/vÃ­deo)
 - Instagram: RapidAPI Instagram Statistics
 - X/Twitter: RapidAPI API45
 - Free tiers generosos na maioria
 
 ---
 
-### yt-dlp não funciona na VPS
-**Sintoma:** Erro de bot detection ao baixar vídeos.
+### yt-dlp nÃ£o funciona na VPS
+**Sintoma:** Erro de bot detection ao baixar vÃ­deos.
 **Causa:** YouTube bloqueia downloads de cloud IPs.
-**Solução:** Usar Tella.tv pra gravar (sync automático) ou Apify pra transcrições.
+**SoluÃ§Ã£o:** Usar Tella.tv pra gravar (sync automÃ¡tico) ou Apify pra transcriÃ§Ãµes.
 
 ---
 
-### Agente carregando 50KB de histórico toda sessão
-**Sintoma:** Tokens queimando rápido, respostas lentas, custo alto.
+### Agente carregando 50KB de histÃ³rico toda sessÃ£o
+**Sintoma:** Tokens queimando rÃ¡pido, respostas lentas, custo alto.
 **Causa:** Session initialization sem regra de carregamento.
-**Solução:** Configurar session initialization rule:
+**SoluÃ§Ã£o:** Configurar session initialization rule:
 - Carregar APENAS: SOUL.md, USER.md, IDENTITY.md, memory/YYYY-MM-DD.md
 - Usar `memory_search()` sob demanda pro resto
-- Reduz de 50KB → 8KB por sessão
+- Reduz de 50KB â†’ 8KB por sessÃ£o
 
 ---
 
-## 🟡 Moderados (inconvenientes)
+## ðŸŸ¡ Moderados (inconvenientes)
 
 ### systemd override sobrescreve .env
 **Sintoma:** Troquei a API key no .env mas o agente usa a antiga.
-**Causa:** O override do systemd tem precedência sobre .env.
-**Solução:** Atualizar AMBOS: `.env` E `systemctl edit openclaw` (override).
+**Causa:** O override do systemd tem precedÃªncia sobre .env.
+**SoluÃ§Ã£o:** Atualizar AMBOS: `.env` E `systemctl edit openclaw` (override).
 
 ---
 
 ### Brave Search intermitente
-**Sintoma:** Buscas falham às vezes.
+**Sintoma:** Buscas falham Ã s vezes.
 **Causa:** API do Brave tem instabilidade ocasional.
-**Solução:** Ter fallback com `web_fetch` direto na URL.
+**SoluÃ§Ã£o:** Ter fallback com `web_fetch` direto na URL.
 
 ---
 
-### Sub-agent retorna histórico vazio
-**Sintoma:** Spawn de sub-agente não traz resultado.
-**Causa:** Sub-agents rodam em sandbox isolado — não acessam localhost.
-**Solução:** Ter fallback manual. QA de sub-agents deve rodar na main session.
+### Sub-agent retorna histÃ³rico vazio
+**Sintoma:** Spawn de sub-agente nÃ£o traz resultado.
+**Causa:** Sub-agents rodam em sandbox isolado â€” nÃ£o acessam localhost.
+**SoluÃ§Ã£o:** Ter fallback manual. QA de sub-agents deve rodar na main session.
 
 ---
 
-### Notion API só retorna parte dos dados
+### Notion API sÃ³ retorna parte dos dados
 **Sintoma:** Listagem de pages/databases incompleta.
-**Causa:** Notion API usa paginação — sem paginar, retorna só a primeira página.
-**Solução:** Sempre implementar paginação (`has_more` + `start_cursor`).
+**Causa:** Notion API usa paginaÃ§Ã£o â€” sem paginar, retorna sÃ³ a primeira pÃ¡gina.
+**SoluÃ§Ã£o:** Sempre implementar paginaÃ§Ã£o (`has_more` + `start_cursor`).
 
 ---
 
-### Agente esquece de extrair lições antes de compactar
-**Sintoma:** Após compactação, informações importantes sumiram.
-**Causa:** Mesmo com regra "inviolável", o agente às vezes esquece.
-**Solução:**
-1. Reforçar no AGENTS.md como regra inviolável
-2. Configurar consolidação periódica (a cada 15 dias) que revisa notas diárias
-3. Essa consolidação é o safety net — pega o que escapou
+### Agente esquece de extrair liÃ§Ãµes antes de compactar
+**Sintoma:** ApÃ³s compactaÃ§Ã£o, informaÃ§Ãµes importantes sumiram.
+**Causa:** Mesmo com regra "inviolÃ¡vel", o agente Ã s vezes esquece.
+**SoluÃ§Ã£o:**
+1. ReforÃ§ar no AGENTS.md como regra inviolÃ¡vel
+2. Configurar consolidaÃ§Ã£o periÃ³dica (a cada 15 dias) que revisa notas diÃ¡rias
+3. Essa consolidaÃ§Ã£o Ã© o safety net â€” pega o que escapou
 
 ---
 
-### trash-cli não encontrado
+### trash-cli nÃ£o encontrado
 **Sintoma:** Erro `trash: command not found`.
-**Causa:** Não vem instalado por padrão no Ubuntu.
-**Solução:** `sudo apt install trash-cli`
+**Causa:** NÃ£o vem instalado por padrÃ£o no Ubuntu.
+**SoluÃ§Ã£o:** `sudo apt install trash-cli`
 
 ---
 
-## 💡 Dicas de Produção
+## ðŸ’¡ Dicas de ProduÃ§Ã£o
 
 ### Economia de tokens
-- **Heartbeat:** Haiku (~$0.005) ou Ollama local (grátis)
-- **Crons de execução:** Sonnet (~90% economia vs Opus)
-- **Interação:** Opus (quando qualidade importa)
+- **Heartbeat:** Haiku (~$0.005) ou Ollama local (grÃ¡tis)
+- **Crons de execuÃ§Ã£o:** Sonnet (~90% economia vs Opus)
+- **InteraÃ§Ã£o:** Opus (quando qualidade importa)
 - **Session initialization:** 8KB startup vs 50KB (~80% economia)
 
-### Segurança
-- Credenciais SEMPRE no 1Password — zero hardcode
-- Rotação trimestral de API keys
-- Audit de segurança semanal (cron)
+### SeguranÃ§a
+- Credenciais SEMPRE no 1Password â€” zero hardcode
+- RotaÃ§Ã£o trimestral de API keys
+- Audit de seguranÃ§a semanal (cron)
 - `openclaw security-audit` + `openclaw doctor fix`
 - Portas de app: `127.0.0.1` + Cloudflare Tunnel
 
-### Memória
+### MemÃ³ria
 - MEMORY.md fica grande? Quebre em topic files
-- Lições estratégicas = permanentes, táticas = expiram em 30 dias
+- LiÃ§Ãµes estratÃ©gicas = permanentes, tÃ¡ticas = expiram em 30 dias
 - Feedback loops em JSON: agente consulta antes de repetir erros
 
 ### Multi-agentes
-- Todo agente novo começa L1 (Observer) — sem confiança automática
-- Hub model > Mesh model (coordenação central)
-- Agentes que não precisam de Opus não devem usar Opus
-- Sub-agent travou? → retry 2x → se falhar → avisar humano (NUNCA limbo silencioso)
+- Todo agente novo comeÃ§a L1 (Observer) â€” sem confianÃ§a automÃ¡tica
+- Hub model > Mesh model (coordenaÃ§Ã£o central)
+- Agentes que nÃ£o precisam de Opus nÃ£o devem usar Opus
+- Sub-agent travou? â†’ retry 2x â†’ se falhar â†’ avisar humano (NUNCA limbo silencioso)
 
 ---
 
-*Baseado em 13 dias de produção real com a Amora 🍇*
+*Baseado em 13 dias de produÃ§Ã£o real com a Amora ðŸ‡*
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

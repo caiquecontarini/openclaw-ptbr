@@ -1,8 +1,8 @@
-# PRD: Multi-Agent OS v2.0 — Arquitetura Avançada
+﻿# PRD: Multi-Agent OS v2.0 â€” Arquitetura AvanÃ§ada
 
-> ⚠️ **Nota (19/02/2026):** Este PRD descreve a v2 como foi projetada. A estrutura `shared/` real foi reorganizada na Shared Memory v2 (ver `shared/projects/PRD-SHARED-V2.md`). Paths como `shared/context/`, `shared/governance/`, `shared/costs/`, `shared/audit/`, `shared/lessons/` e `TOOLS-SHARED.md` foram consolidados em `shared/tools/`, `shared/assets/`, `shared/projects/`, `shared/decisions.md` e `shared/lessons.md`.
+> âš ï¸ **Nota (19/02/2026):** Este PRD descreve a v2 como foi projetada. A estrutura `shared/` real foi reorganizada na Shared Memory v2 (ver `shared/projects/PRD-SHARED-V2.md`). Paths como `shared/context/`, `shared/governance/`, `shared/costs/`, `shared/audit/`, `shared/lessons/` e `TOOLS-SHARED.md` foram consolidados em `shared/tools/`, `shared/assets/`, `shared/projects/`, `shared/decisions.md` e `shared/lessons.md`.
 
-> Para quando seu agente único virou gargalo. Jogue no agente principal.
+> Para quando seu agente Ãºnico virou gargalo. Jogue no agente principal.
 
 ## 1. Contexto: Por Que Evoluir?
 
@@ -10,24 +10,24 @@
 
 | Problema | Sintoma |
 |----------|---------|
-| **Gargalo central** | Agente principal coordena E executa — fica lento |
-| **Context rot** | Threads longas = respostas piores (degradação antes do limite) |
+| **Gargalo central** | Agente principal coordena E executa â€” fica lento |
+| **Context rot** | Threads longas = respostas piores (degradaÃ§Ã£o antes do limite) |
 | **Zero governance** | Sem tracking de custo, sem audit, sem digest |
-| **Sem especialização** | Um agente tentando ser bom em tudo = medíocre em tudo |
-| **Escala quebrada** | Adicionar mais workers não resolve se o hub é o bottleneck |
+| **Sem especializaÃ§Ã£o** | Um agente tentando ser bom em tudo = medÃ­ocre em tudo |
+| **Escala quebrada** | Adicionar mais workers nÃ£o resolve se o hub Ã© o bottleneck |
 
-### A solução: Hierarquia com Bosses
+### A soluÃ§Ã£o: Hierarquia com Bosses
 
-Em vez de 1 agente fazendo tudo, você cria uma **organização**:
+Em vez de 1 agente fazendo tudo, vocÃª cria uma **organizaÃ§Ã£o**:
 
 ```
-Você (CEO)
-    ↓
-Agente Principal (Chief of Staff) — coordena, não executa
-    ↓
-Bosses (por domínio) — gerenciam seus workers
-    ↓
-Workers (especializados) — executam tarefas
+VocÃª (CEO)
+    â†“
+Agente Principal (Chief of Staff) â€” coordena, nÃ£o executa
+    â†“
+Bosses (por domÃ­nio) â€” gerenciam seus workers
+    â†“
+Workers (especializados) â€” executam tarefas
 ```
 
 ---
@@ -37,21 +37,21 @@ Workers (especializados) — executam tarefas
 ### Hierarquia
 
 ```
-Você (CEO)
-    ↓ fala com
+VocÃª (CEO)
+    â†“ fala com
 Agente Principal (Chief of Staff, L4)
-    — Não executa tasks
-    — Coordena bosses
-    — Governance + daily digest
-    — Traduz suas prioridades
-    ↓
-┌──────────────┬──────────────┬──────────────┐
-│  Boss A      │  Boss B      │  Boss C      │
-│  (domínio 1) │  (domínio 2) │  (domínio 3) │
-│  Sonnet, L2  │  Sonnet, L2  │  Sonnet, L2  │
-│  Topic próprio│  Topic próprio│  Topic próprio│
-└──────┬───────┴──────┬───────┴──────┬───────┘
-       ↓              ↓              ↓
+    â€” NÃ£o executa tasks
+    â€” Coordena bosses
+    â€” Governance + daily digest
+    â€” Traduz suas prioridades
+    â†“
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Boss A      â”‚  Boss B      â”‚  Boss C      â”‚
+â”‚  (domÃ­nio 1) â”‚  (domÃ­nio 2) â”‚  (domÃ­nio 3) â”‚
+â”‚  Sonnet, L2  â”‚  Sonnet, L2  â”‚  Sonnet, L2  â”‚
+â”‚  Topic prÃ³prioâ”‚  Topic prÃ³prioâ”‚  Topic prÃ³prioâ”‚
+â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜
+       â†“              â†“              â†“
     Workers         Workers        Workers
     (L1, Haiku/    (L1, Haiku/    (L1, Haiku/
      Sonnet)        Sonnet)        Sonnet)
@@ -61,11 +61,11 @@ Agente Principal (Chief of Staff, L4)
 
 | Aspecto | v1 | v2 |
 |---------|----|----|
-| **Papel do agente principal** | COO — faz tudo | CoS — coordena, não executa |
-| **Delegação** | Hub → Workers direto | CoS → Bosses → Workers |
+| **Papel do agente principal** | COO â€” faz tudo | CoS â€” coordena, nÃ£o executa |
+| **DelegaÃ§Ã£o** | Hub â†’ Workers direto | CoS â†’ Bosses â†’ Workers |
 | **Governance** | Nenhuma | Dia 1: cost tracking, audit, digest |
-| **Comunicação** | Tudo passa pelo hub | Você fala direto com bosses via topics |
-| **Escala** | Limitada (hub = gargalo) | Cada boss é autônomo no seu domínio |
+| **ComunicaÃ§Ã£o** | Tudo passa pelo hub | VocÃª fala direto com bosses via topics |
+| **Escala** | Limitada (hub = gargalo) | Cada boss Ã© autÃ´nomo no seu domÃ­nio |
 | **Custo** | Descontrolado | Kill switch + tracking por agente |
 
 ---
@@ -74,24 +74,24 @@ Agente Principal (Chief of Staff, L4)
 
 ### Como decidir quais bosses criar
 
-Responda: **"Quais são os 3-5 grandes domínios do meu trabalho?"**
+Responda: **"Quais sÃ£o os 3-5 grandes domÃ­nios do meu trabalho?"**
 
 **Exemplos por perfil:**
 
 | Perfil | Boss A | Boss B | Boss C | Boss D |
 |--------|--------|--------|--------|--------|
-| **SaaS Founder** | Conteúdo | Produto/Ops | Dev | Analytics |
-| **Freelancer** | Projetos | Prospecção | Admin/Financeiro | — |
-| **Creator** | Conteúdo | Comunidade | Monetização | Analytics |
+| **SaaS Founder** | ConteÃºdo | Produto/Ops | Dev | Analytics |
+| **Freelancer** | Projetos | ProspecÃ§Ã£o | Admin/Financeiro | â€” |
+| **Creator** | ConteÃºdo | Comunidade | MonetizaÃ§Ã£o | Analytics |
 | **Startup** | Growth | Engineering | Customer Success | Data |
-| **Agência** | Clientes | Produção | Comercial | Ops |
+| **AgÃªncia** | Clientes | ProduÃ§Ã£o | Comercial | Ops |
 
 ### Regras para criar bosses
 
-1. **Máximo 5 bosses** para começar (complexidade cresce exponencialmente)
-2. **Cada boss = 1 domínio claro** — se você não consegue descrever em 1 frase, é grande demais
-3. **Boss ≠ Worker** — boss COORDENA workers, não executa tudo sozinho
-4. **Comece com 2-3** — adicione conforme necessidade real, não especulativa
+1. **MÃ¡ximo 5 bosses** para comeÃ§ar (complexidade cresce exponencialmente)
+2. **Cada boss = 1 domÃ­nio claro** â€” se vocÃª nÃ£o consegue descrever em 1 frase, Ã© grande demais
+3. **Boss â‰  Worker** â€” boss COORDENA workers, nÃ£o executa tudo sozinho
+4. **Comece com 2-3** â€” adicione conforme necessidade real, nÃ£o especulativa
 
 ---
 
@@ -99,66 +99,66 @@ Responda: **"Quais são os 3-5 grandes domínios do meu trabalho?"**
 
 Nem todo worker precisa ficar "ligado". Dois tipos:
 
-### Watcher (Fica de plantão)
+### Watcher (Fica de plantÃ£o)
 - Tem heartbeat ativo (30-60 min)
 - Reage a eventos sem o boss pedir
-- Custo: ~$1-2/mês cada
-- **Exemplo:** Monitor de comunidade, scraper de dados, coletor de métricas
+- Custo: ~$1-2/mÃªs cada
+- **Exemplo:** Monitor de comunidade, scraper de dados, coletor de mÃ©tricas
 
 ```markdown
 # HEARTBEAT.md (Watcher)
-1. Ler WORKING.md — tem task? Sim → executar. Não → HEARTBEAT_OK
+1. Ler WORKING.md â€” tem task? Sim â†’ executar. NÃ£o â†’ HEARTBEAT_OK
 2. Checar [fonte de dados] por novidades
-3. Se encontrou algo relevante → registrar em shared/outputs/
+3. Se encontrou algo relevante â†’ registrar em shared/outputs/
 ```
 
-### Maker (Só existe quando tem trabalho)
-- Sem heartbeat — boss usa `sessions_spawn` quando precisa
+### Maker (SÃ³ existe quando tem trabalho)
+- Sem heartbeat â€” boss usa `sessions_spawn` quando precisa
 - Custo quando idle: **$0**
 - **Exemplo:** Writer, editor, dev, analista de dados
 
 ```
-Boss recebe pedido → spawna Maker com briefing → Maker entrega → Boss revisa
+Boss recebe pedido â†’ spawna Maker com briefing â†’ Maker entrega â†’ Boss revisa
 ```
 
-### Regra de decisão
+### Regra de decisÃ£o
 
-> "Esse worker precisa reagir a algo sem que o boss peça?"
-> → **Sim** = Watcher | **Não** = Maker
+> "Esse worker precisa reagir a algo sem que o boss peÃ§a?"
+> â†’ **Sim** = Watcher | **NÃ£o** = Maker
 
 ---
 
 ## 5. Governance (DESDE O DIA 1)
 
-> A governance não é "depois que tiver funcionando". É a **fundação**.
+> A governance nÃ£o Ã© "depois que tiver funcionando". Ã‰ a **fundaÃ§Ã£o**.
 > Sem ela, o sistema cresce sem visibilidade e o custo explode.
 
 ### 5.1 Cost Tracking
 
 ```
 shared/costs/
-├── YYYY-MM-DD.csv       ← log diário (agent_id, model, tokens_in, tokens_out, cost_usd)
-└── monthly-summary.md   ← consolidado mensal
+â”œâ”€â”€ YYYY-MM-DD.csv       â† log diÃ¡rio (agent_id, model, tokens_in, tokens_out, cost_usd)
+â””â”€â”€ monthly-summary.md   â† consolidado mensal
 ```
 
 ### 5.2 Audit Log
 
 ```
 shared/audit/
-└── YYYY-MM-DD.jsonl     ← {timestamp, agent, api, endpoint, operation: read|write}
+â””â”€â”€ YYYY-MM-DD.jsonl     â† {timestamp, agent, api, endpoint, operation: read|write}
 ```
 
-### 5.3 Daily Digest (cron automático)
+### 5.3 Daily Digest (cron automÃ¡tico)
 
-O CoS envia todo dia de manhã:
+O CoS envia todo dia de manhÃ£:
 
 ```
-🍇 Daily Digest — DD/MM/YYYY
+ðŸ‡ Daily Digest â€” DD/MM/YYYY
 
-✅ Ontem: [X tasks por boss]
-⚠️ Bloqueios: [lista]
-💰 Custo: $X.XX dia | $X.XX mês
-🔔 Alertas: [anomalias]
+âœ… Ontem: [X tasks por boss]
+âš ï¸ Bloqueios: [lista]
+ðŸ’° Custo: $X.XX dia | $X.XX mÃªs
+ðŸ”” Alertas: [anomalias]
 
 Boss A: [1 linha status]
 Boss B: [1 linha status]
@@ -167,22 +167,22 @@ Boss C: [1 linha status]
 
 ### 5.4 Kill Switch
 
-| Threshold | Ação |
+| Threshold | AÃ§Ã£o |
 |-----------|------|
-| 2x custo esperado | ⚠️ Alerta no Telegram |
-| 3x custo esperado | 🚨 Avisa você e PERGUNTA antes de pausar |
+| 2x custo esperado | âš ï¸ Alerta no Telegram |
+| 3x custo esperado | ðŸš¨ Avisa vocÃª e PERGUNTA antes de pausar |
 
-**NUNCA auto-kill** — sempre pedir confirmação humana.
+**NUNCA auto-kill** â€” sempre pedir confirmaÃ§Ã£o humana.
 
 ### 5.5 Escalation Rules
 
-| Situação | Quem decide |
+| SituaÃ§Ã£o | Quem decide |
 |----------|-------------|
-| Task dentro do domínio do boss | Boss decide sozinho |
-| Envolve dinheiro real (pagamentos, refunds) | **Sempre pede aprovação** |
-| Cross-boss (precisa de outro domínio) | CoS coordena |
-| Urgente fora do horário | Notifica você |
-| Erro/rollback necessário | Boss registra + avisa CoS |
+| Task dentro do domÃ­nio do boss | Boss decide sozinho |
+| Envolve dinheiro real (pagamentos, refunds) | **Sempre pede aprovaÃ§Ã£o** |
+| Cross-boss (precisa de outro domÃ­nio) | CoS coordena |
+| Urgente fora do horÃ¡rio | Notifica vocÃª |
+| Erro/rollback necessÃ¡rio | Boss registra + avisa CoS |
 
 ---
 
@@ -190,122 +190,122 @@ Boss C: [1 linha status]
 
 ```
 shared/
-├── TEAM.md                     ← Registry: quem faz o quê, nível, status
-├── context/
-│   ├── USER.md                 ← Canonical — todos herdam daqui
-│   ├── TOOLS-SHARED.md         ← Integrações compartilhadas
-│   └── business-context.md     ← Contexto do negócio
-├── governance/
-│   ├── DAILY-DIGEST-TEMPLATE.md
-│   ├── CROSS-BOSS-PROTOCOL.md
-│   ├── QUALITY-GATES.md
-│   ├── ESCALATION-RULES.md
-│   └── APPROVAL-LOG.md
-├── costs/
-│   └── YYYY-MM-DD.csv
-├── audit/
-│   └── YYYY-MM-DD.jsonl
-├── templates/
-│   ├── BOSS-WORKSPACE/         ← Template para novo boss (8 arquivos)
-│   └── WORKER-WORKSPACE/       ← Template mínimo para worker
-├── outputs/                    ← Entregas dos agentes
-└── lessons/                    ← Lições cross-agent
+â”œâ”€â”€ TEAM.md                     â† Registry: quem faz o quÃª, nÃ­vel, status
+â”œâ”€â”€ context/
+â”‚   â”œâ”€â”€ USER.md                 â† Canonical â€” todos herdam daqui
+â”‚   â”œâ”€â”€ TOOLS-SHARED.md         â† IntegraÃ§Ãµes compartilhadas
+â”‚   â””â”€â”€ business-context.md     â† Contexto do negÃ³cio
+â”œâ”€â”€ governance/
+â”‚   â”œâ”€â”€ DAILY-DIGEST-TEMPLATE.md
+â”‚   â”œâ”€â”€ CROSS-BOSS-PROTOCOL.md
+â”‚   â”œâ”€â”€ QUALITY-GATES.md
+â”‚   â”œâ”€â”€ ESCALATION-RULES.md
+â”‚   â””â”€â”€ APPROVAL-LOG.md
+â”œâ”€â”€ costs/
+â”‚   â””â”€â”€ YYYY-MM-DD.csv
+â”œâ”€â”€ audit/
+â”‚   â””â”€â”€ YYYY-MM-DD.jsonl
+â”œâ”€â”€ templates/
+â”‚   â”œâ”€â”€ BOSS-WORKSPACE/         â† Template para novo boss (8 arquivos)
+â”‚   â””â”€â”€ WORKER-WORKSPACE/       â† Template mÃ­nimo para worker
+â”œâ”€â”€ outputs/                    â† Entregas dos agentes
+â””â”€â”€ lessons/                    â† LiÃ§Ãµes cross-agent
 ```
 
 ### TEAM.md (Fonte de Verdade)
 
 ```markdown
-# 🏢 Team Registry
+# ðŸ¢ Team Registry
 
-| Agente | Papel | Nível | Modelo | Tipo | Status |
+| Agente | Papel | NÃ­vel | Modelo | Tipo | Status |
 |--------|-------|-------|--------|------|--------|
 | [nome] | CoS / Hub | L4 | Sonnet | Principal | Ativo |
-| [boss-a] | Boss [domínio] | L2 | Sonnet | Boss | Ativo |
-| [boss-b] | Boss [domínio] | L2 | Sonnet | Boss | Ativo |
-| [worker-1] | [função] | L1 | Haiku | Watcher | Ativo |
-| [worker-2] | [função] | L1 | Sonnet | Maker | Idle |
+| [boss-a] | Boss [domÃ­nio] | L2 | Sonnet | Boss | Ativo |
+| [boss-b] | Boss [domÃ­nio] | L2 | Sonnet | Boss | Ativo |
+| [worker-1] | [funÃ§Ã£o] | L1 | Haiku | Watcher | Ativo |
+| [worker-2] | [funÃ§Ã£o] | L1 | Sonnet | Maker | Idle |
 ```
 
 ---
 
-## 7. Comunicação
+## 7. ComunicaÃ§Ã£o
 
-### Você → Bosses (Acesso Direto)
+### VocÃª â†’ Bosses (Acesso Direto)
 
-Cada boss tem topic próprio no Telegram. Você fala **direto** com qualquer boss:
-- Topic do Boss A → Boss A responde
-- Topic do Boss B → Boss B responde
+Cada boss tem topic prÃ³prio no Telegram. VocÃª fala **direto** com qualquer boss:
+- Topic do Boss A â†’ Boss A responde
+- Topic do Boss B â†’ Boss B responde
 
-O CoS **não intercepta** mensagens dos topics dos bosses.
+O CoS **nÃ£o intercepta** mensagens dos topics dos bosses.
 
-### Boss → Boss (Cross-Domain)
+### Boss â†’ Boss (Cross-Domain)
 
 Quando um boss precisa de outro:
 1. Cria card/registro com @[outro-boss]
 2. Reporta no daily digest
-3. CoS coordena na próxima janela
-4. Se urgente → boss menciona CoS diretamente
+3. CoS coordena na prÃ³xima janela
+4. Se urgente â†’ boss menciona CoS diretamente
 
-### Boss → Workers
+### Boss â†’ Workers
 
-- **Watcher:** Boss atualiza `WORKING.md` do worker → worker pega no próximo heartbeat
+- **Watcher:** Boss atualiza `WORKING.md` do worker â†’ worker pega no prÃ³ximo heartbeat
 - **Maker:** Boss usa `sessions_spawn` com briefing completo
 
 ---
 
 ## 8. Economia de Modelos
 
-| Tier | Modelo sugerido | Custo/mês estimado |
+| Tier | Modelo sugerido | Custo/mÃªs estimado |
 |------|----------------|-------------------|
 | CoS (1x) | Sonnet | ~$30-50 |
 | Bosses (3-5x) | Sonnet, heartbeat ativo | ~$5-8 cada |
 | Watchers (3-5x) | Haiku, heartbeat 30-60min | ~$1-2 cada |
 | Makers (5-10x) | Sonnet/Haiku, sob demanda | ~$0 quando idle |
-| **Total estimado (3 bosses)** | | **~$60-80/mês** |
-| **Total estimado (5 bosses)** | | **~$80-120/mês** |
+| **Total estimado (3 bosses)** | | **~$60-80/mÃªs** |
+| **Total estimado (5 bosses)** | | **~$80-120/mÃªs** |
 
 ### Regras de economia
-- Worker que não precisa de Sonnet → **Haiku** (90% mais barato)
-- Heartbeat de worker → **Haiku** (mesmo que o worker use Sonnet pra tasks)
-- CoS NÃO precisa de Opus — Sonnet coordena bem
-- Maker idle = **$0** — não existe custo se não é spawnado
+- Worker que nÃ£o precisa de Sonnet â†’ **Haiku** (90% mais barato)
+- Heartbeat de worker â†’ **Haiku** (mesmo que o worker use Sonnet pra tasks)
+- CoS NÃƒO precisa de Opus â€” Sonnet coordena bem
+- Maker idle = **$0** â€” nÃ£o existe custo se nÃ£o Ã© spawnado
 
 ---
 
 ## 9. Leveling System
 
-| Nível | Nome | Autonomia | Review |
+| NÃ­vel | Nome | Autonomia | Review |
 |-------|------|-----------|--------|
-| L1 | Observer | Zero — output sempre revisado | Cada entrega |
-| L2 | Contributor | Baixa — executa dentro de guidelines | Semanal |
-| L3 | Operator | Média — autonomia com guardrails | Semanal |
-| L4 | Trusted | Alta — quase total | Quinzenal |
+| L1 | Observer | Zero â€” output sempre revisado | Cada entrega |
+| L2 | Contributor | Baixa â€” executa dentro de guidelines | Semanal |
+| L3 | Operator | MÃ©dia â€” autonomia com guardrails | Semanal |
+| L4 | Trusted | Alta â€” quase total | Quinzenal |
 
 **Regras:**
-- Todo agente novo começa **L1**
-- Promoção via performance review semanal
-- Rebaixamento é possível (se qualidade cair)
-- **NUNCA** rushar um agente pra L3+ sem histórico
+- Todo agente novo comeÃ§a **L1**
+- PromoÃ§Ã£o via performance review semanal
+- Rebaixamento Ã© possÃ­vel (se qualidade cair)
+- **NUNCA** rushar um agente pra L3+ sem histÃ³rico
 
-### Performance Review (semanal, automática)
+### Performance Review (semanal, automÃ¡tica)
 
-CoS roda review todo domingo com critérios:
-1. **Responsividade** — respondeu dentro do SLA?
-2. **Qualidade** — outputs precisaram de correção?
-3. **Custo** — dentro do budget?
-4. **Autonomia** — tomou boas decisões sozinho?
+CoS roda review todo domingo com critÃ©rios:
+1. **Responsividade** â€” respondeu dentro do SLA?
+2. **Qualidade** â€” outputs precisaram de correÃ§Ã£o?
+3. **Custo** â€” dentro do budget?
+4. **Autonomia** â€” tomou boas decisÃµes sozinho?
 
 ---
 
-## 10. Migração: v1 → v2 (Passo a Passo)
+## 10. MigraÃ§Ã£o: v1 â†’ v2 (Passo a Passo)
 
 ### Etapa 0: Backup (1 hora)
 - [ ] Backup completo do workspace atual
-- [ ] Verificar que backup é restaurável
+- [ ] Verificar que backup Ã© restaurÃ¡vel
 - [ ] Documentar estado atual (quais agentes, quais crons)
 
 ### Etapa 1: Foundation (1 dia)
-- [ ] Promover agente principal: COO → Chief of Staff
+- [ ] Promover agente principal: COO â†’ Chief of Staff
 - [ ] Atualizar SOUL.md com novo papel
 - [ ] Criar `shared/` com toda a estrutura
 - [ ] Criar templates de Boss e Worker
@@ -313,33 +313,33 @@ CoS roda review todo domingo com critérios:
 
 ### Etapa 2: Primeiro Boss (2-3 dias)
 - [ ] Criar workspace do Boss A (usar template)
-- [ ] Configurar binding Telegram (topic próprio)
+- [ ] Configurar binding Telegram (topic prÃ³prio)
 - [ ] Adicionar ao agents.list
 - [ ] Criar 1-2 workers iniciais
-- [ ] Testar spawn chain: CoS → Boss → Worker
-- [ ] Validar que funciona antes de avançar
+- [ ] Testar spawn chain: CoS â†’ Boss â†’ Worker
+- [ ] Validar que funciona antes de avanÃ§ar
 
 ### Etapa 3: Segundo Boss (2-3 dias)
 - [ ] Repetir processo do Boss A
-- [ ] Testar comunicação cross-boss
+- [ ] Testar comunicaÃ§Ã£o cross-boss
 - [ ] Validar daily digest com 2 bosses
 
 ### Etapa 4: Demais Bosses (1 dia cada)
-- [ ] Seguir o mesmo padrão
-- [ ] Máximo 1 boss novo por dia
-- [ ] Sempre testar antes de avançar
+- [ ] Seguir o mesmo padrÃ£o
+- [ ] MÃ¡ximo 1 boss novo por dia
+- [ ] Sempre testar antes de avanÃ§ar
 
 ### Etapa 5: Hardening (ongoing)
-- [ ] Context sync automático (cron semanal)
+- [ ] Context sync automÃ¡tico (cron semanal)
 - [ ] Memory lifecycle (cleanup de notas velhas)
 - [ ] Performance reviews semanais
 - [ ] Ajustar workers conforme uso real
 
 ---
 
-## 11. Restauração de Emergência
+## 11. RestauraÃ§Ã£o de EmergÃªncia
 
-Se algo der errado durante a migração:
+Se algo der errado durante a migraÃ§Ã£o:
 
 ```bash
 openclaw gateway stop
@@ -349,31 +349,31 @@ tar -xzf workspace-pre-v2-backup.tar.gz
 openclaw gateway start
 ```
 
-**Regra:** SEMPRE backup antes de cada etapa. Paranoia é feature, não bug.
+**Regra:** SEMPRE backup antes de cada etapa. Paranoia Ã© feature, nÃ£o bug.
 
 ---
 
 ## 12. Resultado Esperado
 
-Ao final da implementação v2, você terá:
+Ao final da implementaÃ§Ã£o v2, vocÃª terÃ¡:
 
-- ✅ CoS coordenando (não executando)
-- ✅ 3-5 Bosses autônomos por domínio
-- ✅ Workers especializados (Watchers + Makers)
-- ✅ Governance completa desde o Dia 1
-- ✅ Cost tracking com kill switch
-- ✅ Daily digest automático
-- ✅ Performance reviews semanais
-- ✅ Acesso direto a qualquer boss via topic
-- ✅ Custo controlado (~$60-120/mês)
+- âœ… CoS coordenando (nÃ£o executando)
+- âœ… 3-5 Bosses autÃ´nomos por domÃ­nio
+- âœ… Workers especializados (Watchers + Makers)
+- âœ… Governance completa desde o Dia 1
+- âœ… Cost tracking com kill switch
+- âœ… Daily digest automÃ¡tico
+- âœ… Performance reviews semanais
+- âœ… Acesso direto a qualquer boss via topic
+- âœ… Custo controlado (~$60-120/mÃªs)
 
 ---
 
 *"Agents are 30% of the work. The other 70% is the immune system + governance."*
 
-## 13. ACP bind — Agentes Isolados em Topics (v2026.4+)
+## 13. ACP bind â€” Agentes Isolados em Topics (v2026.4+)
 
-O ACP bind permite criar agentes **isolados** em topics Telegram específicos, cada um com seu próprio contexto e memória — sem interferir no CoS (Chief of Staff) principal.
+O ACP bind permite criar agentes **isolados** em topics Telegram especÃ­ficos, cada um com seu prÃ³prio contexto e memÃ³ria â€” sem interferir no CoS (Chief of Staff) principal.
 
 **Como usar:**
 ```
@@ -384,35 +384,39 @@ Isso cria um agente isolado no topic onde o comando foi executado.
 
 **Arquitetura com ACP bind:**
 ```
-Você (CEO)
-    ↓
+VocÃª (CEO)
+    â†“
 CoS (Chief of Staff, topic principal)
-    ↓ coordena via sessions_spawn
-Bosses (topics próprios)
-    ↓
+    â†“ coordena via sessions_spawn
+Bosses (topics prÃ³prios)
+    â†“
 Workers (spawnados sob demanda)
 
 + ACP bind agents (isolados por topic)
-  → Cada ACP bind agent = seu próprio contexto/memória
-  → Não compartilha com CoS nem com outros ACP bind agents
+  â†’ Cada ACP bind agent = seu prÃ³prio contexto/memÃ³ria
+  â†’ NÃ£o compartilha com CoS nem com outros ACP bind agents
 ```
 
 **Quando usar ACP bind vs Boss:**
 
-| Critério | Boss (sessions_spawn) | ACP bind
+| CritÃ©rio | Boss (sessions_spawn) | ACP bind
 |----------|----------------------|----------|
-| Compartilha memória com CoS | ✅ Sim | ❌ Não
-| Contexto isolado | ❌ Não | ✅ Sim
-| Melhor para | Domínios conectados ao negócio | experiments, áreas muito distintas |
+| Compartilha memÃ³ria com CoS | âœ… Sim | âŒ NÃ£o
+| Contexto isolado | âŒ NÃ£o | âœ… Sim
+| Melhor para | DomÃ­nios conectados ao negÃ³cio | experiments, Ã¡reas muito distintas |
 | Custo | Tokens do CoS | Tokens independentes |
 
 ## 14. ACPX Runtime e Embed (v2026.4+)
 
-O ACPX é o modelo de runtime que permite a agentes operarem de forma **embedded** (embutida) — rodando como processos leves dentro do gateway, sem overhead de LLM externo para tarefas simples de coordenação.
+O ACPX Ã© o modelo de runtime que permite a agentes operarem de forma **embedded** (embutida) â€” rodando como processos leves dentro do gateway, sem overhead de LLM externo para tarefas simples de coordenaÃ§Ã£o.
 
-**Benefícios:**
-- Tasks de coordenação não precisam de LLM externo
-- Redução de latência e custo
+**BenefÃ­cios:**
+- Tasks de coordenaÃ§Ã£o nÃ£o precisam de LLM externo
+- ReduÃ§Ã£o de latÃªncia e custo
 - Agentes podem reagir a eventos sem round-trip de API
 
-> ⚠️ **Nota:** ACPX runtime é um conceito avançado. A configuração padrão com `sessions_spawn` + `sessions_yield` é suficiente para a maioria dos casos. Explore ACPX quando a orquestração de múltiplos agentes começar a custar caro ou ficar lenta.
+> âš ï¸ **Nota:** ACPX runtime Ã© um conceito avanÃ§ado. A configuraÃ§Ã£o padrÃ£o com `sessions_spawn` + `sessions_yield` Ã© suficiente para a maioria dos casos. Explore ACPX quando a orquestraÃ§Ã£o de mÃºltiplos agentes comeÃ§ar a custar caro ou ficar lenta.
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

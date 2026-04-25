@@ -1,17 +1,21 @@
-# Projetos
+﻿# Projetos
 
-## 🚀 Ativos
+## ðŸš€ Ativos
 
 ### [Nome do Projeto]
 - **Status:** [em andamento / planejamento / parado]
-- **Próximo passo:** [o que precisa acontecer]
+- **PrÃ³ximo passo:** [o que precisa acontecer]
 - **Bloqueios:** [se houver]
 
-## ✅ Concluídos
+## âœ… ConcluÃ­dos
 
-- [Projeto concluído] — [data] — [resultado]
+- [Projeto concluÃ­do] â€” [data] â€” [resultado]
 
-## 💡 Backlog
+## ðŸ’¡ Backlog
 
 - [Ideia 1]
 - [Ideia 2]
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*

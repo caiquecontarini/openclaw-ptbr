@@ -1,27 +1,27 @@
-# PRD: Arquitetura de Memória (Atualizado Março 2026)
+﻿# PRD: Arquitetura de MemÃ³ria (Atualizado MarÃ§o 2026)
 
-> Jogue este arquivo no agente: "Implementa esta arquitetura de memória"
+> Jogue este arquivo no agente: "Implementa esta arquitetura de memÃ³ria"
 
 ## Contexto
 
-Agentes AI esquecem tudo a cada sessão. Sem memória estruturada, você repete contexto todo dia. Esta arquitetura resolve isso com uma estrutura em subpastas que permite busca semântica precisa.
+Agentes AI esquecem tudo a cada sessÃ£o. Sem memÃ³ria estruturada, vocÃª repete contexto todo dia. Esta arquitetura resolve isso com uma estrutura em subpastas que permite busca semÃ¢ntica precisa.
 
-**Novidade Março 2026:** `memory_search` agora funciona nativamente — sem precisar de chave de API externa (OpenAI/Gemini). A busca por embedding é built-in.
+**Novidade MarÃ§o 2026:** `memory_search` agora funciona nativamente â€” sem precisar de chave de API externa (OpenAI/Gemini). A busca por embedding Ã© built-in.
 
-**⚠️ Breaking v2026.3.13 — MEMORY.md obrigatório em maiúsculas:** O agente carrega apenas um arquivo de memória raiz. `MEMORY.md` (maiúsculas) tem prioridade; `memory.md` (minúsculas) só é usado quando `MEMORY.md` não existe. Se você criou `memory.md` antes da v3.13, renomeie:
+**âš ï¸ Breaking v2026.3.13 â€” MEMORY.md obrigatÃ³rio em maiÃºsculas:** O agente carrega apenas um arquivo de memÃ³ria raiz. `MEMORY.md` (maiÃºsculas) tem prioridade; `memory.md` (minÃºsculas) sÃ³ Ã© usado quando `MEMORY.md` nÃ£o existe. Se vocÃª criou `memory.md` antes da v3.13, renomeie:
 
 ```bash
 mv memory.md MEMORY.md
 ```
 
-**Comportamento pós-compaction (v2026.3.13):** Após compaction automática, o índice de memória é reindexado de forma assíncrona. Se o agente parecer "esquecer" algo logo após uma compaction — aguarde alguns segundos e tente `memory_search` novamente. Isso é normal e temporário.
+**Comportamento pÃ³s-compaction (v2026.3.13):** ApÃ³s compaction automÃ¡tica, o Ã­ndice de memÃ³ria Ã© reindexado de forma assÃ­ncrona. Se o agente parecer "esquecer" algo logo apÃ³s uma compaction â€” aguarde alguns segundos e tente `memory_search` novamente. Isso Ã© normal e temporÃ¡rio.
 
 ## O que o agente carrega vs. busca
 
-| Sempre carregado na sessão | Buscado sob demanda |
+| Sempre carregado na sessÃ£o | Buscado sob demanda |
 |---------------------------|---------------------|
 | SOUL.md, USER.md, AGENTS.md | memory/context/decisions.md |
-| MEMORY.md (índice) | memory/context/lessons.md |
+| MEMORY.md (Ã­ndice) | memory/context/lessons.md |
 | memory/sessions/ (hoje + ontem) | memory/projects/*.md |
 | | skills/ (qualquer skill) |
 
@@ -35,16 +35,16 @@ mkdir -p memory/context memory/projects memory/sessions memory/integrations
 
 ### 2. Criar os arquivos de contexto
 
-| Arquivo | Propósito |
+| Arquivo | PropÃ³sito |
 |---------|-----------|
-| `memory/context/decisions.md` | Decisões permanentes e irreversíveis |
-| `memory/context/lessons.md` | Lições aprendidas, erros, padrões |
-| `memory/context/people.md` | Equipe, parceiros, contatos — como interagir com cada um |
-| `memory/context/business-context.md` | Contexto do negócio, produtos, clientes |
+| `memory/context/decisions.md` | DecisÃµes permanentes e irreversÃ­veis |
+| `memory/context/lessons.md` | LiÃ§Ãµes aprendidas, erros, padrÃµes |
+| `memory/context/people.md` | Equipe, parceiros, contatos â€” como interagir com cada um |
+| `memory/context/business-context.md` | Contexto do negÃ³cio, produtos, clientes |
 
-**Retenção de lições:**
-- 🔒 Estratégicas = permanentes (filosofia, padrões de arquitetura)
-- ⏳ Táticas = expiram em 30 dias (bugs, workarounds temporários)
+**RetenÃ§Ã£o de liÃ§Ãµes:**
+- ðŸ”’ EstratÃ©gicas = permanentes (filosofia, padrÃµes de arquitetura)
+- â³ TÃ¡ticas = expiram em 30 dias (bugs, workarounds temporÃ¡rios)
 
 ### 3. Criar projetos individuais
 
@@ -52,57 +52,57 @@ Em vez de um `projects.md` gigante, um arquivo por projeto:
 
 ```
 memory/projects/
-├── meu-saas.md          ← MRR atual, próximas features, pendências
-├── lançamento-maio.md   ← status, checklist, responsáveis
-└── produto-b.md
+â”œâ”€â”€ meu-saas.md          â† MRR atual, prÃ³ximas features, pendÃªncias
+â”œâ”€â”€ lanÃ§amento-maio.md   â† status, checklist, responsÃ¡veis
+â””â”€â”€ produto-b.md
 ```
 
-**Por que separado?** A busca semântica acha o projeto certo sem trazer contexto de outros projetos junto.
+**Por que separado?** A busca semÃ¢ntica acha o projeto certo sem trazer contexto de outros projetos junto.
 
-### 4. Criar MEMORY.md (índice)
+### 4. Criar MEMORY.md (Ã­ndice)
 
-Na raiz do workspace. É o mapa — não duplica conteúdo, apenas referencia:
+Na raiz do workspace. Ã‰ o mapa â€” nÃ£o duplica conteÃºdo, apenas referencia:
 
 ```markdown
 # MEMORY.md
 
 ## Contexto
-- Decisões: memory/context/decisions.md
-- Lições: memory/context/lessons.md
+- DecisÃµes: memory/context/decisions.md
+- LiÃ§Ãµes: memory/context/lessons.md
 - Pessoas: memory/context/people.md
 
 ## Projetos ativos
 - [Nome do Projeto]: memory/projects/nome.md
 
-## Integrações
+## IntegraÃ§Ãµes
 - Mapa de ferramentas: memory/integrations/
 ```
 
-### 5. Configurar ciclo de memória no AGENTS.md
+### 5. Configurar ciclo de memÃ³ria no AGENTS.md
 
 ```
-Regras de memória:
-1. Notas diárias: criar memory/sessions/YYYY-MM-DD.md a cada sessão relevante
+Regras de memÃ³ria:
+1. Notas diÃ¡rias: criar memory/sessions/YYYY-MM-DD.md a cada sessÃ£o relevante
 2. Projetos: um arquivo separado por projeto em memory/projects/
-3. INVIOLÁVEL: antes de compactar → extrair lições, decisões e pendências
-4. Feedback: ao rejeitar sugestão → salvar motivo em memory/feedback/
+3. INVIOLÃVEL: antes de compactar â†’ extrair liÃ§Ãµes, decisÃµes e pendÃªncias
+4. Feedback: ao rejeitar sugestÃ£o â†’ salvar motivo em memory/feedback/
 ```
 
-### 6. Configurar busca semântica
+### 6. Configurar busca semÃ¢ntica
 
 O agente usa dois tools:
-- `memory_search("termo")` — busca semântica em todos os arquivos (~400 tokens/chunk)
-- `memory_get("arquivo.md", linha_início)` — lê só o trecho relevante
+- `memory_search("termo")` â€” busca semÃ¢ntica em todos os arquivos (~400 tokens/chunk)
+- `memory_get("arquivo.md", linha_inÃ­cio)` â€” lÃª sÃ³ o trecho relevante
 
-**Funciona nativamente** desde Março 2026. Não precisa de chave externa.
+**Funciona nativamente** desde MarÃ§o 2026. NÃ£o precisa de chave externa.
 
-### 7. Configurar feedback loops (avançado)
+### 7. Configurar feedback loops (avanÃ§ado)
 
 ```
 memory/feedback/
-├── content.json    ← sugestões de conteúdo aprovadas/rejeitadas
-├── tasks.json      ← preferências de execução de tarefas
-└── tone.json       ← ajustes de tom e estilo
+â”œâ”€â”€ content.json    â† sugestÃµes de conteÃºdo aprovadas/rejeitadas
+â”œâ”€â”€ tasks.json      â† preferÃªncias de execuÃ§Ã£o de tarefas
+â””â”€â”€ tone.json       â† ajustes de tom e estilo
 ```
 
 Formato:
@@ -113,7 +113,7 @@ Formato:
       "date": "2026-03-14",
       "context": "Sugeri post LinkedIn com linguagem formal",
       "decision": "reject",
-      "reason": "Tom muito corporativo — prefere direto e conversacional",
+      "reason": "Tom muito corporativo â€” prefere direto e conversacional",
       "tags": ["linkedin", "tom"]
     }
   ]
@@ -122,34 +122,38 @@ Formato:
 
 ### 8. Configure dreaming (experimental, opt-in)
 
-O OpenClaw tem um sistema de consolidação automática de memória que funciona em segundo plano — o **Dreaming**.
+O OpenClaw tem um sistema de consolidaÃ§Ã£o automÃ¡tica de memÃ³ria que funciona em segundo plano â€” o **Dreaming**.
 
 **As 3 fases do ciclo:**
 
 | Fase | O que faz | Escreve em MEMORY.md? |
 |------|-----------|----------------------|
-| 🌅 **Light** | Coleta sinais recentes das sessões e notas diárias, separa ruído do relevante | Não |
-| 🌙 **Deep** | Pontua candidatos e promove os melhores para `MEMORY.md` | ✅ Sim |
-| 💤 **REM** | Extrai temas recorrentes e gera resumo narrativo | Não |
+| ðŸŒ… **Light** | Coleta sinais recentes das sessÃµes e notas diÃ¡rias, separa ruÃ­do do relevante | NÃ£o |
+| ðŸŒ™ **Deep** | Pontua candidatos e promove os melhores para `MEMORY.md` | âœ… Sim |
+| ðŸ’¤ **REM** | Extrai temas recorrentes e gera resumo narrativo | NÃ£o |
 
-**Output:** Depois de cada ciclo, escreve um **Dream Diary** em `DREAMS.md` (ou `dreams.md`). É leitura humana — não é fonte de promoção.
+**Output:** Depois de cada ciclo, escreve um **Dream Diary** em `DREAMS.md` (ou `dreams.md`). Ã‰ leitura humana â€” nÃ£o Ã© fonte de promoÃ§Ã£o.
 
 **Como ativar:**
-- Na sessão: `/dreaming` — roda o ciclo completo
-- `/dreaming --dry-run` — mostra o que faria sem executar
+- Na sessÃ£o: `/dreaming` â€” roda o ciclo completo
+- `/dreaming --dry-run` â€” mostra o que faria sem executar
 
-**Nota:** Dreaming vem desabilitado por padrão. Ative se quiser que o agente promova memórias automaticamente entre sessões.
+**Nota:** Dreaming vem desabilitado por padrÃ£o. Ative se quiser que o agente promova memÃ³rias automaticamente entre sessÃµes.
 
 ## Como pedir para salvar
 
-| ❌ Não funciona | ✅ Funciona |
+| âŒ NÃ£o funciona | âœ… Funciona |
 |----------------|------------|
 | "Lembra disso" | "Salva em memory/context/decisions.md" |
 | "Guarda essa info" | "Adiciona em memory/projects/nome.md" |
-| "Não esquece que..." | "Registra em memory/sessions/hoje como lição" |
+| "NÃ£o esquece que..." | "Registra em memory/sessions/hoje como liÃ§Ã£o" |
 
 ## Resultado Esperado
 
 1. Estrutura criada com subpastas organizadas
-2. MEMORY.md como índice apontando para tudo
-3. Teste: fechar sessão → abrir nova → perguntar algo salvo → agente encontra via memory_search
+2. MEMORY.md como Ã­ndice apontando para tudo
+3. Teste: fechar sessÃ£o â†’ abrir nova â†’ perguntar algo salvo â†’ agente encontra via memory_search
+
+
+---
+*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*
