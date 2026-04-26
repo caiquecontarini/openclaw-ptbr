@@ -1,226 +1,217 @@
-﻿# ðŸŽ“ OpenClaw por Bruno Okamoto â€” Kit Completo do Curso
+# 🎓 OpenClaw — Kit Completo do Curso (PT-BR Otimizado)
 
-**De zero a agente pessoal com OpenClaw.**
-
-> Como eu construÃ­ uma assistente AI que substituiu 3-4 pessoas em 13 dias â€” e como vocÃª pode fazer o mesmo.
-
-Por [Bruno Okamoto](https://www.youtube.com/@microsaas) ðŸ‡
+> **De zero a Agente Pessoal de Elite com OpenClaw.**
+> Fork aprimorado, traduzido e organizado no padrão Visual Brain.
 
 ---
 
-## ðŸš€ Como usar este repositÃ³rio
+### 🚀 Como Transformei uma IA em um Time de 4 Pessoas
 
-1. **Assista a aula** na plataforma (Last Link)
-2. **Encontre o material** na tabela abaixo â€” cada aula tem PDF, HTML e prompt
-3. **Cole o prompt no seu OpenClaw** â€” o agente guia vocÃª pelo resto
-4. **Use os use cases** pra aplicar no seu dia a dia
+> *"Como eu construí uma assistente de IA que substituiu 3-4 pessoas em 13 dias — e como você pode fazer o mesmo."*
+> — Baseado na metodologia de Bruno Okamoto | Curadoria: **Caíque Contarini**
 
 ---
 
-## ðŸ“‹ Mapa Completo de Aulas e Materiais
+## 🛠️ Como Usar este Repositório
 
-### Aula 0 â€” Abertura
+1. **Assista à Aula** na plataforma oficial (Last Link)
+2. **Localize o Material** na tabela abaixo — cada aula tem PDF, HTML e prompt
+3. **Cole o Prompt no OpenClaw** — o agente te guia pelo resto
+4. **Aplique os Use Cases** no seu dia a dia
 
-| Sub-aula | Material |
+---
+
+## 📅 Mapa Completo de Aulas e Materiais
+
+### 📂 Módulo 0 — Abertura
+
+| Aula | Material |
 |---|---|
-| Bem-vindo(a) ao mini-curso! | [`pdfs/modulo-00-abertura.pdf`](pdfs/modulo-00-abertura.pdf) |
-| 7 coisas que vocÃª precisa saber | [`pdfs/curso-agente-ai-coo.pdf`](pdfs/curso-agente-ai-coo.pdf) |
+| Bem-vindo ao mini-curso! | [`pdfs/modulo-00-abertura.pdf`](pdfs/modulo-00-abertura.pdf) |
+| 7 coisas que você precisa saber | [`pdfs/curso-agente-ai-coo.pdf`](pdfs/curso-agente-ai-coo.pdf) |
 
 ---
 
-### Aula 1 â€” Setup e ConfiguraÃ§Ã£o (VPS)
+### 🌐 Módulo 1 — Setup e Infraestrutura (VPS)
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Configurando sua VPS/Localmente | [`pdfs/modulo-01-setup.pdf`](pdfs/modulo-01-setup.pdf) Â· [`prompts/modulo-01-setup.md`](prompts/modulo-01-setup.md) |
+| Configurando sua VPS/Local | [`pdfs/modulo-01-setup.pdf`](pdfs/modulo-01-setup.pdf) · [`prompts/modulo-01-setup.md`](prompts/modulo-01-setup.md) |
 | Assinatura Claude/ChatGPT | [`configs/modelo-config.md`](configs/modelo-config.md) |
-| Resolver bugs Open-Webui | [`prompts/modulo-01-setup.md`](prompts/modulo-01-setup.md) |
 | VPS diferente da aula? (Docker) | [`prds/vps-setup-hostinger.md`](prds/vps-setup-hostinger.md) |
 
 ---
 
-### Aula 2 â€” SeguranÃ§a
+### 🛡️ Módulo 2 — Segurança e Blindagem
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Blindando seu open-webui | [`pdfs/modulo-02-seguranca.pdf`](pdfs/modulo-02-seguranca.pdf) Â· [`prompts/modulo-02-seguranca.md`](prompts/modulo-02-seguranca.md) |
-| Meu agente parou de executar | [`pdfs/bot-sem-shell.pdf`](pdfs/bot-sem-shell.pdf) Â· [`prompts/aula-n2-bot-sem-shell-prompt-aluno.md`](prompts/aula-n2-bot-sem-shell-prompt-aluno.md) |
+| Blindando seu Open-WebUI | [`pdfs/modulo-02-seguranca.pdf`](pdfs/modulo-02-seguranca.pdf) · [`prompts/modulo-02-seguranca.md`](prompts/modulo-02-seguranca.md) |
+| Meu agente parou de executar | [`pdfs/bot-sem-shell.pdf`](pdfs/bot-sem-shell.pdf) |
 
 ---
 
-### Aula 3 â€” Identidade
+### 👤 Módulo 3 — Identidade e Personalidade
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Dando personalidade ao agente | [`pdfs/modulo-03-identidade.pdf`](pdfs/modulo-03-identidade.pdf) Â· [`prompts/modulo-03-identidade.md`](prompts/modulo-03-identidade.md) |
-| Criando grupo/tÃ³picos no Telegram | [`pdfs/aula-telegram-grupos-topicos.pdf`](pdfs/aula-telegram-grupos-topicos.pdf) Â· [`pdfs/telegram-bot-grupo.pdf`](pdfs/telegram-bot-grupo.pdf) |
-| Meu agente nÃ£o responde mais | [`prompts/aula-n8-telegram-bot-grupo-prompt-aluno.md`](prompts/aula-n8-telegram-bot-grupo-prompt-aluno.md) |
+| Dando personalidade ao agente | [`pdfs/modulo-03-identidade.pdf`](pdfs/modulo-03-identidade.pdf) · [`prompts/modulo-03-identidade.md`](prompts/modulo-03-identidade.md) |
+| Criando grupos/tópicos no Telegram | [`pdfs/aula-telegram-grupos-topicos.pdf`](pdfs/aula-telegram-grupos-topicos.pdf) |
 
-**Templates de identidade:** [`templates/`](templates/) â€” SOUL, USER, AGENTS, IDENTITY
+**Templates de identidade:** [`templates/`](templates/) — SOUL, USER, AGENTS, IDENTITY
 
 ---
 
-### Aula 4 â€” MemÃ³ria
+### 🧠 Módulo 4 — Memória Persistente
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| MemÃ³ria: O segredo que ninguÃ©m ensina | [`pdfs/modulo-04-memoria.pdf`](pdfs/modulo-04-memoria.pdf) Â· [`prompts/modulo-04-memoria.md`](prompts/modulo-04-memoria.md) |
-| Como conectar no Google Workspace | [`pdfs/modulo-04-memoria-aula2.pdf`](pdfs/modulo-04-memoria-aula2.pdf) Â· [`prompts/modulo-04-memoria-prompt.md`](prompts/modulo-04-memoria-prompt.md) |
+| Memória: O segredo que ninguém ensina | [`pdfs/modulo-04-memoria.pdf`](pdfs/modulo-04-memoria.pdf) · [`prompts/modulo-04-memoria.md`](prompts/modulo-04-memoria.md) |
+| Conectando ao Google Workspace | [`pdfs/modulo-04-memoria-aula2.pdf`](pdfs/modulo-04-memoria-aula2.pdf) |
 
 **Template:** [`templates/MEMORY-template.md`](templates/MEMORY-template.md)
 
 ---
 
-### Aula 5/6 â€” IntegraÃ§Ãµes, Skills e cron
+### ⚡ Módulo 5/6 — Integrações, Skills e Crons
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| CompreensÃ£o de integraÃ§Ãµes e skills | [`pdfs/modulo-05-integracoes.pdf`](pdfs/modulo-05-integracoes.pdf) Â· [`prompts/modulo-05-integracoes.md`](prompts/modulo-05-integracoes.md) |
-| Como conectar no Google Workspace (GOG CLI) | [`pdfs/gog-setup.pdf`](pdfs/gog-setup.pdf) |
+| Compreensão de integrações e skills | [`pdfs/modulo-05-integracoes.pdf`](pdfs/modulo-05-integracoes.pdf) |
 | Como usar navegador e pesquisas profundas | [`pdfs/aula-web-search.pdf`](pdfs/aula-web-search.pdf) |
 
 **Skill de exemplo:** [`skills/deep-research/SKILL.md`](skills/deep-research/SKILL.md)
-**Config de exemplo:** [`configs/cron-examples.md`](configs/cron-examples.md)
 
 ---
 
-### Aula 7 â€” Proatividade
+### 🔄 Módulo 7 — Proatividade e Automações
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Proatividade, loop/hooks e automaÃ§Ãµes | [`pdfs/modulo-07-proatividade.pdf`](pdfs/modulo-07-proatividade.pdf) Â· [`prompts/modulo-07-proatividade.md`](prompts/modulo-07-proatividade.md) |
+| Proatividade, loops e automações | [`pdfs/modulo-07-proatividade.pdf`](pdfs/modulo-07-proatividade.pdf) · [`prompts/modulo-07-proatividade.md`](prompts/modulo-07-proatividade.md) |
 
 **Template:** [`templates/HEARTBEAT-template.md`](templates/HEARTBEAT-template.md)
 
 ---
 
-### Aula 8 â€” Multi-agentes
+### 🤖 Módulo 8 — Multi-Agentes (Equipe de IAs)
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| De um assistente para uma equipe | [`pdfs/modulo-08-multiagentes.pdf`](pdfs/modulo-08-multiagentes.pdf) Â· [`prompts/modulo-08-multiagentes.md`](prompts/modulo-08-multiagentes.md) |
-| Multi-agentes v2 (bÃ´nus) | [`prompts/modulo-bonus-multi-agent-v2.md`](prompts/modulo-bonus-multi-agent-v2.md) |
+| De um assistente para uma equipe | [`pdfs/modulo-08-multiagentes.pdf`](pdfs/modulo-08-multiagentes.pdf) |
+| Multi-agentes v2 (bônus) | [`prompts/modulo-bonus-multi-agent-v2.md`](prompts/modulo-bonus-multi-agent-v2.md) |
 
 ---
 
-### Aula 9 â€” Sistema ImunolÃ³gico
+### 🛡️ Módulo 9 — Sistema Imunológico do Agente
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Sistema imunolÃ³gico do agente | [`pdfs/modulo-09-immune-system.pdf`](pdfs/modulo-09-immune-system.pdf) Â· [`prompts/modulo-09-immune-system.md`](prompts/modulo-09-immune-system.md) |
+| Proteção contra ataques e manipulações | [`pdfs/modulo-09-immune-system.pdf`](pdfs/modulo-09-immune-system.pdf) |
 
 ---
 
-### Aula 10 â€” Controle de Atitude (Mission Control)
+### 🎯 Módulo 10 — Controle de Atitude (Mission Control)
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| O que Ã© e para que serve | [`pdfs/modulo-10-mission-control.pdf`](pdfs/modulo-10-mission-control.pdf) Â· [`prompts/modulo-10-mission-control.md`](prompts/modulo-10-mission-control.md) |
-| Como construir um | [`pdfs/modulo-10-mission-control.pdf`](pdfs/modulo-10-mission-control.pdf) |
+| O que é e para que serve | [`pdfs/modulo-10-mission-control.pdf`](pdfs/modulo-10-mission-control.pdf) |
 
 ---
 
-### Aula 11 â€” Fechamento e RevisÃ£o
+### 🏁 Módulo 11 — Encerramento e Próximos Passos
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Wrap-up e prÃ³ximos passos | [`pdfs/modulo-11-wrapup.pdf`](pdfs/modulo-11-wrapup.pdf) |
+| Wrap-up e próximos passos | [`pdfs/modulo-11-wrapup.pdf`](pdfs/modulo-11-wrapup.pdf) |
 
 ---
 
-### Aula 12 â€” Skills, API e ferramentas (avanÃ§ado)
+### 💎 Módulo 12 — Skills Avançadas e APIs
 
-| Sub-aula | Material |
+| Aula | Material |
 |---|---|
-| Como criar e instalar Skills | [`pdfs/modulo-06-skills.pdf`](pdfs/modulo-06-skills.pdf) Â· [`prompts/modulo-06-skills.md`](prompts/modulo-06-skills.md) |
-| Skills como superpoderes | [`pdfs/aula-12-skills-superpoderes.pdf`](pdfs/aula-12-skills-superpoderes.pdf) Â· [`prompts/modulo-06-skills-aula2-prompt-aluno.md`](prompts/modulo-06-skills-aula2-prompt-aluno.md) |
-| Como criar skills (bÃ´nus: criador) | [`pdfs/aula-bonus-skill-creator-v3.pdf`](pdfs/aula-bonus-skill-creator-v3.pdf) Â· [`prompts/modulo-06-skills-aula3-prompt-aluno.md`](prompts/modulo-06-skills-aula3-prompt-aluno.md) |
-
-**Skill de exemplo:** [`skills/seguranca/SKILL.md`](skills/seguranca/SKILL.md)
+| Como criar e instalar Skills | [`pdfs/modulo-06-skills.pdf`](pdfs/modulo-06-skills.pdf) |
+| Skills como superpoderes | [`pdfs/aula-12-skills-superpoderes.pdf`](pdfs/aula-12-skills-superpoderes.pdf) |
+| Como criar skills (bônus: criador) | [`pdfs/aula-bonus-skill-creator-v3.pdf`](pdfs/aula-bonus-skill-creator-v3.pdf) |
 
 ---
 
-### Aulas Extras / DÃºvidas Mais Comuns
+### 📚 Aulas Extras e Dúvidas Frequentes
 
-| Aula Extra | Material |
+| Tema | Material |
 |---|---|
-| Rate Limit: o que Ã© e como evitar | [`pdfs/aula-rate-limits.pdf`](pdfs/aula-rate-limits.pdf) |
-| Conectando mÃºltiplas LLMs (fallback) | [`pdfs/fallback-llms.pdf`](pdfs/fallback-llms.pdf) |
+| Rate Limit: o que é e como evitar | [`pdfs/aula-rate-limits.pdf`](pdfs/aula-rate-limits.pdf) |
+| Conectando múltiplas LLMs (fallback) | [`pdfs/fallback-llms.pdf`](pdfs/fallback-llms.pdf) |
 | Custos de modelos | [`pdfs/aula-n7-custos-modelos-v2.pdf`](pdfs/aula-n7-custos-modelos-v2.pdf) |
-| Configurar OAuth | [`pdfs/oauth-config.pdf`](pdfs/oauth-config.pdf) Â· [`prompts/aula-n1-oauth-config-prompt-aluno.md`](prompts/aula-n1-oauth-config-prompt-aluno.md) |
+| Configurar OAuth | [`pdfs/oauth-config.pdf`](pdfs/oauth-config.pdf) |
 | Backup via GitHub | [`pdfs/github-backup.pdf`](pdfs/github-backup.pdf) |
-| 1Password + OpenClaw | [`pdfs/guia-1password-openclaw.pdf`](pdfs/guia-1password-openclaw.pdf) |
-| IntegraÃ§Ãµes extras | [`pdfs/aula-extra-a-integracoes.pdf`](pdfs/aula-extra-a-integracoes.pdf) Â· [`prompts/modulo-extra-a-integracoes.md`](prompts/modulo-extra-a-integracoes.md) |
-| Workspace & OrganizaÃ§Ã£o | [`pdfs/aula-extra-workspace-v2.pdf`](pdfs/aula-extra-workspace-v2.pdf) |
 
-**Materiais de referÃªncia:**
-- [`docs/troubleshooting.md`](docs/troubleshooting.md) â€” 35+ problemas e soluÃ§Ãµes
-- [`docs/custos.md`](docs/custos.md) â€” Breakdown real de custos
+**Materiais de referência:**
+- [`docs/troubleshooting.md`](docs/troubleshooting.md) — 35+ problemas e soluções
+- [`docs/custos.md`](docs/custos.md) — Breakdown real de custos
 - [`docs/10-regras-inviolaveis.md`](docs/10-regras-inviolaveis.md)
 - [`docs/checklist-final.md`](docs/checklist-final.md)
 
 ---
 
-## ðŸ“‚ Estrutura do RepositÃ³rio
+## 🗺️ Estrutura do Repositório
 
 ```
-â”œâ”€â”€ pdfs/                     # PDFs e HTMLs de todas as aulas
-â”œâ”€â”€ prds/                     # PRDs executÃ¡veis (joga no agente e ele faz)
-â”œâ”€â”€ prompts/                  # Prompts guiados por aula
-â”œâ”€â”€ templates/                # Context files prontos (SOUL, USER, AGENTS, etc.)
-â”œâ”€â”€ skills/                   # Skills de exemplo
-â”‚   â”œâ”€â”€ deep-research/        # Skill de pesquisa profunda
-â”‚   â”œâ”€â”€ seguranca/            # Skill de seguranÃ§a
-â”‚   â””â”€â”€ skills-by-profile.md  # Curadoria de skills por perfil
-â”œâ”€â”€ diagramas/                # Excalidraw (arquitetura visual)
-â”œâ”€â”€ configs/                  # ConfiguraÃ§Ãµes de referÃªncia
-â”œâ”€â”€ docs/                     # DocumentaÃ§Ã£o master
-â”œâ”€â”€ qa/                       # Runbooks de diagnÃ³stico
-â”œâ”€â”€ use-cases/                # Casos de uso reais com prompts
-â”‚   â”œâ”€â”€ business/             # MÃ©tricas SaaS, reports
-â”‚   â”œâ”€â”€ community/            # AnÃ¡lise de comunidade
-â”‚   â”œâ”€â”€ content/              # Content waterfall, ideias
-â”‚   â”œâ”€â”€ productivity/         # Daily briefing, social metrics
-â”‚   â”œâ”€â”€ research/             # Deep research
-â”‚   â””â”€â”€ support/              # AnÃ¡lise de suporte
-â””â”€â”€ landing-pages/            # Landing pages de referÃªncia
+├── pdfs/           # PDFs e HTMLs de todas as aulas
+├── prds/           # PRDs executáveis (joga no agente e ele faz)
+├── prompts/        # Prompts guiados por aula
+├── templates/      # Context files prontos (SOUL, USER, AGENTS, etc.)
+├── skills/         # Skills de exemplo
+│   ├── deep-research/
+│   ├── seguranca/
+│   └── skills-by-profile.md
+├── use-cases/      # Casos de uso reais com prompts
+│   ├── business/
+│   ├── community/
+│   ├── content/
+│   ├── productivity/
+│   ├── research/
+│   └── support/
+├── docs/           # Documentação master
+└── configs/        # Configurações de referência
 ```
 
 ---
 
-## ðŸŽ¯ Use Cases (12 prontos)
+## 🎯 Use Cases Prontos (12 disponíveis)
 
 | Categoria | Use Cases |
-|-----------|-----------|
-| ðŸ“ ConteÃºdo | Content Waterfall, Ideias, Tom de Voz |
-| ðŸ“Š NegÃ³cio | MÃ©tricas SaaS, Reports PDF, AnÃ¡lise de Features |
-| ðŸŽ§ Suporte | AnÃ¡lise Inteligente de Tickets |
-| ðŸ‘¥ Comunidade | Hot Topics, FAQ, Trends |
-| ðŸ”¬ Research | Deep Research + VariaÃ§Ãµes |
-| âš¡ Produtividade | Daily Briefing, Social Metrics, Viagens |
+|---|---|
+| 📝 Conteúdo | Content Waterfall, Ideias, Tom de Voz |
+| 📊 Negócio | Métricas SaaS, Reports PDF, Análise de Features |
+| 🎧 Suporte | Análise Inteligente de Tickets |
+| 👥 Comunidade | Hot Topics, FAQ, Trends |
+| 🔬 Research | Deep Research + Variações |
+| ⚡ Produtividade | Daily Briefing, Social Metrics, Viagens |
 
 ---
 
-## ðŸ’° Quanto custa?
+## 💰 Investimento Estimado
 
-| Setup | Custo/mÃªs | Equivale a |
-|-------|-----------|------------|
-| Iniciante (1 agente) | R$115-255 | ~R$4-8/dia |
-| AvanÃ§ado (6 agentes) | R$244-470 | ~R$8-16/dia |
+| Perfil | Custo/mês | Equivalente |
+|---|---|---|
+| Iniciante (1 agente) | R$ 115 - 255 | ~R$ 4-8/dia |
+| Avançado (6 agentes) | R$ 244 - 470 | ~R$ 8-16/dia |
 
-> Detalhes: [`docs/custos.md`](docs/custos.md)
-
----
-
-## ðŸ”§ Deu problema?
-
-[`docs/troubleshooting.md`](docs/troubleshooting.md) â€” 35+ problemas reais com soluÃ§Ãµes testadas em produÃ§Ã£o.
+> Detalhes completos em: [`docs/custos.md`](docs/custos.md)
 
 ---
 
-*Feito com ðŸ‡ por Bruno Okamoto â€” [@brunomicrosaas](https://twitter.com/brunomicrosaas)*
-*Ãšltima atualizaÃ§Ã£o: 19/03/2026*
+## 🆘 Deu Problema?
 
+Consulte o [`docs/troubleshooting.md`](docs/troubleshooting.md) — mais de 35 problemas reais com soluções testadas em produção.
 
 ---
-*Créditos originais da metodologia: [Bruno Okamoto](https://github.com/okjpg)*
+
+### 👨‍💻 Créditos
+- **Autor Original da Metodologia:** [Bruno Okamoto](https://github.com/okjpg)
+- **Curadoria e Tradução PT-BR:** [Caíque Contarini](https://github.com/caiquecontarini)
+
+---
+*Última atualização: Abril de 2026 — Padrão Visual Brain.*
